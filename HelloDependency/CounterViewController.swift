@@ -1,5 +1,6 @@
 import UIKit
 import HDependency
+import IOSDependencyContainer
 
 class CounterViewController: UIViewController {
     

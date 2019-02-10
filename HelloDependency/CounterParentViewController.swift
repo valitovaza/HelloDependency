@@ -1,4 +1,5 @@
 import UIKit
+import IOSDependencyContainer
 
 class CounterParentViewController: UIViewController {
 

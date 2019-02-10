@@ -1,12 +1,35 @@
 import UIKit
 import HDependency
+import IOSDependencyContainer
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
+    private var showManualRootViewController = false //<----!!! Configurable
+    
     func applicationDidFinishLaunching(_ application: UIApplication) {
+        if showManualRootViewController {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let counterViewController = storyboard.instantiateViewController(withIdentifier: "IsolatedCounterViewController") as! IsolatedCounterViewController
+            
+            let eventHandler = CounterViewEventHandlerImpl(WeakBox(counterViewController),
+                                                           WeakBox(counterViewController))
+            counterViewController.eventHandler = eventHandler
+            
+            let rootViewController = UIViewController()
+            rootViewController.view.backgroundColor = .white
+            let navigationViewController = UINavigationController(rootViewController: rootViewController)
+            navigationViewController.pushViewController(counterViewController, animated: false)
+            
+            window?.rootViewController = navigationViewController
+            window?.makeKeyAndVisible()
+        }else{
+            registerDependensies()
+        }
+    }
+    private func registerDependensies() {
         IOSDependencyContainer.addRegisterationBlock {
             HelloDependency.register(CounterViewEventHandler.self, {
                 CounterViewEventHandlerImpl(HelloDependency.resolve(CounterView.self),
@@ -23,108 +46,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             counterProxy.rememberCommands = true
             HelloDependency.register(CounterView.self, { counterProxy })
         }
+        IOSDependencyContainer.addRegisterationBlock {
+            HelloDependency.register(MainViewEventHandler.self, { MainViewEventHandlerImpl() })
+        }
+        IOSDependencyContainer.addStubRegisterationBlock {
+            HelloDependency.register(MainViewEventHandler.self, { MainViewEventHandlerStub() })
+        }
         IOSDependencyContainer.register()
     }
 }
 
-enum IOSDependencyContainer {
-    private static var isTestHostingDependenciesRegistered = false
-    private static var isRegisterInvoked = false
-    
-    private static var viewControllerProxies = [String: ViewControllerProxy]()
-    private static var registrationBlocks: [()->()] = []
-    private static var stubRegistrationBlocks: [()->()] = []
-    
-    static func addRegisterationBlock(_ block: @escaping ()->()) {
-        guard !isRegisterInvoked else { return }
-        registrationBlocks.append(block)
-    }
-    
-    static func addStubRegisterationBlock(_ block: @escaping ()->()) {
-        guard !isTestHostingDependenciesRegistered else { return }
-        stubRegistrationBlocks.append(block)
-    }
-    
-    static func register() {
-        if canRegister {
-            registerAllDependencies()
-        }else{
-            registerStubsForTestsHostingApp()
-        }
-    }
-    private static var canRegister: Bool {
-        return !isUnitTesting
-    }
-    private static var isUnitTesting: Bool {
-        return ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
-    }
-    private static func registerAllDependencies() {
-        guard !isRegisterInvoked else { return }
-        isRegisterInvoked = true
-        
-        registrationBlocks.forEach({$0()})
-        registrationBlocks.removeAll()
-    }
-    private static func registerStubsForTestsHostingApp() {
-        guard !isTestHostingDependenciesRegistered else { return }
-        isTestHostingDependenciesRegistered = true
-        
-        stubRegistrationBlocks.forEach({$0()})
-        stubRegistrationBlocks.removeAll()
-    }
-    
-    static func createProxy<T>(for type: T.Type) -> ViewControllerProxy {
-        let proxy = ViewControllerProxy()
-        viewControllerProxies[key(for: type)] = proxy
-        return proxy
-    }
-    private static func key<T>(for type: T.Type) -> String {
-        return String(describing: type)
-    }
-    
-    static func viewControllerReady(_ viewController: UIViewController) {
-        let key = self.key(for: type(of: viewController))
-        guard let proxy = viewControllerProxies[key] else {return}
-        proxy.viewController = viewController
-    }
-}
-
-class ViewControllerProxy {
-    typealias Command = ()->()
-    private var commands: [Command] = []
-    
-    var rememberCommands = false
-    
-    weak var viewController: UIViewController? {
-        didSet {
-            processCommands()
-        }
-    }
-    private func processCommands() {
-        if let _ = viewController {
-            applyCommands()
-        }else{
-            clearCommands()
-        }
-    }
-    private func applyCommands() {
-        commands.forEach({$0()})
-        clearCommands()
-    }
-    private func clearCommands() {
-        commands.removeAll()
-    }
-    
-    func executeOrRemember(command: @escaping Command) {
-        if let _ = viewController {
-            command()
-        }else{
-            rememberOptionally(command: command)
-        }
-    }
-    private func rememberOptionally(command: @escaping Command) {
-        guard rememberCommands && viewController == nil else { return }
-        commands.append(command)
+class MainViewEventHandlerStub: MainViewEventHandler {
+    func testMethod() {
+        print("Hello tests!")
     }
 }
 
@@ -139,13 +73,25 @@ extension ViewControllerProxy: IncrementCountLabelView {
         executeOrRemember {self.incrementCountLabelView?.setIncrementCount(text: text)}
     }
 }
-
-
 extension ViewControllerProxy: CounterView {
     func setCountLabel(text: String) {
         executeOrRemember {self.counterView?.setCountLabel(text: text)}
     }
     private var counterView: CounterView? {
         return viewController as? CounterView
+    }
+}
+
+extension WeakBox: CounterView where A: CounterView {
+    func setCountLabel(text: String) {
+        unbox?.setCountLabel(text: text)
+    }
+}
+extension WeakBox: IncrementCountLabelView where A: IncrementCountLabelView {
+    func clearIncrementLabel() {
+        unbox?.clearIncrementLabel()
+    }
+    func setIncrementCount(text: String) {
+        unbox?.setIncrementCount(text: text)
     }
 }

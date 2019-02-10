@@ -39,6 +39,54 @@
             </objects>
             <point key="canvasLocation" x="128.80000000000001" y="132.68365817091455"/>
         </scene>
+        <!--Isolated Counter View Controller-->
+        <scene sceneID="IMl-Cs-5TI">
+            <objects>
+                <viewController storyboardIdentifier="IsolatedCounterViewController" id="w6l-Ol-T3H" customClass="IsolatedCounterViewController" customModule="HelloDependency" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="L31-SF-YVw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OWB-yj-JMf">
+                                <rect key="frame" x="179.5" y="213.5" width="16.5" height="31.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kvc-7W-yxe">
+                                <rect key="frame" x="163.5" y="265" width="48" height="24"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kba-oS-3YU">
+                                <rect key="frame" x="153" y="325" width="69" height="30"/>
+                                <state key="normal" title="Increment"/>
+                                <connections>
+                                    <action selector="incrementAction:" destination="w6l-Ol-T3H" eventType="touchUpInside" id="zfT-BN-cEp"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Kba-oS-3YU" firstAttribute="top" secondItem="OWB-yj-JMf" secondAttribute="bottom" constant="80" id="3IX-J0-xJa"/>
+                            <constraint firstItem="OWB-yj-JMf" firstAttribute="centerX" secondItem="zfP-Vw-Bg2" secondAttribute="centerX" id="3Xt-AD-bHk"/>
+                            <constraint firstItem="Kba-oS-3YU" firstAttribute="centerX" secondItem="OWB-yj-JMf" secondAttribute="centerX" id="9Kl-dr-q77"/>
+                            <constraint firstItem="Kvc-7W-yxe" firstAttribute="centerX" secondItem="OWB-yj-JMf" secondAttribute="centerX" id="Cqn-JU-gvd"/>
+                            <constraint firstItem="Kvc-7W-yxe" firstAttribute="top" secondItem="OWB-yj-JMf" secondAttribute="bottom" constant="20" id="HO1-Fj-ZMN"/>
+                            <constraint firstItem="OWB-yj-JMf" firstAttribute="centerY" secondItem="zfP-Vw-Bg2" secondAttribute="centerY" multiplier="2/3" id="Pt2-Wf-492"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zfP-Vw-Bg2"/>
+                    </view>
+                    <connections>
+                        <outlet property="countLabel" destination="OWB-yj-JMf" id="dFF-V6-1XH"/>
+                        <outlet property="incrementCountLabel" destination="Kvc-7W-yxe" id="uia-cZ-9KD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VhE-1a-DqV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1756" y="861"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="m2b-Kl-YGd">
             <objects>
