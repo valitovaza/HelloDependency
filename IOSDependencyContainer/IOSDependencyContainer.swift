@@ -6,16 +6,16 @@ public enum IOSDependencyContainer {
     
     private static var viewControllerProxies = [String: ViewControllerProxy]()
     private static var registrationBlocks: [()->()] = []
-    private static var stubRegistrationBlocks: [()->()] = []
+    private static var hostAppRegistrationBlocks: [()->()] = []
     
     public static func addRegisterationBlock(_ block: @escaping ()->()) {
         guard !isRegisterInvoked else { return }
         registrationBlocks.append(block)
     }
     
-    public static func addStubRegisterationBlock(_ block: @escaping ()->()) {
+    public static func addHostAppsRegisterationBlock(_ block: @escaping ()->()) {
         guard !isTestHostingDependenciesRegistered else { return }
-        stubRegistrationBlocks.append(block)
+        hostAppRegistrationBlocks.append(block)
     }
     
     public static func register() {
@@ -42,12 +42,14 @@ public enum IOSDependencyContainer {
         guard !isTestHostingDependenciesRegistered else { return }
         isTestHostingDependenciesRegistered = true
         
-        stubRegistrationBlocks.forEach({$0()})
-        stubRegistrationBlocks.removeAll()
+        hostAppRegistrationBlocks.forEach({$0()})
+        hostAppRegistrationBlocks.removeAll()
     }
     
-    public static func createProxy<T>(for type: T.Type, identifier: String = "") -> ViewControllerProxy {
-        let proxy = ViewControllerProxy()
+    public static func createProxy<T>(for type: T.Type,
+                                      identifier: String = "",
+                                      postponeCommands: Bool = true) -> ViewControllerProxy {
+        let proxy = ViewControllerProxy(postponeCommands)
         viewControllerProxies[key(for: type, identifier: identifier)] = proxy
         return proxy
     }

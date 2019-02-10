@@ -11,16 +11,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidFinishLaunching(_ application: UIApplication) {
         if showManualRootViewController {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let counterViewController = storyboard.instantiateViewController(withIdentifier: "IsolatedCounterViewController") as! IsolatedCounterViewController
+            let counterViewController = instantiateCounterViewController()
             
             let eventHandler = CounterViewEventHandlerImpl(WeakBox(counterViewController),
                                                            WeakBox(counterViewController))
             counterViewController.eventHandler = eventHandler
-            
-            let rootViewController = UIViewController()
-            rootViewController.view.backgroundColor = .white
-            let navigationViewController = UINavigationController(rootViewController: rootViewController)
+
+            let navigationViewController = createNavigationViewController()
             navigationViewController.pushViewController(counterViewController, animated: false)
             
             window?.rootViewController = navigationViewController
@@ -29,7 +26,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             registerDependensies()
         }
     }
+    private func instantiateCounterViewController() -> IsolatedCounterViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "IsolatedCounterViewController")
+        return vc as! IsolatedCounterViewController
+    }
+    private func createNavigationViewController() -> UINavigationController {
+        let rootViewController = UIViewController()
+        rootViewController.view.backgroundColor = .white
+        return UINavigationController(rootViewController: rootViewController)
+    }
     private func registerDependensies() {
+        registerProdDependencies()
+        registerTestsHostAppFakeDependencies()
+        
+        IOSDependencyContainer.register()
+    }
+    private func registerProdDependencies() {
         IOSDependencyContainer.addRegisterationBlock {
             HelloDependency.register(CounterViewEventHandler.self, {
                 CounterViewEventHandlerImpl(HelloDependency.resolve(CounterView.self),
@@ -38,25 +51,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         IOSDependencyContainer.addRegisterationBlock {
             let counterParentProxy = IOSDependencyContainer.createProxy(for: CounterParentViewController.self)
-            counterParentProxy.rememberCommands = true
             HelloDependency.register(IncrementCountLabelView.self, { counterParentProxy })
         }
         IOSDependencyContainer.addRegisterationBlock {
             let counterProxy = IOSDependencyContainer.createProxy(for: CounterViewController.self)
-            counterProxy.rememberCommands = true
             HelloDependency.register(CounterView.self, { counterProxy })
         }
         IOSDependencyContainer.addRegisterationBlock {
             HelloDependency.register(MainViewEventHandler.self, { MainViewEventHandlerImpl() })
         }
-        IOSDependencyContainer.addStubRegisterationBlock {
-            HelloDependency.register(MainViewEventHandler.self, { MainViewEventHandlerStub() })
+    }
+    private func registerTestsHostAppFakeDependencies() {
+        IOSDependencyContainer.addHostAppsRegisterationBlock {
+            HelloDependency.register(MainViewEventHandler.self, { MainViewEventHandlerFake() })
         }
-        IOSDependencyContainer.register()
     }
 }
 
-class MainViewEventHandlerStub: MainViewEventHandler {
+class MainViewEventHandlerFake: MainViewEventHandler {
     func testMethod() {
         print("Hello tests!")
     }
@@ -64,18 +76,18 @@ class MainViewEventHandlerStub: MainViewEventHandler {
 
 extension ViewControllerProxy: IncrementCountLabelView {
     func clearIncrementLabel() {
-        executeOrRemember {self.incrementCountLabelView?.clearIncrementLabel()}
+        executeOrPostpone {self.incrementCountLabelView?.clearIncrementLabel()}
     }
     private var incrementCountLabelView: IncrementCountLabelView? {
         return viewController as? IncrementCountLabelView
     }
     func setIncrementCount(text: String) {
-        executeOrRemember {self.incrementCountLabelView?.setIncrementCount(text: text)}
+        executeOrPostpone {self.incrementCountLabelView?.setIncrementCount(text: text)}
     }
 }
 extension ViewControllerProxy: CounterView {
     func setCountLabel(text: String) {
-        executeOrRemember {self.counterView?.setCountLabel(text: text)}
+        executeOrPostpone {self.counterView?.setCountLabel(text: text)}
     }
     private var counterView: CounterView? {
         return viewController as? CounterView

@@ -1,10 +1,13 @@
 import UIKit
 
-public class ViewControllerProxy {
+public final class ViewControllerProxy {
     public typealias Command = ()->()
     private var commands: [Command] = []
     
-    public var rememberCommands = false
+    private var postponeCommands = false
+    init(_ postponeCommands: Bool) {
+        self.postponeCommands = postponeCommands
+    }
     
     public weak var viewController: UIViewController? {
         didSet {
@@ -26,15 +29,15 @@ public class ViewControllerProxy {
         commands.removeAll()
     }
     
-    public func executeOrRemember(command: @escaping Command) {
+    public func executeOrPostpone(command: @escaping Command) {
         if let _ = viewController {
             command()
         }else{
-            rememberOptionally(command: command)
+            postponeOptionally(command: command)
         }
     }
-    private func rememberOptionally(command: @escaping Command) {
-        guard rememberCommands && viewController == nil else { return }
+    private func postponeOptionally(command: @escaping Command) {
+        guard postponeCommands && viewController == nil else { return }
         commands.append(command)
     }
 }
