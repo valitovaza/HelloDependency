@@ -14,4 +14,10 @@ Pod::Spec.new do |s|
   s.source_files  = "HDependency/*.swift"
   s.requires_arc = true
   s.swift_version = "4.2"
+
+# IOSDependencyContainer Extensions
+  s.subspec 'IOSDependencyContainer' do |sp|
+   sp.source_files  = 'IOSDependencyContainer/*.swift'
+end
+
 end
