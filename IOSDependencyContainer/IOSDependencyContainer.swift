@@ -8,28 +8,46 @@ public enum IOSDependencyContainer {
     private static var registrationBlocks: [()->()] = []
     private static var hostAppRegistrationBlocks: [()->()] = []
     
+    internal static var isUnitTesting: Bool = {
+        ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
+    }()
+}
+extension IOSDependencyContainer {
+    internal static func reset() {
+        isTestHostingDependenciesRegistered = false
+        isRegisterInvoked = false
+        
+        viewControllerProxies = [String: ViewControllerProxy]()
+        registrationBlocks = []
+        hostAppRegistrationBlocks = []
+    }
+}
+extension IOSDependencyContainer {
     public static func addRegisterationBlock(_ block: @escaping ()->()) {
-        guard !isRegisterInvoked else { return }
+        guard canAddProd else { return }
         registrationBlocks.append(block)
+    }
+    private static var canAddProd: Bool {
+        return !isRegisterInvoked && canRegisterProdDependencies
     }
     
     public static func addHostAppsRegisterationBlock(_ block: @escaping ()->()) {
-        guard !isTestHostingDependenciesRegistered else { return }
+        guard canAddTesting else { return }
         hostAppRegistrationBlocks.append(block)
+    }
+    private static var canAddTesting: Bool {
+        return !isTestHostingDependenciesRegistered && !canRegisterProdDependencies
     }
     
     public static func register() {
-        if canRegister {
+        if canRegisterProdDependencies {
             registerAllDependencies()
         }else{
-            registerStubsForTestsHostingApp()
+            registerFakesForTestsHostingApp()
         }
     }
-    private static var canRegister: Bool {
+    private static var canRegisterProdDependencies: Bool {
         return !isUnitTesting
-    }
-    private static var isUnitTesting: Bool {
-        return ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
     }
     private static func registerAllDependencies() {
         guard !isRegisterInvoked else { return }
@@ -38,7 +56,7 @@ public enum IOSDependencyContainer {
         registrationBlocks.forEach({$0()})
         registrationBlocks.removeAll()
     }
-    private static func registerStubsForTestsHostingApp() {
+    private static func registerFakesForTestsHostingApp() {
         guard !isTestHostingDependenciesRegistered else { return }
         isTestHostingDependenciesRegistered = true
         
