@@ -30,6 +30,7 @@
 		56C2C2B22213022B00C521A9 /* CellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2C2B12213022B00C521A9 /* CellViewController.swift */; };
 		56C2C2B42213040B00C521A9 /* CellViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2C2B32213040B00C521A9 /* CellViewEventHandler.swift */; };
 		56C2C2B62213056700C521A9 /* TableRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2C2B52213056700C521A9 /* TableRepository.swift */; };
+		56C2C2B822132D2800C521A9 /* TableViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2C2B722132D2800C521A9 /* TableViewConfiguration.swift */; };
 		56FCBC5E220DBF440012143A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FCBC5D220DBF440012143A /* AppDelegate.swift */; };
 		56FCBC63220DBF440012143A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56FCBC61220DBF440012143A /* Main.storyboard */; };
 		56FCBC65220DBF450012143A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56FCBC64220DBF450012143A /* Assets.xcassets */; };
@@ -115,6 +116,7 @@
 		56C2C2B12213022B00C521A9 /* CellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewController.swift; sourceTree = "<group>"; };
 		56C2C2B32213040B00C521A9 /* CellViewEventHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewEventHandler.swift; sourceTree = "<group>"; };
 		56C2C2B52213056700C521A9 /* TableRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableRepository.swift; sourceTree = "<group>"; };
+		56C2C2B722132D2800C521A9 /* TableViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewConfiguration.swift; sourceTree = "<group>"; };
 		56FCBC5A220DBF440012143A /* HelloDependency.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloDependency.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56FCBC5D220DBF440012143A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56FCBC62220DBF440012143A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				56FCBC5D220DBF440012143A /* AppDelegate.swift */,
+				56C2C2B722132D2800C521A9 /* TableViewConfiguration.swift */,
 				56FCBC6F220DBF740012143A /* MainViewController.swift */,
 				56C2C2A22212F6F100C521A9 /* Counter */,
 				56C2C2A32212F72300C521A9 /* IsolatedCounter */,
@@ -530,6 +533,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56C2C2B822132D2800C521A9 /* TableViewConfiguration.swift in Sources */,
 				56C2C2B22213022B00C521A9 /* CellViewController.swift in Sources */,
 				56C2C2AD2212FC4200C521A9 /* CounterTableViewCell.swift in Sources */,
 				56C2C2A62212F86100C521A9 /* TableDataSource.swift in Sources */,
