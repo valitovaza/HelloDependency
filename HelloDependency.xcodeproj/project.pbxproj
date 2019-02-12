@@ -23,6 +23,13 @@
 		56B58D9422107159003E61DF /* IOSDependencyContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B58D9322107159003E61DF /* IOSDependencyContainerTests.swift */; };
 		56B58D9922107159003E61DF /* IOSDependencyContainer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56B58D8422107159003E61DF /* IOSDependencyContainer.framework */; };
 		56B58D9A22107159003E61DF /* IOSDependencyContainer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 56B58D8422107159003E61DF /* IOSDependencyContainer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		56C2C2A62212F86100C521A9 /* TableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2C2A52212F86100C521A9 /* TableDataSource.swift */; };
+		56C2C2AD2212FC4200C521A9 /* CounterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2C2AB2212FC4200C521A9 /* CounterTableViewCell.swift */; };
+		56C2C2AE2212FC4200C521A9 /* CounterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56C2C2AC2212FC4200C521A9 /* CounterTableViewCell.xib */; };
+		56C2C2B02213007000C521A9 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2C2AF2213007000C521A9 /* TableViewController.swift */; };
+		56C2C2B22213022B00C521A9 /* CellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2C2B12213022B00C521A9 /* CellViewController.swift */; };
+		56C2C2B42213040B00C521A9 /* CellViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2C2B32213040B00C521A9 /* CellViewEventHandler.swift */; };
+		56C2C2B62213056700C521A9 /* TableRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2C2B52213056700C521A9 /* TableRepository.swift */; };
 		56FCBC5E220DBF440012143A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FCBC5D220DBF440012143A /* AppDelegate.swift */; };
 		56FCBC63220DBF440012143A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56FCBC61220DBF440012143A /* Main.storyboard */; };
 		56FCBC65220DBF450012143A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56FCBC64220DBF450012143A /* Assets.xcassets */; };
@@ -101,6 +108,13 @@
 		56B58D8C22107159003E61DF /* IOSDependencyContainerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IOSDependencyContainerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		56B58D9322107159003E61DF /* IOSDependencyContainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSDependencyContainerTests.swift; sourceTree = "<group>"; };
 		56B58D9522107159003E61DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		56C2C2A52212F86100C521A9 /* TableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataSource.swift; sourceTree = "<group>"; };
+		56C2C2AB2212FC4200C521A9 /* CounterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterTableViewCell.swift; sourceTree = "<group>"; };
+		56C2C2AC2212FC4200C521A9 /* CounterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CounterTableViewCell.xib; sourceTree = "<group>"; };
+		56C2C2AF2213007000C521A9 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		56C2C2B12213022B00C521A9 /* CellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewController.swift; sourceTree = "<group>"; };
+		56C2C2B32213040B00C521A9 /* CellViewEventHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewEventHandler.swift; sourceTree = "<group>"; };
+		56C2C2B52213056700C521A9 /* TableRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableRepository.swift; sourceTree = "<group>"; };
 		56FCBC5A220DBF440012143A /* HelloDependency.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloDependency.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56FCBC5D220DBF440012143A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56FCBC62220DBF440012143A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -181,6 +195,38 @@
 			path = IOSDependencyContainerTests;
 			sourceTree = "<group>";
 		};
+		56C2C2A22212F6F100C521A9 /* Counter */ = {
+			isa = PBXGroup;
+			children = (
+				569D85062210459F00043BC2 /* CounterParentViewController.swift */,
+				569D850222101C1B00043BC2 /* CounterViewController.swift */,
+				569D850422101CF800043BC2 /* CounterViewEventHandler.swift */,
+			);
+			path = Counter;
+			sourceTree = "<group>";
+		};
+		56C2C2A32212F72300C521A9 /* IsolatedCounter */ = {
+			isa = PBXGroup;
+			children = (
+				5667805D22108B80006E4F21 /* IsolatedCounterViewController.swift */,
+			);
+			path = IsolatedCounter;
+			sourceTree = "<group>";
+		};
+		56C2C2A42212F7C200C521A9 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				56C2C2AF2213007000C521A9 /* TableViewController.swift */,
+				56C2C2A52212F86100C521A9 /* TableDataSource.swift */,
+				56C2C2AB2212FC4200C521A9 /* CounterTableViewCell.swift */,
+				56C2C2B12213022B00C521A9 /* CellViewController.swift */,
+				56C2C2B32213040B00C521A9 /* CellViewEventHandler.swift */,
+				56C2C2B52213056700C521A9 /* TableRepository.swift */,
+				56C2C2AC2212FC4200C521A9 /* CounterTableViewCell.xib */,
+			);
+			path = Table;
+			sourceTree = "<group>";
+		};
 		56FCBC51220DBF430012143A = {
 			isa = PBXGroup;
 			children = (
@@ -211,10 +257,9 @@
 			children = (
 				56FCBC5D220DBF440012143A /* AppDelegate.swift */,
 				56FCBC6F220DBF740012143A /* MainViewController.swift */,
-				569D85062210459F00043BC2 /* CounterParentViewController.swift */,
-				569D850222101C1B00043BC2 /* CounterViewController.swift */,
-				569D850422101CF800043BC2 /* CounterViewEventHandler.swift */,
-				5667805D22108B80006E4F21 /* IsolatedCounterViewController.swift */,
+				56C2C2A22212F6F100C521A9 /* Counter */,
+				56C2C2A32212F72300C521A9 /* IsolatedCounter */,
+				56C2C2A42212F7C200C521A9 /* Table */,
 				56FCBC61220DBF440012143A /* Main.storyboard */,
 				56FCBC64220DBF450012143A /* Assets.xcassets */,
 				56FCBC66220DBF450012143A /* LaunchScreen.storyboard */,
@@ -439,6 +484,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56C2C2AE2212FC4200C521A9 /* CounterTableViewCell.xib in Resources */,
 				56FCBC68220DBF450012143A /* LaunchScreen.storyboard in Resources */,
 				56FCBC65220DBF450012143A /* Assets.xcassets in Resources */,
 				56FCBC63220DBF440012143A /* Main.storyboard in Resources */,
@@ -484,11 +530,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56C2C2B22213022B00C521A9 /* CellViewController.swift in Sources */,
+				56C2C2AD2212FC4200C521A9 /* CounterTableViewCell.swift in Sources */,
+				56C2C2A62212F86100C521A9 /* TableDataSource.swift in Sources */,
 				5667805E22108B80006E4F21 /* IsolatedCounterViewController.swift in Sources */,
+				56C2C2B62213056700C521A9 /* TableRepository.swift in Sources */,
 				569D85072210459F00043BC2 /* CounterParentViewController.swift in Sources */,
+				56C2C2B42213040B00C521A9 /* CellViewEventHandler.swift in Sources */,
 				569D850322101C1B00043BC2 /* CounterViewController.swift in Sources */,
 				56FCBC70220DBF740012143A /* MainViewController.swift in Sources */,
 				56FCBC5E220DBF440012143A /* AppDelegate.swift in Sources */,
+				56C2C2B02213007000C521A9 /* TableViewController.swift in Sources */,
 				569D850522101CF800043BC2 /* CounterViewEventHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

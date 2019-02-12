@@ -244,7 +244,7 @@ class HelloDependencyTests: TestsWithPublicAccessToHelloDependency {
         XCTAssertTrue(resolve(TestClass.self, for: "obj0") === obj_obj0)
     }
     
-    func test_release_invokesFactoryMultipleTimes() {
+    func test_resolve_invokesFactoryMultipleTimes() {
         release_invokesFactoryMultipleTimes(register: { (factory) in
             register(TestClass.self, factory)
         }) { () -> (TestClass?) in
