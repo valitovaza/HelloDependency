@@ -85,7 +85,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VhE-1a-DqV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1756" y="861"/>
+            <point key="canvasLocation" x="1756" y="860"/>
+        </scene>
+        <!--Table-->
+        <scene sceneID="yuF-ci-tFZ">
+            <objects>
+                <viewController id="QmB-vG-56P" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Swc-xQ-u39">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="kno-Ip-Dch"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Table" id="K4Q-SJ-6Wh"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gXO-d2-Z1A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2598" y="860"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="m2b-Kl-YGd">
@@ -128,12 +144,32 @@
                                     <segue destination="Nrx-bQ-TnT" kind="show" id="MvY-WV-tOm"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NlC-HO-jwr">
+                                <rect key="frame" x="16" y="603" width="343" height="44"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="5L0-X3-vsz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <state key="normal" title="Open Table">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="QmB-vG-56P" kind="show" id="nj9-pm-opN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="NlC-HO-jwr" firstAttribute="leading" secondItem="wgG-cz-yg7" secondAttribute="leading" constant="16" id="Kdg-k9-K2c"/>
                             <constraint firstItem="Lqx-Fa-2KQ" firstAttribute="leading" secondItem="wgG-cz-yg7" secondAttribute="leading" constant="16" id="NBg-l4-RBZ"/>
                             <constraint firstItem="Lqx-Fa-2KQ" firstAttribute="centerY" secondItem="wgG-cz-yg7" secondAttribute="centerY" multiplier="3/4" id="UnV-pG-QIt"/>
                             <constraint firstItem="wgG-cz-yg7" firstAttribute="trailing" secondItem="Lqx-Fa-2KQ" secondAttribute="trailing" constant="16" id="gi9-gf-qmf"/>
+                            <constraint firstItem="wgG-cz-yg7" firstAttribute="trailing" secondItem="NlC-HO-jwr" secondAttribute="trailing" constant="16" id="jfW-cI-hcU"/>
+                            <constraint firstItem="wgG-cz-yg7" firstAttribute="bottom" secondItem="NlC-HO-jwr" secondAttribute="bottom" constant="20" id="sM6-99-ytL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wgG-cz-yg7"/>
                     </view>
