@@ -26,19 +26,22 @@ class TableConfiguratorImpl: TableConfigurator {
                              parentViewController: UIViewController) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: tableSpecification.reuseIdentifier,
                                                  for: indexPath)
-        insertExampleContentViewControllerOptionally(cell, indexPath, parentViewController)
+        insertExampleContentViewController(cell, indexPath, parentViewController)
         return cell
     }
-    private func insertExampleContentViewControllerOptionally(_ cell: UITableViewCell,
-                                                              _ indexPath: IndexPath,
-                                                              _ parentViewController: UIViewController) {
-        removePreviousContent(cell, parentViewController)
-        let contentVc = UIStoryboard(name: "Main", bundle: nil)
-            .instantiateViewController(withIdentifier: "CellViewController") as! CellViewController
+    private func insertExampleContentViewController(_ cell: UITableViewCell,
+                                                    _ indexPath: IndexPath,
+                                                    _ parentViewController: UIViewController) {
+        removePreviousContentOptionally(cell, parentViewController)
+        let contentVc = createCellViewController()
         configureContentDependency(contentVc, indexPath)
         addChild(contentVc, parentViewController, cell)
     }
-    private func removePreviousContent(_ cell: UITableViewCell, _ parentViewController: UIViewController) {
+    private func createCellViewController() -> CellViewController {
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CellViewController") as! CellViewController
+    }
+    private func removePreviousContentOptionally(_ cell: UITableViewCell,
+                                                 _ parentViewController: UIViewController) {
         guard let previousVc = parentViewController.children
             .filter({$0.view === cell.contentView.subviews.first}).first else { return }
         previousVc.willMove(toParent: nil)
