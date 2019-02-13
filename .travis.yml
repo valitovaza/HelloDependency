@@ -2,3 +2,4 @@ os: osx
 osx_image: xcode10.1
 language: swift
 script: xcodebuild clean build test -project HelloDependency.xcodeproj -scheme "HDependency" CODE_SIGN_IDENTITY="" CODE_SIGN_REQUIRED=NO
+script: xcodebuild clean build test -project HelloDependency.xcodeproj -scheme "IOSDependencyContainer" -sdk iphonesimulator12.1 CODE_SIGN_IDENTITY="" CODE_SIGN_REQUIRED=NO
