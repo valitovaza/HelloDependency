@@ -47,20 +47,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		56B58D8E22107159003E61DF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 56FCBC52220DBF430012143A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 56B58D8322107159003E61DF;
-			remoteInfo = IOSDependencyContainer;
-		};
-		56B58D9022107159003E61DF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 56FCBC52220DBF430012143A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 56FCBC59220DBF440012143A;
-			remoteInfo = HelloDependency;
-		};
 		56B58D9722107159003E61DF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 56FCBC52220DBF430012143A /* Project object */;
@@ -355,8 +341,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				56B58D8F22107159003E61DF /* PBXTargetDependency */,
-				56B58D9122107159003E61DF /* PBXTargetDependency */,
 			);
 			name = IOSDependencyContainerTests;
 			productName = IOSDependencyContainerTests;
@@ -579,16 +563,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		56B58D8F22107159003E61DF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 56B58D8322107159003E61DF /* IOSDependencyContainer */;
-			targetProxy = 56B58D8E22107159003E61DF /* PBXContainerItemProxy */;
-		};
-		56B58D9122107159003E61DF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 56FCBC59220DBF440012143A /* HelloDependency */;
-			targetProxy = 56B58D9022107159003E61DF /* PBXContainerItemProxy */;
-		};
 		56B58D9822107159003E61DF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 56B58D8322107159003E61DF /* IOSDependencyContainer */;
