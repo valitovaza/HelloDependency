@@ -1,5 +1,7 @@
 # HelloDependency
 
+[![Build Status](https://travis-ci.com/valitovaza/HelloDependency.svg?branch=master)](https://travis-ci.com/valitovaza/HelloDependency)
+
 ## Installation
 
 ### CocoaPods
