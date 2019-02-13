@@ -1,14 +1,14 @@
 import UIKit
 
-class CellViewController: UIViewController {
+class CellViewController: UIViewController, CellContentView {
     var eventHandler: CellViewEventHandler!
     
     @IBOutlet weak var titleLabel: UILabel!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        eventHandler.onLoad()
+    func cellContentDidConfigure() {
+        eventHandler.didConfigure()
     }
+    
     deinit {
         print("CellViewController deallocation")
     }

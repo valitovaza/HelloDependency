@@ -1,5 +1,5 @@
 protocol CellViewEventHandler {
-    func onLoad()
+    func didConfigure()
 }
 protocol CellView {
     func show(title: String)
@@ -11,7 +11,7 @@ class CellViewEventHandlerImpl: CellViewEventHandler {
         self.data = data
         self.view = view
     }
-    func onLoad() {
+    func didConfigure() {
         view.show(title: data.title)
     }
     deinit {

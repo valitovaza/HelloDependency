@@ -2,51 +2,46 @@ import UIKit
 import HDependency
 import IOSDependencyContainer
 
-struct TableViewSpecification {
-    let reuseIdentifier: String
-    let cellType: AnyObject.Type
+protocol CellContentView {
+    func cellContentDidConfigure()
 }
-class TableConfiguratorImpl: TableConfigurator {
-    private var weakViews = [String: WeakBox<CellViewController>]()
+fileprivate final class CellViewsWrapper {
+    var cellView: WeakBox<CellViewController>?
+    var counterView: WeakBox<CellsEmbeddedChildViewController>?
+}
+final class TableConfiguratorImpl: TableConfigurator {
+    private let cellIdentifier = "CounterTableViewCell"
+    
+    private var contentViews = [IndexPath: CellViewsWrapper]()
     
     private let repository: TableRepository
-    private let tableSpecification: TableViewSpecification
-    init(_ repository: TableRepository, _ tableSpecification: TableViewSpecification) {
+    init(_ repository: TableRepository) {
         self.repository = repository
-        self.tableSpecification = tableSpecification
     }
     var rowsCount: Int {
         return repository.dataCount
     }
     func registerCell(_ tableView: UITableView) {
-        tableView.register(tableSpecification.cellType,
-                           forCellReuseIdentifier: tableSpecification.reuseIdentifier)
+        tableView.register(CounterTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
     }
     func dequeueReusableCell(_ tableView: UITableView, for indexPath: IndexPath,
                              parentViewController: UIViewController) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: tableSpecification.reuseIdentifier,
-                                                 for: indexPath)
-        insertExampleContentViewController(cell, indexPath, parentViewController)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier,
+                                                 for: indexPath) as! CounterTableViewCell
+        configure(cell, indexPath, parentViewController)
         return cell
     }
-    private func insertExampleContentViewController(_ cell: UITableViewCell,
-                                                    _ indexPath: IndexPath,
-                                                    _ parentViewController: UIViewController) {
-        removePreviousContentOptionally(cell, parentViewController)
-        let contentVc = createCellViewController()
+    private func configure(_ cell: CounterTableViewCell, _ indexPath: IndexPath,
+                           _ parentViewController: UIViewController) {
+        cell.initializeContentViewOptionally(parentViewController)
+        configureCellViewController(cell, indexPath)
+        configureEmbeddedChildViewController(cell, indexPath)
+        notifyContentViews(cell)
+    }
+    
+    private func configureCellViewController(_ cell: CounterTableViewCell, _ indexPath: IndexPath) {
+        let contentVc = cell.cellViewController!
         configureContentDependency(contentVc, indexPath)
-        addChild(contentVc, parentViewController, cell)
-    }
-    private func createCellViewController() -> CellViewController {
-        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CellViewController") as! CellViewController
-    }
-    private func removePreviousContentOptionally(_ cell: UITableViewCell,
-                                                 _ parentViewController: UIViewController) {
-        guard let previousVc = parentViewController.children
-            .filter({$0.view === cell.contentView.subviews.first}).first else { return }
-        previousVc.willMove(toParent: nil)
-        previousVc.view.removeFromSuperview()
-        previousVc.removeFromParent()
     }
     private func configureContentDependency(_ cellViewController: CellViewController,
                                             _ indexPath: IndexPath) {
@@ -56,27 +51,64 @@ class TableConfiguratorImpl: TableConfigurator {
     }
     private func registerOrChangeDependency(_ indexPath: IndexPath,
                                             _ cellViewController: CellViewController) {
-        if let weakViews = weakViews[indexPath.identifierForDependency] {
-            weakViews.unbox = cellViewController
+        let wrapper = viewWrapper(at: indexPath)
+        if let _ = wrapper.cellView {
+            change(cellViewController: cellViewController, at: indexPath)
         }else{
             let data = repository.getData(for: indexPath.row)
             let weakCellView = WeakBox(cellViewController)
-            weakViews[indexPath.identifierForDependency] = weakCellView
-            HelloDependency.Single.AndWeakly.register(CellViewEventHandler.self, forIdentifier: indexPath.identifierForDependency, { CellViewEventHandlerImpl(data, weakCellView) })
+            wrapper.cellView = weakCellView
+            HelloDependency.Single.register(CellViewEventHandler.self, forIdentifier: indexPath.identifierForDependency, { CellViewEventHandlerImpl(data, weakCellView) })
         }
     }
-    private func addChild(_ contentVc: UIViewController,
-                          _ parentViewController: UIViewController, _ cell: UITableViewCell) {
-        parentViewController.addChild(contentVc)
-        contentVc.view.translatesAutoresizingMaskIntoConstraints = false
-        cell.contentView.addSubview(contentVc.view)
-        NSLayoutConstraint.activate([
-            contentVc.view.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor),
-            contentVc.view.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor),
-            contentVc.view.topAnchor.constraint(equalTo: cell.contentView.topAnchor),
-            contentVc.view.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor)
-            ])
-        contentVc.didMove(toParent: parentViewController)
+    private func viewWrapper(at indexPath: IndexPath) -> CellViewsWrapper {
+        if let wrapper = contentViews[indexPath] {
+            return wrapper
+        }else{
+            let wrapper = CellViewsWrapper()
+            contentViews[indexPath] = wrapper
+            return wrapper
+        }
+    }
+    private func change(cellViewController: CellViewController, at indexPath: IndexPath) {
+        for contentView in contentViews.values {
+            if contentView.cellView?.unbox == cellViewController {
+                contentView.cellView?.unbox = nil
+            }
+        }
+        contentViews[indexPath]?.cellView?.unbox = cellViewController
+    }
+    private func configureEmbeddedChildViewController(_ cell: CounterTableViewCell, _ indexPath: IndexPath) {
+        let embeddedChildViewController = cell.embeddedChildViewController!
+        configureEmbeddedViewDependency(embeddedChildViewController, indexPath)
+    }
+    private func configureEmbeddedViewDependency(_ embeddedChildViewController: CellsEmbeddedChildViewController, _ indexPath: IndexPath) {
+        registerOrChangeDependency(indexPath, embeddedChildViewController)
+        embeddedChildViewController.eventHandler = HelloDependency.resolve(CounterViewEventHandler.self, for: indexPath.identifierForDependency)
+    }
+    private func registerOrChangeDependency(_ indexPath: IndexPath, _ embeddedChildViewController: CellsEmbeddedChildViewController) {
+        let wrapper = viewWrapper(at: indexPath)
+        if let _ = wrapper.counterView {
+            change(embeddedChildViewController: embeddedChildViewController, at: indexPath)
+        }else{
+            let weakCounterView = WeakBox(embeddedChildViewController)
+            wrapper.counterView = weakCounterView
+            HelloDependency.Single.register(CounterViewEventHandler.self, forIdentifier: indexPath.identifierForDependency, {
+                CounterViewEventHandlerImpl(weakCounterView, weakCounterView)
+            })
+        }
+    }
+    private func change(embeddedChildViewController: CellsEmbeddedChildViewController, at indexPath: IndexPath) {
+        for contentView in contentViews.values {
+            if contentView.counterView?.unbox == embeddedChildViewController {
+                contentView.counterView?.unbox = nil
+            }
+        }
+        contentViews[indexPath]?.counterView?.unbox = embeddedChildViewController
+    }
+    private func notifyContentViews(_ cell: CounterTableViewCell) {
+        cell.cellViewController?.cellContentDidConfigure()
+        cell.embeddedChildViewController?.cellContentDidConfigure()
     }
 }
 extension IndexPath {
@@ -87,5 +119,10 @@ extension IndexPath {
 extension WeakBox: CellView where A: CellView {
     func show(title: String) {
         unbox?.show(title: title)
+    }
+}
+extension CounterTableViewCell {
+    var embeddedChildViewController: CellsEmbeddedChildViewController? {
+        return cellViewController?.children.first as? CellsEmbeddedChildViewController
     }
 }

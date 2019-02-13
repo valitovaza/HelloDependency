@@ -15,9 +15,6 @@ class CounterParentViewController: UIViewController {
     }
 }
 extension CounterParentViewController: IncrementCountLabelView {
-    func clearIncrementLabel() {
-        incrementCountLabel.text = ""
-    }
     func setIncrementCount(text: String) {
         incrementCountLabel.text = text
     }

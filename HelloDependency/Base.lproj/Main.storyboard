@@ -165,16 +165,49 @@
             </objects>
             <point key="canvasLocation" x="3405.5999999999999" y="859.52023988005999"/>
         </scene>
-        <!--View Controller-->
+        <!--Cells Embedded Child View Controller-->
         <scene sceneID="Nne-nF-ifw">
             <objects>
-                <viewController id="ld2-OU-mMB" sceneMemberID="viewController">
+                <viewController id="ld2-OU-mMB" customClass="CellsEmbeddedChildViewController" customModule="HelloDependency" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OWn-xB-gR1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W1X-T4-dmG">
+                                <rect key="frame" x="179.5" y="214.5" width="16.5" height="31.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nEK-nq-c8g">
+                                <rect key="frame" x="168.5" y="256" width="38" height="18"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yol-Db-8r5">
+                                <rect key="frame" x="153" y="288" width="69" height="30"/>
+                                <state key="normal" title="Increment"/>
+                                <connections>
+                                    <action selector="incrementAction:" destination="ld2-OU-mMB" eventType="touchUpInside" id="thr-Le-0Rl"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="yol-Db-8r5" firstAttribute="top" secondItem="nEK-nq-c8g" secondAttribute="bottom" constant="14" id="1mN-OC-c74"/>
+                            <constraint firstItem="W1X-T4-dmG" firstAttribute="centerX" secondItem="D6C-UF-2iR" secondAttribute="centerX" id="RiQ-9D-Xcq"/>
+                            <constraint firstItem="nEK-nq-c8g" firstAttribute="centerX" secondItem="D6C-UF-2iR" secondAttribute="centerX" id="a4G-j2-Iik"/>
+                            <constraint firstItem="W1X-T4-dmG" firstAttribute="centerY" secondItem="D6C-UF-2iR" secondAttribute="centerY" constant="-30" id="nzS-iL-5wG"/>
+                            <constraint firstItem="nEK-nq-c8g" firstAttribute="top" secondItem="W1X-T4-dmG" secondAttribute="bottom" constant="10" id="pnP-hC-22b"/>
+                            <constraint firstItem="yol-Db-8r5" firstAttribute="centerX" secondItem="D6C-UF-2iR" secondAttribute="centerX" id="vlW-nL-Ahw"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="D6C-UF-2iR"/>
                     </view>
+                    <connections>
+                        <outlet property="countLabel" destination="W1X-T4-dmG" id="uxP-zI-i6d"/>
+                        <outlet property="incrementLabel" destination="nEK-nq-c8g" id="XUj-Wk-EjG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5bW-qU-lix" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

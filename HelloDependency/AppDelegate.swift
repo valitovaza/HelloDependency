@@ -61,10 +61,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             HelloDependency.register(MainViewEventHandler.self, { MainViewEventHandlerImpl() })
         }
         IOSDependencyContainer.addRegisterationBlock {
-            HelloDependency.register(TableConfigurator.self, {
-                let ts = TableViewSpecification(reuseIdentifier: "cellIdentifier",
-                                                cellType: CounterTableViewCell.self)
-                return TableConfiguratorImpl(HelloDependency.resolve(TableRepository.self), ts)
+            HelloDependency.Single.register(TableConfigurator.self, {
+                return TableConfiguratorImpl(HelloDependency.resolve(TableRepository.self))
             })
             HelloDependency.Single.AndWeakly.register(TableRepository.self, {
                 TableRepositoryImpl()
@@ -85,14 +83,11 @@ class MainViewEventHandlerFake: MainViewEventHandler {
 }
 
 extension ViewControllerProxy: IncrementCountLabelView {
-    func clearIncrementLabel() {
-        executeOrPostpone {self.incrementCountLabelView?.clearIncrementLabel()}
+    func setIncrementCount(text: String) {
+        executeOrPostpone {self.incrementCountLabelView?.setIncrementCount(text: text)}
     }
     private var incrementCountLabelView: IncrementCountLabelView? {
         return viewController as? IncrementCountLabelView
-    }
-    func setIncrementCount(text: String) {
-        executeOrPostpone {self.incrementCountLabelView?.setIncrementCount(text: text)}
     }
 }
 extension ViewControllerProxy: CounterView {
@@ -110,9 +105,6 @@ extension WeakBox: CounterView where A: CounterView {
     }
 }
 extension WeakBox: IncrementCountLabelView where A: IncrementCountLabelView {
-    func clearIncrementLabel() {
-        unbox?.clearIncrementLabel()
-    }
     func setIncrementCount(text: String) {
         unbox?.setIncrementCount(text: text)
     }

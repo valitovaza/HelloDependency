@@ -6,7 +6,6 @@ protocol CounterView {
     func setCountLabel(text: String)
 }
 protocol IncrementCountLabelView {
-    func clearIncrementLabel()
     func setIncrementCount(text: String)
 }
 class CounterViewEventHandlerImpl: CounterViewEventHandler {
@@ -19,7 +18,7 @@ class CounterViewEventHandlerImpl: CounterViewEventHandler {
         self.otherView = otherView
     }
     func onDidLoad() {
-        otherView.clearIncrementLabel()
+        updateViews()
     }
     func increment() {
         handleIncrement()

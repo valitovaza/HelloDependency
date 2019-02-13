@@ -26,9 +26,6 @@ extension IsolatedCounterViewController: CounterView {
     }
 }
 extension IsolatedCounterViewController: IncrementCountLabelView {
-    func clearIncrementLabel() {
-        incrementCountLabel.text = ""
-    }
     func setIncrementCount(text: String) {
         incrementCountLabel.text = text
     }

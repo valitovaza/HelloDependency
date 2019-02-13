@@ -15,6 +15,7 @@ class TableDataSource: NSObject {
     
     @IBOutlet weak var tableView: UITableView! {
         didSet {
+            tableView.delaysContentTouches = false
             configurator.registerCell(tableView)
         }
     }
