@@ -4,7 +4,4 @@ class TableViewController: UIViewController, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 300
     }
-    deinit {
-        print("TableViewController deallocation")
-    }
 }

@@ -3,11 +3,14 @@ import XCTest
 
 class TestsWithInternalAccessToHelloDependency: XCTestCase {
     
+    private var defaultValues = [String: Any]()
+    
     class TestClass {}
     struct TestStruct: Equatable {}
     
     override func setUp() {
         reset()
+        defaultValues = [String: Any]()
     }
     
     func reset() {
@@ -49,7 +52,7 @@ class TestsWithInternalAccessToHelloDependency: XCTestCase {
         assertFatalErrorOnResolve(type,
                                   expectedMessage: expectedMessage,
                                   file: file, line: line) {
-            HelloDependency.resolve(type, for: identifier)
+            HelloDependency.resolve(type, forIdentifier: identifier)
         }
     }
     
@@ -70,6 +73,10 @@ class TestsWithInternalAccessToHelloDependency: XCTestCase {
         }
     }
     
+    func setDefault<T>(value: Any, for type: T.Type) {
+        defaultValues[String(describing: type)] = value
+    }
+    
     func defaultValue<T>(for type: T.Type) -> Any {
         if type is Int.Type {
             return Int(0)
@@ -83,6 +90,8 @@ class TestsWithInternalAccessToHelloDependency: XCTestCase {
             return TestClass()
         }else if type is TestStruct.Type {
             return TestStruct()
+        }else if let value = defaultValues[String(describing: type)] {
+            return value
         }
         fatalError("provide default value for \(type)")
     }

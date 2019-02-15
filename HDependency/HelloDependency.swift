@@ -54,7 +54,7 @@ extension HelloDependency {
 }
 extension HelloDependency {
     public static func register<T>(_ type: T.Type,
-                                   for identifier: String,
+                                   forIdentifier identifier: String,
                                    _ dependency: T) {
         let key = self.key(for: type, identifier: identifier)
         savedSingleDependencies[key] = nil
@@ -64,12 +64,12 @@ extension HelloDependency {
         return String(describing: type) + identifier
     }
     
-    public static func resolve<T>(_ type: T.Type, for identifier: String) -> T {
+    public static func resolve<T>(_ type: T.Type, forIdentifier identifier: String) -> T {
         return resolve(type, key: self.key(for: type, identifier: identifier),
                        fatalErrorText: "Can not resolve \(self.key(for: type)) for identifier: \(identifier)")
     }
     
-    public static func release<T>(_ type: T.Type, for identifier: String) {
+    public static func release<T>(_ type: T.Type, forIdentifier identifier: String) {
         let key = self.key(for: type, identifier: identifier)
         savedDependencies[key] = nil
         savedSingleDependencies[key] = nil
@@ -82,7 +82,7 @@ extension HelloDependency {
         savedDependencies[key] = Dependency.factory(factory)
     }
     public static func register<T>(_ type: T.Type,
-                                   for identifier: String,
+                                   forIdentifier identifier: String,
                                    _ factory: @escaping ()->(T)) {
         let key = self.key(for: type, identifier: identifier)
         savedSingleDependencies[key] = nil

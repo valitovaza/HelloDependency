@@ -14,7 +14,7 @@ class TestsWithPublicAccessToHelloDependency: TestsWithInternalAccessToHelloDepe
     func register<T>(_ type: T.Type,
                      for identifier: String,
                      _ dependency: T) {
-        HelloDependency.register(type, for: identifier, dependency)
+        HelloDependency.register(type, forIdentifier: identifier, dependency)
     }
     
     func register<T>(_ type: T.Type, _ factory: @escaping ()->(T)) {
@@ -23,7 +23,7 @@ class TestsWithPublicAccessToHelloDependency: TestsWithInternalAccessToHelloDepe
     
     func register<T>(_ type: T.Type, for identifier: String,
                      _ factory: @escaping ()->(T)) {
-        HelloDependency.register(type, for: identifier, factory)
+        HelloDependency.register(type, forIdentifier: identifier, factory)
     }
     
     func resolve<T>(_ type: T.Type,
@@ -38,7 +38,7 @@ class TestsWithPublicAccessToHelloDependency: TestsWithInternalAccessToHelloDepe
                             file: StaticString = #file,
                             line: UInt = #line) -> T? {
         return safeResolve(type, file: file, line: line) {
-            HelloDependency.resolve(type, for: identifier)
+            HelloDependency.resolve(type, forIdentifier: identifier)
         }
     }
     
@@ -47,7 +47,7 @@ class TestsWithPublicAccessToHelloDependency: TestsWithInternalAccessToHelloDepe
     }
     
     func release<T>(_ type: T.Type, for identifier: String) {
-        HelloDependency.release(type, for: identifier)
+        HelloDependency.release(type, forIdentifier: identifier)
     }
     
     func clear() {

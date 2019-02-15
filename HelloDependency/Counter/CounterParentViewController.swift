@@ -9,10 +9,6 @@ class CounterParentViewController: UIViewController {
         super.viewDidLoad()
         IOSDependencyContainer.viewControllerReady(self)
     }
-    
-    deinit {
-        print("CounterParentViewController deallocation")
-    }
 }
 extension CounterParentViewController: IncrementCountLabelView {
     func setIncrementCount(text: String) {

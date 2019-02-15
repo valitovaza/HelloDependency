@@ -2,17 +2,9 @@ import UIKit
 import HDependency
 import IOSDependencyContainer
 
-protocol CellContentView {
-    func cellContentDidConfigure()
-}
-fileprivate final class CellViewsWrapper {
-    var cellView: WeakBox<CellViewController>?
-    var counterView: WeakBox<CellsEmbeddedChildViewController>?
-}
 final class TableConfiguratorImpl: TableConfigurator {
+    private let configurator = CellDependencyConfigurator()
     private let cellIdentifier = "CounterTableViewCell"
-    
-    private var contentViews = [IndexPath: CellViewsWrapper]()
     
     private let repository: TableRepository
     init(_ repository: TableRepository) {
@@ -35,85 +27,55 @@ final class TableConfiguratorImpl: TableConfigurator {
                            _ parentViewController: UIViewController) {
         cell.initializeContentViewOptionally(parentViewController)
         configureCellViewController(cell, indexPath)
-        configureEmbeddedChildViewController(cell, indexPath)
-        notifyContentViews(cell)
+        configure(embeddedChildViewController: cell.cellViewController!.children.first as! CellsEmbeddedChildViewController, indexPath)
     }
-    
     private func configureCellViewController(_ cell: CounterTableViewCell, _ indexPath: IndexPath) {
-        let contentVc = cell.cellViewController!
-        configureContentDependency(contentVc, indexPath)
+        let cellViewController = cell.cellViewController!
+        let weakView = WeakBox(cellViewController)
+        
+        try! configurator.set(weakView: weakView, asDependencyOfType: CellView.self, at: indexPath)
+        
+        let data = repository.getData(for: indexPath.row)
+        let eventHandlerFactory = CellViewEventHandlerFactory(data, weakView)
+        
+        configurator.register(eventHandlerFactory, toCreateType: CellViewEventHandler.self, at: indexPath)
+        
+        configurator.configure(dependencyHolder: cellViewController, dependencyType: CellViewEventHandler.self, at: indexPath)
     }
-    private func configureContentDependency(_ cellViewController: CellViewController,
-                                            _ indexPath: IndexPath) {
-        registerOrChangeDependency(indexPath, cellViewController)
-        cellViewController.eventHandler = HelloDependency.resolve(CellViewEventHandler.self,
-                                                                  for: indexPath.identifierForDependency)
-    }
-    private func registerOrChangeDependency(_ indexPath: IndexPath,
-                                            _ cellViewController: CellViewController) {
-        let wrapper = viewWrapper(at: indexPath)
-        if let _ = wrapper.cellView {
-            change(cellViewController: cellViewController, at: indexPath)
-        }else{
-            let data = repository.getData(for: indexPath.row)
-            let weakCellView = WeakBox(cellViewController)
-            wrapper.cellView = weakCellView
-            HelloDependency.Single.register(CellViewEventHandler.self, forIdentifier: indexPath.identifierForDependency, { CellViewEventHandlerImpl(data, weakCellView) })
-        }
-    }
-    private func viewWrapper(at indexPath: IndexPath) -> CellViewsWrapper {
-        if let wrapper = contentViews[indexPath] {
-            return wrapper
-        }else{
-            let wrapper = CellViewsWrapper()
-            contentViews[indexPath] = wrapper
-            return wrapper
-        }
-    }
-    private func change(cellViewController: CellViewController, at indexPath: IndexPath) {
-        for contentView in contentViews.values {
-            if contentView.cellView?.unbox == cellViewController {
-                contentView.cellView?.unbox = nil
-            }
-        }
-        contentViews[indexPath]?.cellView?.unbox = cellViewController
-    }
-    private func configureEmbeddedChildViewController(_ cell: CounterTableViewCell, _ indexPath: IndexPath) {
-        let embeddedChildViewController = cell.embeddedChildViewController!
-        configureEmbeddedViewDependency(embeddedChildViewController, indexPath)
-    }
-    private func configureEmbeddedViewDependency(_ embeddedChildViewController: CellsEmbeddedChildViewController, _ indexPath: IndexPath) {
-        registerOrChangeDependency(indexPath, embeddedChildViewController)
-        embeddedChildViewController.eventHandler = HelloDependency.resolve(CounterViewEventHandler.self, for: indexPath.identifierForDependency)
-    }
-    private func registerOrChangeDependency(_ indexPath: IndexPath, _ embeddedChildViewController: CellsEmbeddedChildViewController) {
-        let wrapper = viewWrapper(at: indexPath)
-        if let _ = wrapper.counterView {
-            change(embeddedChildViewController: embeddedChildViewController, at: indexPath)
-        }else{
-            let weakCounterView = WeakBox(embeddedChildViewController)
-            wrapper.counterView = weakCounterView
-            HelloDependency.Single.register(CounterViewEventHandler.self, forIdentifier: indexPath.identifierForDependency, {
-                CounterViewEventHandlerImpl(weakCounterView, weakCounterView)
-            })
-        }
-    }
-    private func change(embeddedChildViewController: CellsEmbeddedChildViewController, at indexPath: IndexPath) {
-        for contentView in contentViews.values {
-            if contentView.counterView?.unbox == embeddedChildViewController {
-                contentView.counterView?.unbox = nil
-            }
-        }
-        contentViews[indexPath]?.counterView?.unbox = embeddedChildViewController
-    }
-    private func notifyContentViews(_ cell: CounterTableViewCell) {
-        cell.cellViewController?.cellContentDidConfigure()
-        cell.embeddedChildViewController?.cellContentDidConfigure()
+    private func configure(embeddedChildViewController: CellsEmbeddedChildViewController, _ indexPath: IndexPath) {
+        let counterView = WeakBox(embeddedChildViewController)
+        let incrementCountLabelView = WeakBox(embeddedChildViewController)
+        
+        try! configurator.set(weakView: counterView, asDependencyOfType: CounterView.self, at: indexPath)
+        try! configurator.set(weakView: incrementCountLabelView, asDependencyOfType: IncrementCountLabelView.self, at: indexPath)
+        
+        let eventHandlerFactory = CounterViewEventHandlerFactory(counterView, incrementCountLabelView)
+        
+        configurator.register(eventHandlerFactory, toCreateType: CounterViewEventHandler.self, at: indexPath)
+        
+        configurator.configure(dependencyHolder: embeddedChildViewController, dependencyType: CounterViewEventHandler.self, at: indexPath)
     }
 }
-extension IndexPath {
-    var identifierForDependency: String {
-        return String(row)
+class CellViewEventHandlerFactory: CellEventHandlerFactory {
+    private let data: TableData
+    private let view: CellView
+    init(_ data: TableData, _ view: CellView) {
+        self.data = data
+        self.view = view
+    }
+    func create() -> CellViewEventHandler {
+        return CellViewEventHandlerImpl(data, view)
+    }
+}
+class CounterViewEventHandlerFactory: CellEventHandlerFactory {
+    private let counterView: CounterView
+    private let incrementCountLabelView: IncrementCountLabelView
+    init(_ counterView: CounterView, _ incrementCountLabelView: IncrementCountLabelView) {
+        self.counterView = counterView
+        self.incrementCountLabelView = incrementCountLabelView
+    }
+    func create() -> CounterViewEventHandler {
+        return CounterViewEventHandlerImpl(counterView, incrementCountLabelView)
     }
 }
 extension WeakBox: CellView where A: CellView {

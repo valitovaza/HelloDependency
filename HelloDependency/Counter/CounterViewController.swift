@@ -20,10 +20,6 @@ class CounterViewController: UIViewController {
     @IBAction func incrementAction(_ sender: Any) {
         eventHandler.increment()
     }
-    
-    deinit {
-        print("CounterViewController deallocation")
-    }
 }
 extension CounterViewController: CounterView {
     func setCountLabel(text: String) {

@@ -14,7 +14,4 @@ class CellViewEventHandlerImpl: CellViewEventHandler {
     func didConfigure() {
         view.show(title: data.title)
     }
-    deinit {
-        print("CellViewEventHandlerImpl deallocation")
-    }
 }

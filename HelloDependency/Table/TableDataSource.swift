@@ -19,10 +19,6 @@ class TableDataSource: NSObject {
             configurator.registerCell(tableView)
         }
     }
-    
-    deinit {
-        print("TableDataSource deallocation")
-    }
 }
 extension TableDataSource: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

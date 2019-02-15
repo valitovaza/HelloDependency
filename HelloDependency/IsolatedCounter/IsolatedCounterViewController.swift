@@ -15,10 +15,6 @@ class IsolatedCounterViewController: UIViewController {
     @IBAction func incrementAction(_ sender: Any) {
         eventHandler.increment()
     }
-    
-    deinit {
-        print("IsolatedCounterViewController deallocation")
-    }
 }
 extension IsolatedCounterViewController: CounterView {
     func setCountLabel(text: String) {

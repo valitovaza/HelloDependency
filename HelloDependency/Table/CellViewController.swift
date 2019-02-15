@@ -1,16 +1,16 @@
 import UIKit
+import IOSDependencyContainer
 
-class CellViewController: UIViewController, CellContentView {
+class CellViewController: UIViewController {
+    
     var eventHandler: CellViewEventHandler!
     
     @IBOutlet weak var titleLabel: UILabel!
-    
-    func cellContentDidConfigure() {
+}
+extension CellViewController: CellEventHandlerHolder {
+    func set(eventHandler: CellViewEventHandler) {
+        self.eventHandler = eventHandler
         eventHandler.didConfigure()
-    }
-    
-    deinit {
-        print("CellViewController deallocation")
     }
 }
 extension CellViewController: CellView {

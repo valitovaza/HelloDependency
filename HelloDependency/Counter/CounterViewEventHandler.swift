@@ -31,8 +31,4 @@ class CounterViewEventHandlerImpl: CounterViewEventHandler {
         view.setCountLabel(text: String(count))
         otherView.setIncrementCount(text: "Increments: \(count)")
     }
-    
-    deinit {
-        print("CounterViewEventHandlerImpl deallocation")
-    }
 }

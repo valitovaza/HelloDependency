@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             HelloDependency.register(MainViewEventHandler.self, { MainViewEventHandlerImpl() })
         }
         IOSDependencyContainer.addRegisterationBlock {
-            HelloDependency.Single.register(TableConfigurator.self, {
+            HelloDependency.Single.AndWeakly.register(TableConfigurator.self, {
                 return TableConfiguratorImpl(HelloDependency.resolve(TableRepository.self))
             })
             HelloDependency.Single.AndWeakly.register(TableRepository.self, {
