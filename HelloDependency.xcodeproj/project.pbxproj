@@ -21,6 +21,7 @@
 		566DD6CE220EE88E00C0E41B /* HelloDependency+SingleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566DD6CD220EE88E00C0E41B /* HelloDependency+SingleTests.swift */; };
 		566DD6D0220EF7C800C0E41B /* SingleDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566DD6CF220EF7C800C0E41B /* SingleDependency.swift */; };
 		566DD6D4220F3B3E00C0E41B /* HelloDependency+WeakTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566DD6D3220F3B3E00C0E41B /* HelloDependency+WeakTests.swift */; };
+		56806AC2221756AB00AD24C9 /* HDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56FCBC76220DBFDB0012143A /* HDependency.framework */; };
 		569D850322101C1B00043BC2 /* CounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569D850222101C1B00043BC2 /* CounterViewController.swift */; };
 		569D850522101CF800043BC2 /* CounterViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569D850422101CF800043BC2 /* CounterViewEventHandler.swift */; };
 		569D85072210459F00043BC2 /* CounterParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569D85062210459F00043BC2 /* CounterParentViewController.swift */; };
@@ -142,6 +143,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56806AC2221756AB00AD24C9 /* HDependency.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
