@@ -21,7 +21,7 @@
 		566DD6CE220EE88E00C0E41B /* HelloDependency+SingleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566DD6CD220EE88E00C0E41B /* HelloDependency+SingleTests.swift */; };
 		566DD6D0220EF7C800C0E41B /* SingleDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566DD6CF220EF7C800C0E41B /* SingleDependency.swift */; };
 		566DD6D4220F3B3E00C0E41B /* HelloDependency+WeakTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566DD6D3220F3B3E00C0E41B /* HelloDependency+WeakTests.swift */; };
-		56806AC2221756AB00AD24C9 /* HDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56FCBC76220DBFDB0012143A /* HDependency.framework */; };
+		56806AC2221756AB00AD24C9 /* HelloDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56FCBC76220DBFDB0012143A /* HelloDependency.framework */; };
 		569D850322101C1B00043BC2 /* CounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569D850222101C1B00043BC2 /* CounterViewController.swift */; };
 		569D850522101CF800043BC2 /* CounterViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569D850422101CF800043BC2 /* CounterViewEventHandler.swift */; };
 		569D85072210459F00043BC2 /* CounterParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569D85062210459F00043BC2 /* CounterParentViewController.swift */; };
@@ -43,11 +43,11 @@
 		56FCBC65220DBF450012143A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56FCBC64220DBF450012143A /* Assets.xcassets */; };
 		56FCBC68220DBF450012143A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56FCBC66220DBF450012143A /* LaunchScreen.storyboard */; };
 		56FCBC70220DBF740012143A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FCBC6F220DBF740012143A /* MainViewController.swift */; };
-		56FCBC7D220DBFDB0012143A /* HDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56FCBC76220DBFDB0012143A /* HDependency.framework */; };
-		56FCBC7E220DBFDB0012143A /* HDependency.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 56FCBC76220DBFDB0012143A /* HDependency.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		56FCBC7D220DBFDB0012143A /* HelloDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56FCBC76220DBFDB0012143A /* HelloDependency.framework */; };
+		56FCBC7E220DBFDB0012143A /* HelloDependency.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 56FCBC76220DBFDB0012143A /* HelloDependency.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		56FCBC90220DC1250012143A /* HelloDependencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FCBC8F220DC1250012143A /* HelloDependencyTests.swift */; };
 		56FCBC92220DC1E10012143A /* HelloDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FCBC91220DC1E10012143A /* HelloDependency.swift */; };
-		56FCBC94220DC25A0012143A /* HDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56FCBC76220DBFDB0012143A /* HDependency.framework */; };
+		56FCBC94220DC25A0012143A /* HelloDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56FCBC76220DBFDB0012143A /* HelloDependency.framework */; };
 		56FCBC9A220EC8C00012143A /* TestsWithInternalAccessToHelloDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FCBC99220EC8C00012143A /* TestsWithInternalAccessToHelloDependency.swift */; };
 		56FCBC9C220ED0C30012143A /* TestsWithPublicAccessToHelloDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FCBC9B220ED0C30012143A /* TestsWithPublicAccessToHelloDependency.swift */; };
 /* End PBXBuildFile section */
@@ -84,7 +84,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				56B58D9A22107159003E61DF /* IOSDependencyContainer.framework in Embed Frameworks */,
-				56FCBC7E220DBFDB0012143A /* HDependency.framework in Embed Frameworks */,
+				56FCBC7E220DBFDB0012143A /* HelloDependency.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -121,16 +121,16 @@
 		56C2C2B52213056700C521A9 /* TableRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableRepository.swift; sourceTree = "<group>"; };
 		56C2C2B722132D2800C521A9 /* TableViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewConfiguration.swift; sourceTree = "<group>"; };
 		56C2C2B9221330A200C521A9 /* CellContentEmbeddedChildViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellContentEmbeddedChildViewController.swift; sourceTree = "<group>"; };
-		56FCBC5A220DBF440012143A /* HelloDependency.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloDependency.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		56FCBC5A220DBF440012143A /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56FCBC5D220DBF440012143A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56FCBC62220DBF440012143A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		56FCBC64220DBF450012143A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56FCBC67220DBF450012143A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		56FCBC69220DBF450012143A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		56FCBC6F220DBF740012143A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		56FCBC76220DBFDB0012143A /* HDependency.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HDependency.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		56FCBC76220DBFDB0012143A /* HelloDependency.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HelloDependency.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		56FCBC79220DBFDB0012143A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		56FCBC87220DC0D10012143A /* HDependencyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HDependencyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		56FCBC87220DC0D10012143A /* HelloDependencyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelloDependencyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		56FCBC8B220DC0D10012143A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		56FCBC8F220DC1250012143A /* HelloDependencyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloDependencyTests.swift; sourceTree = "<group>"; };
 		56FCBC91220DC1E10012143A /* HelloDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloDependency.swift; sourceTree = "<group>"; };
@@ -143,7 +143,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56806AC2221756AB00AD24C9 /* HDependency.framework in Frameworks */,
+				56806AC2221756AB00AD24C9 /* HelloDependency.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,7 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				56B58D9922107159003E61DF /* IOSDependencyContainer.framework in Frameworks */,
-				56FCBC7D220DBFDB0012143A /* HDependency.framework in Frameworks */,
+				56FCBC7D220DBFDB0012143A /* HelloDependency.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,7 +175,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56FCBC94220DC25A0012143A /* HDependency.framework in Frameworks */,
+				56FCBC94220DC25A0012143A /* HelloDependency.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,7 +241,7 @@
 		56FCBC51220DBF430012143A = {
 			isa = PBXGroup;
 			children = (
-				56FCBC5C220DBF440012143A /* HelloDependency */,
+				56FCBC5C220DBF440012143A /* Demo */,
 				56FCBC77220DBFDB0012143A /* HDependency */,
 				56FCBC88220DC0D10012143A /* HDependencyTests */,
 				56B58D8522107159003E61DF /* IOSDependencyContainer */,
@@ -254,16 +254,16 @@
 		56FCBC5B220DBF440012143A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				56FCBC5A220DBF440012143A /* HelloDependency.app */,
-				56FCBC76220DBFDB0012143A /* HDependency.framework */,
-				56FCBC87220DC0D10012143A /* HDependencyTests.xctest */,
+				56FCBC5A220DBF440012143A /* Demo.app */,
+				56FCBC76220DBFDB0012143A /* HelloDependency.framework */,
+				56FCBC87220DC0D10012143A /* HelloDependencyTests.xctest */,
 				56B58D8422107159003E61DF /* IOSDependencyContainer.framework */,
 				56B58D8C22107159003E61DF /* IOSDependencyContainerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		56FCBC5C220DBF440012143A /* HelloDependency */ = {
+		56FCBC5C220DBF440012143A /* Demo */ = {
 			isa = PBXGroup;
 			children = (
 				56FCBC5D220DBF440012143A /* AppDelegate.swift */,
@@ -277,7 +277,7 @@
 				56FCBC66220DBF450012143A /* LaunchScreen.storyboard */,
 				56FCBC69220DBF450012143A /* Info.plist */,
 			);
-			path = HelloDependency;
+			path = Demo;
 			sourceTree = "<group>";
 		};
 		56FCBC77220DBFDB0012143A /* HDependency */ = {
@@ -368,9 +368,9 @@
 			productReference = 56B58D8C22107159003E61DF /* IOSDependencyContainerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		56FCBC59220DBF440012143A /* HelloDependency */ = {
+		56FCBC59220DBF440012143A /* Demo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 56FCBC6C220DBF450012143A /* Build configuration list for PBXNativeTarget "HelloDependency" */;
+			buildConfigurationList = 56FCBC6C220DBF450012143A /* Build configuration list for PBXNativeTarget "Demo" */;
 			buildPhases = (
 				56FCBC56220DBF440012143A /* Sources */,
 				56FCBC57220DBF440012143A /* Frameworks */,
@@ -383,14 +383,14 @@
 				56FCBC7C220DBFDB0012143A /* PBXTargetDependency */,
 				56B58D9822107159003E61DF /* PBXTargetDependency */,
 			);
-			name = HelloDependency;
+			name = Demo;
 			productName = HelloDependency;
-			productReference = 56FCBC5A220DBF440012143A /* HelloDependency.app */;
+			productReference = 56FCBC5A220DBF440012143A /* Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		56FCBC75220DBFDB0012143A /* HDependency */ = {
+		56FCBC75220DBFDB0012143A /* HelloDependency */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 56FCBC7F220DBFDB0012143A /* Build configuration list for PBXNativeTarget "HDependency" */;
+			buildConfigurationList = 56FCBC7F220DBFDB0012143A /* Build configuration list for PBXNativeTarget "HelloDependency" */;
 			buildPhases = (
 				56FCBC71220DBFDB0012143A /* Headers */,
 				56FCBC72220DBFDB0012143A /* Sources */,
@@ -401,14 +401,14 @@
 			);
 			dependencies = (
 			);
-			name = HDependency;
+			name = HelloDependency;
 			productName = HDependency;
-			productReference = 56FCBC76220DBFDB0012143A /* HDependency.framework */;
+			productReference = 56FCBC76220DBFDB0012143A /* HelloDependency.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		56FCBC86220DC0D10012143A /* HDependencyTests */ = {
+		56FCBC86220DC0D10012143A /* HelloDependencyTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 56FCBC8C220DC0D10012143A /* Build configuration list for PBXNativeTarget "HDependencyTests" */;
+			buildConfigurationList = 56FCBC8C220DC0D10012143A /* Build configuration list for PBXNativeTarget "HelloDependencyTests" */;
 			buildPhases = (
 				56FCBC83220DC0D10012143A /* Sources */,
 				56FCBC84220DC0D10012143A /* Frameworks */,
@@ -418,9 +418,9 @@
 			);
 			dependencies = (
 			);
-			name = HDependencyTests;
+			name = HelloDependencyTests;
 			productName = HDependencyTests;
-			productReference = 56FCBC87220DC0D10012143A /* HDependencyTests.xctest */;
+			productReference = 56FCBC87220DC0D10012143A /* HelloDependencyTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -467,9 +467,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				56FCBC59220DBF440012143A /* HelloDependency */,
-				56FCBC75220DBFDB0012143A /* HDependency */,
-				56FCBC86220DC0D10012143A /* HDependencyTests */,
+				56FCBC59220DBF440012143A /* Demo */,
+				56FCBC75220DBFDB0012143A /* HelloDependency */,
+				56FCBC86220DC0D10012143A /* HelloDependencyTests */,
 				56B58D8322107159003E61DF /* IOSDependencyContainer */,
 				56B58D8B22107159003E61DF /* IOSDependencyContainerTests */,
 			);
@@ -591,7 +591,7 @@
 /* Begin PBXTargetDependency section */
 		562786C822149E260069C6D4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 56FCBC59220DBF440012143A /* HelloDependency */;
+			target = 56FCBC59220DBF440012143A /* Demo */;
 			targetProxy = 562786C722149E260069C6D4 /* PBXContainerItemProxy */;
 		};
 		56B58D9822107159003E61DF /* PBXTargetDependency */ = {
@@ -601,7 +601,7 @@
 		};
 		56FCBC7C220DBFDB0012143A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 56FCBC75220DBFDB0012143A /* HDependency */;
+			target = 56FCBC75220DBFDB0012143A /* HelloDependency */;
 			targetProxy = 56FCBC7B220DBFDB0012143A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -704,7 +704,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HelloDependency.app/HelloDependency";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Demo.app/Demo";
 			};
 			name = Debug;
 		};
@@ -725,7 +725,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HelloDependency.app/HelloDependency";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Demo.app/Demo";
 			};
 			name = Release;
 		};
@@ -780,7 +780,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -835,7 +835,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -852,7 +852,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S28RBJK28L;
-				INFOPLIST_FILE = HelloDependency/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -872,7 +872,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S28RBJK28L;
-				INFOPLIST_FILE = HelloDependency/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1025,7 +1025,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		56FCBC6C220DBF450012143A /* Build configuration list for PBXNativeTarget "HelloDependency" */ = {
+		56FCBC6C220DBF450012143A /* Build configuration list for PBXNativeTarget "Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				56FCBC6D220DBF450012143A /* Debug */,
@@ -1034,7 +1034,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		56FCBC7F220DBFDB0012143A /* Build configuration list for PBXNativeTarget "HDependency" */ = {
+		56FCBC7F220DBFDB0012143A /* Build configuration list for PBXNativeTarget "HelloDependency" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				56FCBC80220DBFDB0012143A /* Debug */,
@@ -1043,7 +1043,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		56FCBC8C220DC0D10012143A /* Build configuration list for PBXNativeTarget "HDependencyTests" */ = {
+		56FCBC8C220DC0D10012143A /* Build configuration list for PBXNativeTarget "HelloDependencyTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				56FCBC8D220DC0D10012143A /* Debug */,

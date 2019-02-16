@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "56FCBC59220DBF440012143A"
-               BuildableName = "HelloDependency.app"
+               BlueprintIdentifier = "56FCBC75220DBFDB0012143A"
+               BuildableName = "HelloDependency.framework"
                BlueprintName = "HelloDependency"
                ReferencedContainer = "container:HelloDependency.xcodeproj">
             </BuildableReference>
@@ -28,12 +28,23 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO"
+            testExecutionOrdering = "random">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "56FCBC86220DC0D10012143A"
+               BuildableName = "HelloDependencyTests.xctest"
+               BlueprintName = "HelloDependencyTests"
+               ReferencedContainer = "container:HelloDependency.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "56FCBC59220DBF440012143A"
-            BuildableName = "HelloDependency.app"
+            BlueprintIdentifier = "56FCBC75220DBFDB0012143A"
+            BuildableName = "HelloDependency.framework"
             BlueprintName = "HelloDependency"
             ReferencedContainer = "container:HelloDependency.xcodeproj">
          </BuildableReference>
@@ -51,16 +62,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "56FCBC59220DBF440012143A"
-            BuildableName = "HelloDependency.app"
+            BlueprintIdentifier = "56FCBC75220DBFDB0012143A"
+            BuildableName = "HelloDependency.framework"
             BlueprintName = "HelloDependency"
             ReferencedContainer = "container:HelloDependency.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -70,16 +80,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "56FCBC59220DBF440012143A"
-            BuildableName = "HelloDependency.app"
+            BlueprintIdentifier = "56FCBC75220DBFDB0012143A"
+            BuildableName = "HelloDependency.framework"
             BlueprintName = "HelloDependency"
             ReferencedContainer = "container:HelloDependency.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

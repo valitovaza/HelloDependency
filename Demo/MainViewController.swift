@@ -1,5 +1,5 @@
 import UIKit
-import HDependency
+import HelloDependency
 
 class MainViewController: UIViewController {
     private var eventHandler: MainViewEventHandler!

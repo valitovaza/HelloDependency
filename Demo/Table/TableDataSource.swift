@@ -1,5 +1,5 @@
 import UIKit
-import HDependency
+import HelloDependency
 
 protocol TableConfigurator {
     var rowsCount: Int { get }

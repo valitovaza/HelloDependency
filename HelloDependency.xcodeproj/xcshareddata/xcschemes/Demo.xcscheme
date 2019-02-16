@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "56FCBC75220DBFDB0012143A"
-               BuildableName = "HDependency.framework"
-               BlueprintName = "HDependency"
+               BlueprintIdentifier = "56FCBC59220DBF440012143A"
+               BuildableName = "Demo.app"
+               BlueprintName = "Demo"
                ReferencedContainer = "container:HelloDependency.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,24 +28,13 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO"
-            testExecutionOrdering = "random">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "56FCBC86220DC0D10012143A"
-               BuildableName = "HDependencyTests.xctest"
-               BlueprintName = "HDependencyTests"
-               ReferencedContainer = "container:HelloDependency.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "56FCBC75220DBFDB0012143A"
-            BuildableName = "HDependency.framework"
-            BlueprintName = "HDependency"
+            BlueprintIdentifier = "56FCBC59220DBF440012143A"
+            BuildableName = "Demo.app"
+            BlueprintName = "Demo"
             ReferencedContainer = "container:HelloDependency.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -62,15 +51,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "56FCBC75220DBFDB0012143A"
-            BuildableName = "HDependency.framework"
-            BlueprintName = "HDependency"
+            BlueprintIdentifier = "56FCBC59220DBF440012143A"
+            BuildableName = "Demo.app"
+            BlueprintName = "Demo"
             ReferencedContainer = "container:HelloDependency.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -80,15 +70,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "56FCBC75220DBFDB0012143A"
-            BuildableName = "HDependency.framework"
-            BlueprintName = "HDependency"
+            BlueprintIdentifier = "56FCBC59220DBF440012143A"
+            BuildableName = "Demo.app"
+            BlueprintName = "Demo"
             ReferencedContainer = "container:HelloDependency.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

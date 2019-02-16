@@ -1,6 +1,6 @@
 import UIKit
 import Foundation
-import HDependency
+import HelloDependency
 
 public protocol CellEventHandlerFactory {
     associatedtype Dependency

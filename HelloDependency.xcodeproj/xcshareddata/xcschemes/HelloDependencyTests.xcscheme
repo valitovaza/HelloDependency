@@ -16,8 +16,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "56FCBC75220DBFDB0012143A"
-            BuildableName = "HDependency.framework"
-            BlueprintName = "HDependency"
+            BuildableName = "HelloDependency.framework"
+            BlueprintName = "HelloDependency"
             ReferencedContainer = "container:HelloDependency.xcodeproj">
          </BuildableReference>
       </CodeCoverageTargets>
@@ -28,8 +28,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "56FCBC86220DC0D10012143A"
-               BuildableName = "HDependencyTests.xctest"
-               BlueprintName = "HDependencyTests"
+               BuildableName = "HelloDependencyTests.xctest"
+               BlueprintName = "HelloDependencyTests"
                ReferencedContainer = "container:HelloDependency.xcodeproj">
             </BuildableReference>
          </TestableReference>

@@ -1,5 +1,5 @@
 import XCTest
-@testable import HDependency
+@testable import HelloDependency
 
 class TestsWithInternalAccessToHelloDependency: XCTestCase {
     
