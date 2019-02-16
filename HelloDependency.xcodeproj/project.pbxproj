@@ -22,6 +22,10 @@
 		566DD6D0220EF7C800C0E41B /* SingleDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566DD6CF220EF7C800C0E41B /* SingleDependency.swift */; };
 		566DD6D4220F3B3E00C0E41B /* HelloDependency+WeakTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566DD6D3220F3B3E00C0E41B /* HelloDependency+WeakTests.swift */; };
 		56806AC2221756AB00AD24C9 /* HelloDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56FCBC76220DBFDB0012143A /* HelloDependency.framework */; };
+		5698AE312217F14E00C30724 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 5698AE2F2217F14E00C30724 /* LICENSE */; };
+		5698AE322217F14E00C30724 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5698AE302217F14E00C30724 /* README.md */; };
+		5698AE342217F15F00C30724 /* HelloDependency.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 5698AE332217F15F00C30724 /* HelloDependency.podspec */; };
+		5698AE362217F19500C30724 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 5698AE352217F19500C30724 /* .travis.yml */; };
 		569D850322101C1B00043BC2 /* CounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569D850222101C1B00043BC2 /* CounterViewController.swift */; };
 		569D850522101CF800043BC2 /* CounterViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569D850422101CF800043BC2 /* CounterViewEventHandler.swift */; };
 		569D85072210459F00043BC2 /* CounterParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569D85062210459F00043BC2 /* CounterParentViewController.swift */; };
@@ -104,14 +108,17 @@
 		566DD6CD220EE88E00C0E41B /* HelloDependency+SingleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HelloDependency+SingleTests.swift"; sourceTree = "<group>"; };
 		566DD6CF220EF7C800C0E41B /* SingleDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleDependency.swift; sourceTree = "<group>"; };
 		566DD6D3220F3B3E00C0E41B /* HelloDependency+WeakTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HelloDependency+WeakTests.swift"; sourceTree = "<group>"; };
+		5698AE2F2217F14E00C30724 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		5698AE302217F14E00C30724 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		5698AE332217F15F00C30724 /* HelloDependency.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HelloDependency.podspec; sourceTree = "<group>"; };
+		5698AE352217F19500C30724 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 		569D850222101C1B00043BC2 /* CounterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewController.swift; sourceTree = "<group>"; };
 		569D850422101CF800043BC2 /* CounterViewEventHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewEventHandler.swift; sourceTree = "<group>"; };
 		569D85062210459F00043BC2 /* CounterParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterParentViewController.swift; sourceTree = "<group>"; };
 		56B58D8422107159003E61DF /* HelloContainer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HelloContainer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		56B58D8722107159003E61DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		56B58D8C22107159003E61DF /* HelloContainerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelloContainerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		56B58D9322107159003E61DF /* IOSDependencyContainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSDependencyContainerTests.swift; sourceTree = "<group>"; };
-		56B58D9522107159003E61DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		56B58D9522107159003E61DF /* HelloContainerTestsInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = HelloContainerTestsInfo.plist; sourceTree = "<group>"; };
 		56C2C2A52212F86100C521A9 /* TableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataSource.swift; sourceTree = "<group>"; };
 		56C2C2AB2212FC4200C521A9 /* CounterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterTableViewCell.swift; sourceTree = "<group>"; };
 		56C2C2AC2212FC4200C521A9 /* CounterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CounterTableViewCell.xib; sourceTree = "<group>"; };
@@ -131,7 +138,7 @@
 		56FCBC76220DBFDB0012143A /* HelloDependency.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HelloDependency.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		56FCBC79220DBFDB0012143A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		56FCBC87220DC0D10012143A /* HelloDependencyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelloDependencyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		56FCBC8B220DC0D10012143A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		56FCBC8B220DC0D10012143A /* HelloDependencyTestsInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = HelloDependencyTestsInfo.plist; sourceTree = "<group>"; };
 		56FCBC8F220DC1250012143A /* HelloDependencyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloDependencyTests.swift; sourceTree = "<group>"; };
 		56FCBC91220DC1E10012143A /* HelloDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloDependency.swift; sourceTree = "<group>"; };
 		56FCBC99220EC8C00012143A /* TestsWithInternalAccessToHelloDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsWithInternalAccessToHelloDependency.swift; sourceTree = "<group>"; };
@@ -182,27 +189,76 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		56B58D8522107159003E61DF /* IOSDependencyContainer */ = {
+		5698AE282217E65A00C30724 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				56FCBC77220DBFDB0012143A /* HelloDependency */,
+				5698AE2A2217E86700C30724 /* HelloContainer */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		5698AE292217E7E300C30724 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				56FCBC79220DBFDB0012143A /* Info.plist */,
+				56FCBC8B220DC0D10012143A /* HelloDependencyTestsInfo.plist */,
+				56B58D9522107159003E61DF /* HelloContainerTestsInfo.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5698AE2A2217E86700C30724 /* HelloContainer */ = {
 			isa = PBXGroup;
 			children = (
 				5667806322108EA4006E4F21 /* WeakBox.swift */,
 				5667805B221089EC006E4F21 /* ViewControllerProxy.swift */,
 				5667805922107220006E4F21 /* IOSDependencyContainer.swift */,
 				566A8FF22215D0C500F3ACBF /* CellDependencyConfigurator.swift */,
-				56B58D8722107159003E61DF /* Info.plist */,
 			);
-			path = IOSDependencyContainer;
+			path = HelloContainer;
 			sourceTree = "<group>";
 		};
-		56B58D9222107159003E61DF /* IOSDependencyContainerTests */ = {
+		5698AE2B2217EA6400C30724 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				5698AE2C2217EA7C00C30724 /* HelloDependencyTests */,
+				5698AE2D2217EFCF00C30724 /* HelloContainerTests */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		5698AE2C2217EA7C00C30724 /* HelloDependencyTests */ = {
+			isa = PBXGroup;
+			children = (
+				56FCBC8F220DC1250012143A /* HelloDependencyTests.swift */,
+				566DD6CD220EE88E00C0E41B /* HelloDependency+SingleTests.swift */,
+				566DD6D3220F3B3E00C0E41B /* HelloDependency+WeakTests.swift */,
+				56FCBC9B220ED0C30012143A /* TestsWithPublicAccessToHelloDependency.swift */,
+				56FCBC99220EC8C00012143A /* TestsWithInternalAccessToHelloDependency.swift */,
+			);
+			path = HelloDependencyTests;
+			sourceTree = "<group>";
+		};
+		5698AE2D2217EFCF00C30724 /* HelloContainerTests */ = {
 			isa = PBXGroup;
 			children = (
 				56B58D9322107159003E61DF /* IOSDependencyContainerTests.swift */,
 				566A8FF0221589AA00F3ACBF /* CellDependencyConfiguratorTests.swift */,
 				566A8FF42215D24400F3ACBF /* XCTestCase+MemoryLeakTracking.swift */,
-				56B58D9522107159003E61DF /* Info.plist */,
 			);
-			path = IOSDependencyContainerTests;
+			path = HelloContainerTests;
+			sourceTree = "<group>";
+		};
+		5698AE2E2217F13800C30724 /* Metadata */ = {
+			isa = PBXGroup;
+			children = (
+				5698AE332217F15F00C30724 /* HelloDependency.podspec */,
+				5698AE2F2217F14E00C30724 /* LICENSE */,
+				5698AE302217F14E00C30724 /* README.md */,
+				5698AE352217F19500C30724 /* .travis.yml */,
+			);
+			name = Metadata;
 			sourceTree = "<group>";
 		};
 		56C2C2A22212F6F100C521A9 /* Counter */ = {
@@ -241,13 +297,12 @@
 		56FCBC51220DBF430012143A = {
 			isa = PBXGroup;
 			children = (
+				5698AE2B2217EA6400C30724 /* Tests */,
+				5698AE282217E65A00C30724 /* Sources */,
 				56FCBC5C220DBF440012143A /* Demo */,
-				56FCBC77220DBFDB0012143A /* HDependency */,
-				56FCBC88220DC0D10012143A /* HDependencyTests */,
-				56B58D8522107159003E61DF /* IOSDependencyContainer */,
-				56B58D9222107159003E61DF /* IOSDependencyContainerTests */,
+				5698AE292217E7E300C30724 /* Supporting Files */,
+				5698AE2E2217F13800C30724 /* Metadata */,
 				56FCBC5B220DBF440012143A /* Products */,
-				56FCBC93220DC25A0012143A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -280,36 +335,15 @@
 			path = Demo;
 			sourceTree = "<group>";
 		};
-		56FCBC77220DBFDB0012143A /* HDependency */ = {
+		56FCBC77220DBFDB0012143A /* HelloDependency */ = {
 			isa = PBXGroup;
 			children = (
 				566DD6C7220EE18E00C0E41B /* Dependency.swift */,
 				566DD6CF220EF7C800C0E41B /* SingleDependency.swift */,
 				56FCBC91220DC1E10012143A /* HelloDependency.swift */,
 				566DD6C9220EE79C00C0E41B /* HelloDependency+Single.swift */,
-				56FCBC79220DBFDB0012143A /* Info.plist */,
 			);
-			path = HDependency;
-			sourceTree = "<group>";
-		};
-		56FCBC88220DC0D10012143A /* HDependencyTests */ = {
-			isa = PBXGroup;
-			children = (
-				56FCBC8F220DC1250012143A /* HelloDependencyTests.swift */,
-				566DD6CD220EE88E00C0E41B /* HelloDependency+SingleTests.swift */,
-				566DD6D3220F3B3E00C0E41B /* HelloDependency+WeakTests.swift */,
-				56FCBC9B220ED0C30012143A /* TestsWithPublicAccessToHelloDependency.swift */,
-				56FCBC99220EC8C00012143A /* TestsWithInternalAccessToHelloDependency.swift */,
-				56FCBC8B220DC0D10012143A /* Info.plist */,
-			);
-			path = HDependencyTests;
-			sourceTree = "<group>";
-		};
-		56FCBC93220DC25A0012143A /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
+			path = HelloDependency;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -495,10 +529,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5698AE322217F14E00C30724 /* README.md in Resources */,
 				56C2C2AE2212FC4200C521A9 /* CounterTableViewCell.xib in Resources */,
+				5698AE362217F19500C30724 /* .travis.yml in Resources */,
 				56FCBC68220DBF450012143A /* LaunchScreen.storyboard in Resources */,
+				5698AE342217F15F00C30724 /* HelloDependency.podspec in Resources */,
 				56FCBC65220DBF450012143A /* Assets.xcassets in Resources */,
 				56FCBC63220DBF440012143A /* Main.storyboard in Resources */,
+				5698AE312217F14E00C30724 /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -638,7 +676,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = IOSDependencyContainer/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -646,7 +684,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = valitovaza.IOSDependencyContainer;
+				PRODUCT_BUNDLE_IDENTIFIER = valitovaza.HelloContainer;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -669,7 +707,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = IOSDependencyContainer/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -677,7 +715,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = valitovaza.IOSDependencyContainer;
+				PRODUCT_BUNDLE_IDENTIFIER = valitovaza.HelloContainer;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
@@ -693,7 +731,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S28RBJK28L;
-				INFOPLIST_FILE = IOSDependencyContainerTests/Info.plist;
+				INFOPLIST_FILE = "Supporting Files/HelloContainerTestsInfo.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -714,7 +752,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S28RBJK28L;
-				INFOPLIST_FILE = IOSDependencyContainerTests/Info.plist;
+				INFOPLIST_FILE = "Supporting Files/HelloContainerTestsInfo.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -858,7 +896,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = valitovaza.HelloDependency;
+				PRODUCT_BUNDLE_IDENTIFIER = valitovaza.HelloDependencyDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -878,7 +916,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = valitovaza.HelloDependency;
+				PRODUCT_BUNDLE_IDENTIFIER = valitovaza.HelloDependencyDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -897,7 +935,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = HDependency/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -905,7 +943,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = valitovaza.HDependency;
+				PRODUCT_BUNDLE_IDENTIFIER = valitovaza.HelloDependency;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
@@ -929,7 +967,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = HDependency/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -937,7 +975,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = valitovaza.HDependency;
+				PRODUCT_BUNDLE_IDENTIFIER = valitovaza.HelloDependency;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
@@ -956,7 +994,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = S28RBJK28L;
-				INFOPLIST_FILE = HDependencyTests/Info.plist;
+				INFOPLIST_FILE = "Supporting Files/HelloDependencyTestsInfo.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -980,7 +1018,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = S28RBJK28L;
-				INFOPLIST_FILE = HDependencyTests/Info.plist;
+				INFOPLIST_FILE = "Supporting Files/HelloDependencyTestsInfo.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
