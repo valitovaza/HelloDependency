@@ -26,6 +26,8 @@
 		5698AE322217F14E00C30724 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5698AE302217F14E00C30724 /* README.md */; };
 		5698AE342217F15F00C30724 /* HelloDependency.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 5698AE332217F15F00C30724 /* HelloDependency.podspec */; };
 		5698AE362217F19500C30724 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 5698AE352217F19500C30724 /* .travis.yml */; };
+		5698AE3F2217F52200C30724 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5698AE3E2217F52200C30724 /* AppDelegate.swift */; };
+		5698AE512217F70E00C30724 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5698AE502217F70E00C30724 /* Default-568h@2x.png */; };
 		569D850322101C1B00043BC2 /* CounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569D850222101C1B00043BC2 /* CounterViewController.swift */; };
 		569D850522101CF800043BC2 /* CounterViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569D850422101CF800043BC2 /* CounterViewEventHandler.swift */; };
 		569D85072210459F00043BC2 /* CounterParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569D85062210459F00043BC2 /* CounterParentViewController.swift */; };
@@ -63,6 +65,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 56FCBC59220DBF440012143A;
 			remoteInfo = HelloDependency;
+		};
+		5698AE522217F8C100C30724 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 56FCBC52220DBF430012143A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5698AE3B2217F52200C30724;
+			remoteInfo = Host;
 		};
 		56B58D9722107159003E61DF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -112,6 +121,10 @@
 		5698AE302217F14E00C30724 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5698AE332217F15F00C30724 /* HelloDependency.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HelloDependency.podspec; sourceTree = "<group>"; };
 		5698AE352217F19500C30724 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
+		5698AE3C2217F52200C30724 /* Host.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Host.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5698AE3E2217F52200C30724 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5698AE4A2217F52300C30724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5698AE502217F70E00C30724 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		569D850222101C1B00043BC2 /* CounterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewController.swift; sourceTree = "<group>"; };
 		569D850422101CF800043BC2 /* CounterViewEventHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewEventHandler.swift; sourceTree = "<group>"; };
 		569D85062210459F00043BC2 /* CounterParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterParentViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +159,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5698AE392217F52200C30724 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		56B58D8122107159003E61DF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -224,6 +244,7 @@
 			children = (
 				5698AE2C2217EA7C00C30724 /* HelloDependencyTests */,
 				5698AE2D2217EFCF00C30724 /* HelloContainerTests */,
+				5698AE372217F46100C30724 /* Host */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -259,6 +280,16 @@
 				5698AE352217F19500C30724 /* .travis.yml */,
 			);
 			name = Metadata;
+			sourceTree = "<group>";
+		};
+		5698AE372217F46100C30724 /* Host */ = {
+			isa = PBXGroup;
+			children = (
+				5698AE3E2217F52200C30724 /* AppDelegate.swift */,
+				5698AE502217F70E00C30724 /* Default-568h@2x.png */,
+				5698AE4A2217F52300C30724 /* Info.plist */,
+			);
+			path = Host;
 			sourceTree = "<group>";
 		};
 		56C2C2A22212F6F100C521A9 /* Counter */ = {
@@ -314,6 +345,7 @@
 				56FCBC87220DC0D10012143A /* HelloDependencyTests.xctest */,
 				56B58D8422107159003E61DF /* HelloContainer.framework */,
 				56B58D8C22107159003E61DF /* HelloContainerTests.xctest */,
+				5698AE3C2217F52200C30724 /* Host.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -366,6 +398,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		5698AE3B2217F52200C30724 /* Host */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5698AE4B2217F52300C30724 /* Build configuration list for PBXNativeTarget "Host" */;
+			buildPhases = (
+				5698AE382217F52200C30724 /* Sources */,
+				5698AE392217F52200C30724 /* Frameworks */,
+				5698AE3A2217F52200C30724 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Host;
+			productName = Host;
+			productReference = 5698AE3C2217F52200C30724 /* Host.app */;
+			productType = "com.apple.product-type.application";
+		};
 		56B58D8322107159003E61DF /* HelloContainer */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 56B58D9F22107159003E61DF /* Build configuration list for PBXNativeTarget "HelloContainer" */;
@@ -396,6 +445,7 @@
 			);
 			dependencies = (
 				562786C822149E260069C6D4 /* PBXTargetDependency */,
+				5698AE532217F8C100C30724 /* PBXTargetDependency */,
 			);
 			name = HelloContainerTests;
 			productName = IOSDependencyContainerTests;
@@ -467,13 +517,16 @@
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = valitovaza;
 				TargetAttributes = {
+					5698AE3B2217F52200C30724 = {
+						CreatedOnToolsVersion = 10.1;
+					};
 					56B58D8322107159003E61DF = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1010;
 					};
 					56B58D8B22107159003E61DF = {
 						CreatedOnToolsVersion = 10.1;
-						TestTargetID = 56FCBC59220DBF440012143A;
+						TestTargetID = 5698AE3B2217F52200C30724;
 					};
 					56FCBC59220DBF440012143A = {
 						CreatedOnToolsVersion = 10.1;
@@ -506,11 +559,20 @@
 				56FCBC86220DC0D10012143A /* HelloDependencyTests */,
 				56B58D8322107159003E61DF /* HelloContainer */,
 				56B58D8B22107159003E61DF /* HelloContainerTests */,
+				5698AE3B2217F52200C30724 /* Host */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5698AE3A2217F52200C30724 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5698AE512217F70E00C30724 /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		56B58D8222107159003E61DF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -557,6 +619,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5698AE382217F52200C30724 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5698AE3F2217F52200C30724 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		56B58D8022107159003E61DF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -632,6 +702,11 @@
 			target = 56FCBC59220DBF440012143A /* Demo */;
 			targetProxy = 562786C722149E260069C6D4 /* PBXContainerItemProxy */;
 		};
+		5698AE532217F8C100C30724 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5698AE3B2217F52200C30724 /* Host */;
+			targetProxy = 5698AE522217F8C100C30724 /* PBXContainerItemProxy */;
+		};
 		56B58D9822107159003E61DF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 56B58D8322107159003E61DF /* HelloContainer */;
@@ -664,6 +739,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5698AE4C2217F52300C30724 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S28RBJK28L;
+				INFOPLIST_FILE = "$(SRCROOT)/Tests/Host/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = valitovaza.Host;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5698AE4D2217F52300C30724 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S28RBJK28L;
+				INFOPLIST_FILE = "$(SRCROOT)/Tests/Host/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = valitovaza.Host;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		56B58D9B22107159003E61DF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -742,7 +855,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Demo.app/Demo";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Host.app/Host";
 			};
 			name = Debug;
 		};
@@ -763,7 +876,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Demo.app/Demo";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Host.app/Host";
 			};
 			name = Release;
 		};
@@ -1036,6 +1149,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5698AE4B2217F52300C30724 /* Build configuration list for PBXNativeTarget "Host" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5698AE4C2217F52300C30724 /* Debug */,
+				5698AE4D2217F52300C30724 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		56B58D9F22107159003E61DF /* Build configuration list for PBXNativeTarget "HelloContainer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
