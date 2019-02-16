@@ -11,3 +11,4 @@ notifications:
     email:
         recipients:
             - valitov.azamat.m@gmail.com
+        on_success: always
