@@ -1,6 +1,9 @@
 public enum HelloDependency {
-    internal static var savedDependencies: [String: Dependency] = [:]
-    internal static var savedSingleDependencies: [String: SingleDependency] = [:]
+    public typealias Key = String
+    public typealias Indentifier = String
+    
+    internal static var savedDependencies: [Key: Dependency] = [:]
+    internal static var savedSingleDependencies: [Key: SingleDependency] = [:]
     
     internal static var fatalErrorFunc = internalFatalError
     internal static var valueOnFatalError: Any?
@@ -19,7 +22,7 @@ extension HelloDependency {
         savedSingleDependencies[key] = nil
         savedDependencies[key] = Dependency.value(dependency)
     }
-    internal static func key<T>(for type: T.Type) -> String {
+    internal static func key<T>(for type: T.Type) -> Key {
         return String(describing: type)
     }
     
@@ -28,7 +31,7 @@ extension HelloDependency {
         return resolve(type, key: key, fatalErrorText: "Can not resolve \(key)")
     }
     private static func resolve<T>(_ type: T.Type,
-                                   key: String,
+                                   key: Key,
                                    fatalErrorText: String) -> T {
         if let singleDependency = savedSingleDependencies[key],
             let dependency = singleDependency.value as? T {
@@ -54,22 +57,22 @@ extension HelloDependency {
 }
 extension HelloDependency {
     public static func register<T>(_ type: T.Type,
-                                   forIdentifier identifier: String,
+                                   forIdentifier identifier: Indentifier,
                                    _ dependency: T) {
         let key = self.key(for: type, identifier: identifier)
         savedSingleDependencies[key] = nil
         savedDependencies[key] = Dependency.value(dependency)
     }
-    internal static func key<T>(for type: T.Type, identifier: String) -> String {
+    internal static func key<T>(for type: T.Type, identifier: Indentifier) -> String {
         return String(describing: type) + identifier
     }
     
-    public static func resolve<T>(_ type: T.Type, forIdentifier identifier: String) -> T {
+    public static func resolve<T>(_ type: T.Type, forIdentifier identifier: Indentifier) -> T {
         return resolve(type, key: self.key(for: type, identifier: identifier),
                        fatalErrorText: "Can not resolve \(self.key(for: type)) for identifier: \(identifier)")
     }
     
-    public static func release<T>(_ type: T.Type, forIdentifier identifier: String) {
+    public static func release<T>(_ type: T.Type, forIdentifier identifier: Indentifier) {
         let key = self.key(for: type, identifier: identifier)
         savedDependencies[key] = nil
         savedSingleDependencies[key] = nil
@@ -82,7 +85,7 @@ extension HelloDependency {
         savedDependencies[key] = Dependency.factory(factory)
     }
     public static func register<T>(_ type: T.Type,
-                                   forIdentifier identifier: String,
+                                   forIdentifier identifier: Indentifier,
                                    _ factory: @escaping ()->(T)) {
         let key = self.key(for: type, identifier: identifier)
         savedSingleDependencies[key] = nil
