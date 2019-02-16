@@ -37,12 +37,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return UINavigationController(rootViewController: rootViewController)
     }
     private func registerDependensies() {
-        registerProdDependencies()
-        registerTestsHostAppFakeDependencies()
-        
+        addDependencyRegistrationBlocks()
         IOSDependencyContainer.register()
     }
-    private func registerProdDependencies() {
+    private func addDependencyRegistrationBlocks() {
         IOSDependencyContainer.addRegisterationBlock {
             HelloDependency.register(CounterViewEventHandler.self, {
                 CounterViewEventHandlerImpl(HelloDependency.resolve(CounterView.self),
@@ -58,30 +56,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             HelloDependency.register(CounterView.self, { counterProxy })
         }
         IOSDependencyContainer.addRegisterationBlock {
-            HelloDependency.register(MainViewEventHandler.self, { MainViewEventHandlerImpl() })
-        }
-        IOSDependencyContainer.addRegisterationBlock {
-            HelloDependency.Single.AndWeakly.register(TableConfigurator.self, {
+            HelloDependency.Single.Weak.register(TableConfigurator.self, {
                 return TableConfiguratorImpl(HelloDependency.resolve(TableRepository.self))
             })
-            HelloDependency.Single.AndWeakly.register(TableRepository.self, {
+            HelloDependency.Single.Weak.register(TableRepository.self, {
                 TableRepositoryImpl()
             })
         }
     }
-    private func registerTestsHostAppFakeDependencies() {
-        IOSDependencyContainer.addHostAppsRegisterationBlock {
-            HelloDependency.register(MainViewEventHandler.self, { MainViewEventHandlerFake() })
-        }
-    }
 }
-
-class MainViewEventHandlerFake: MainViewEventHandler {
-    func testMethod() {
-        print("Hello tests!")
-    }
-}
-
 extension ViewControllerProxy: IncrementCountLabelView {
     func setIncrementCount(text: String) {
         executeOrPostpone {self.incrementCountLabelView?.setIncrementCount(text: text)}

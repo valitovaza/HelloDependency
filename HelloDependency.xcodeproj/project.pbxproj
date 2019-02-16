@@ -7,20 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5642F2FF2215E74B007FE6D4 /* TestsWithPublicAccessToHelloDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FCBC9B220ED0C30012143A /* TestsWithPublicAccessToHelloDependency.swift */; };
-		5642F3002215E74D007FE6D4 /* TestsWithInternalAccessToHelloDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FCBC99220EC8C00012143A /* TestsWithInternalAccessToHelloDependency.swift */; };
 		5667805A22107220006E4F21 /* IOSDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5667805922107220006E4F21 /* IOSDependencyContainer.swift */; };
 		5667805C221089EC006E4F21 /* ViewControllerProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5667805B221089EC006E4F21 /* ViewControllerProxy.swift */; };
 		5667805E22108B80006E4F21 /* IsolatedCounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5667805D22108B80006E4F21 /* IsolatedCounterViewController.swift */; };
 		5667806422108EA4006E4F21 /* WeakBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5667806322108EA4006E4F21 /* WeakBox.swift */; };
-		566A8FF1221589AA00F3ACBF /* CellDependencyConfiguratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566A8FF0221589AA00F3ACBF /* CellDependencyConfiguratorTests.swift */; };
 		566A8FF32215D0C500F3ACBF /* CellDependencyConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566A8FF22215D0C500F3ACBF /* CellDependencyConfigurator.swift */; };
 		566A8FF52215D24400F3ACBF /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566A8FF42215D24400F3ACBF /* XCTestCase+MemoryLeakTracking.swift */; };
 		566DD6C8220EE18E00C0E41B /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566DD6C7220EE18E00C0E41B /* Dependency.swift */; };
 		566DD6CA220EE79C00C0E41B /* HelloDependency+Single.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566DD6C9220EE79C00C0E41B /* HelloDependency+Single.swift */; };
-		566DD6CE220EE88E00C0E41B /* HelloDependency+SingleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566DD6CD220EE88E00C0E41B /* HelloDependency+SingleTests.swift */; };
+		566DD6CE220EE88E00C0E41B /* HelloDependencySingleDependencyRegistrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566DD6CD220EE88E00C0E41B /* HelloDependencySingleDependencyRegistrationTests.swift */; };
 		566DD6D0220EF7C800C0E41B /* SingleDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566DD6CF220EF7C800C0E41B /* SingleDependency.swift */; };
-		566DD6D4220F3B3E00C0E41B /* HelloDependency+WeakTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566DD6D3220F3B3E00C0E41B /* HelloDependency+WeakTests.swift */; };
+		566DD6D4220F3B3E00C0E41B /* HelloDependencyWeakRegistrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566DD6D3220F3B3E00C0E41B /* HelloDependencyWeakRegistrationTests.swift */; };
 		56806AC2221756AB00AD24C9 /* HelloDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56FCBC76220DBFDB0012143A /* HelloDependency.framework */; };
 		5698AE312217F14E00C30724 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 5698AE2F2217F14E00C30724 /* LICENSE */; };
 		5698AE322217F14E00C30724 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5698AE302217F14E00C30724 /* README.md */; };
@@ -28,6 +25,10 @@
 		5698AE362217F19500C30724 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 5698AE352217F19500C30724 /* .travis.yml */; };
 		5698AE3F2217F52200C30724 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5698AE3E2217F52200C30724 /* AppDelegate.swift */; };
 		5698AE512217F70E00C30724 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5698AE502217F70E00C30724 /* Default-568h@2x.png */; };
+		5698AE572218147B00C30724 /* XCTestCase+HelloDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5698AE552218147800C30724 /* XCTestCase+HelloDependency.swift */; };
+		5698AE5A2218192E00C30724 /* XCTestCase+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5698AE592218192E00C30724 /* XCTestCase+.swift */; };
+		5698AE5C22181AE200C30724 /* DependencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5698AE5B22181AE200C30724 /* DependencyTests.swift */; };
+		5698AE5E221852B500C30724 /* CellDependencyConfiguratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566A8FF0221589AA00F3ACBF /* CellDependencyConfiguratorTests.swift */; };
 		569D850322101C1B00043BC2 /* CounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569D850222101C1B00043BC2 /* CounterViewController.swift */; };
 		569D850522101CF800043BC2 /* CounterViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569D850422101CF800043BC2 /* CounterViewEventHandler.swift */; };
 		569D85072210459F00043BC2 /* CounterParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569D85062210459F00043BC2 /* CounterParentViewController.swift */; };
@@ -48,24 +49,14 @@
 		56FCBC63220DBF440012143A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56FCBC61220DBF440012143A /* Main.storyboard */; };
 		56FCBC65220DBF450012143A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56FCBC64220DBF450012143A /* Assets.xcassets */; };
 		56FCBC68220DBF450012143A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56FCBC66220DBF450012143A /* LaunchScreen.storyboard */; };
-		56FCBC70220DBF740012143A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FCBC6F220DBF740012143A /* MainViewController.swift */; };
 		56FCBC7D220DBFDB0012143A /* HelloDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56FCBC76220DBFDB0012143A /* HelloDependency.framework */; };
 		56FCBC7E220DBFDB0012143A /* HelloDependency.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 56FCBC76220DBFDB0012143A /* HelloDependency.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		56FCBC90220DC1250012143A /* HelloDependencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FCBC8F220DC1250012143A /* HelloDependencyTests.swift */; };
 		56FCBC92220DC1E10012143A /* HelloDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FCBC91220DC1E10012143A /* HelloDependency.swift */; };
 		56FCBC94220DC25A0012143A /* HelloDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56FCBC76220DBFDB0012143A /* HelloDependency.framework */; };
-		56FCBC9A220EC8C00012143A /* TestsWithInternalAccessToHelloDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FCBC99220EC8C00012143A /* TestsWithInternalAccessToHelloDependency.swift */; };
-		56FCBC9C220ED0C30012143A /* TestsWithPublicAccessToHelloDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FCBC9B220ED0C30012143A /* TestsWithPublicAccessToHelloDependency.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		562786C722149E260069C6D4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 56FCBC52220DBF430012143A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 56FCBC59220DBF440012143A;
-			remoteInfo = HelloDependency;
-		};
 		5698AE522217F8C100C30724 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 56FCBC52220DBF430012143A /* Project object */;
@@ -114,9 +105,9 @@
 		566A8FF42215D24400F3ACBF /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 		566DD6C7220EE18E00C0E41B /* Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependency.swift; sourceTree = "<group>"; };
 		566DD6C9220EE79C00C0E41B /* HelloDependency+Single.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HelloDependency+Single.swift"; sourceTree = "<group>"; };
-		566DD6CD220EE88E00C0E41B /* HelloDependency+SingleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HelloDependency+SingleTests.swift"; sourceTree = "<group>"; };
+		566DD6CD220EE88E00C0E41B /* HelloDependencySingleDependencyRegistrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloDependencySingleDependencyRegistrationTests.swift; sourceTree = "<group>"; };
 		566DD6CF220EF7C800C0E41B /* SingleDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleDependency.swift; sourceTree = "<group>"; };
-		566DD6D3220F3B3E00C0E41B /* HelloDependency+WeakTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HelloDependency+WeakTests.swift"; sourceTree = "<group>"; };
+		566DD6D3220F3B3E00C0E41B /* HelloDependencyWeakRegistrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloDependencyWeakRegistrationTests.swift; sourceTree = "<group>"; };
 		5698AE2F2217F14E00C30724 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		5698AE302217F14E00C30724 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5698AE332217F15F00C30724 /* HelloDependency.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HelloDependency.podspec; sourceTree = "<group>"; };
@@ -125,6 +116,9 @@
 		5698AE3E2217F52200C30724 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5698AE4A2217F52300C30724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5698AE502217F70E00C30724 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		5698AE552218147800C30724 /* XCTestCase+HelloDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+HelloDependency.swift"; sourceTree = "<group>"; };
+		5698AE592218192E00C30724 /* XCTestCase+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+.swift"; sourceTree = "<group>"; };
+		5698AE5B22181AE200C30724 /* DependencyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyTests.swift; sourceTree = "<group>"; };
 		569D850222101C1B00043BC2 /* CounterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewController.swift; sourceTree = "<group>"; };
 		569D850422101CF800043BC2 /* CounterViewEventHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewEventHandler.swift; sourceTree = "<group>"; };
 		569D85062210459F00043BC2 /* CounterParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterParentViewController.swift; sourceTree = "<group>"; };
@@ -147,15 +141,12 @@
 		56FCBC64220DBF450012143A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56FCBC67220DBF450012143A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		56FCBC69220DBF450012143A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		56FCBC6F220DBF740012143A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		56FCBC76220DBFDB0012143A /* HelloDependency.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HelloDependency.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		56FCBC79220DBFDB0012143A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		56FCBC87220DC0D10012143A /* HelloDependencyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelloDependencyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		56FCBC8B220DC0D10012143A /* HelloDependencyTestsInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = HelloDependencyTestsInfo.plist; sourceTree = "<group>"; };
 		56FCBC8F220DC1250012143A /* HelloDependencyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloDependencyTests.swift; sourceTree = "<group>"; };
 		56FCBC91220DC1E10012143A /* HelloDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloDependency.swift; sourceTree = "<group>"; };
-		56FCBC99220EC8C00012143A /* TestsWithInternalAccessToHelloDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsWithInternalAccessToHelloDependency.swift; sourceTree = "<group>"; };
-		56FCBC9B220ED0C30012143A /* TestsWithPublicAccessToHelloDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsWithPublicAccessToHelloDependency.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,6 +233,8 @@
 		5698AE2B2217EA6400C30724 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				5698AE5D221851AD00C30724 /* Helpers */,
+				5698AE542218146200C30724 /* Extensions */,
 				5698AE2C2217EA7C00C30724 /* HelloDependencyTests */,
 				5698AE2D2217EFCF00C30724 /* HelloContainerTests */,
 				5698AE372217F46100C30724 /* Host */,
@@ -253,10 +246,9 @@
 			isa = PBXGroup;
 			children = (
 				56FCBC8F220DC1250012143A /* HelloDependencyTests.swift */,
-				566DD6CD220EE88E00C0E41B /* HelloDependency+SingleTests.swift */,
-				566DD6D3220F3B3E00C0E41B /* HelloDependency+WeakTests.swift */,
-				56FCBC9B220ED0C30012143A /* TestsWithPublicAccessToHelloDependency.swift */,
-				56FCBC99220EC8C00012143A /* TestsWithInternalAccessToHelloDependency.swift */,
+				566DD6CD220EE88E00C0E41B /* HelloDependencySingleDependencyRegistrationTests.swift */,
+				566DD6D3220F3B3E00C0E41B /* HelloDependencyWeakRegistrationTests.swift */,
+				5698AE5B22181AE200C30724 /* DependencyTests.swift */,
 			);
 			path = HelloDependencyTests;
 			sourceTree = "<group>";
@@ -266,7 +258,6 @@
 			children = (
 				56B58D9322107159003E61DF /* IOSDependencyContainerTests.swift */,
 				566A8FF0221589AA00F3ACBF /* CellDependencyConfiguratorTests.swift */,
-				566A8FF42215D24400F3ACBF /* XCTestCase+MemoryLeakTracking.swift */,
 			);
 			path = HelloContainerTests;
 			sourceTree = "<group>";
@@ -290,6 +281,23 @@
 				5698AE4A2217F52300C30724 /* Info.plist */,
 			);
 			path = Host;
+			sourceTree = "<group>";
+		};
+		5698AE542218146200C30724 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5698AE592218192E00C30724 /* XCTestCase+.swift */,
+				5698AE552218147800C30724 /* XCTestCase+HelloDependency.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5698AE5D221851AD00C30724 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				566A8FF42215D24400F3ACBF /* XCTestCase+MemoryLeakTracking.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		56C2C2A22212F6F100C521A9 /* Counter */ = {
@@ -328,8 +336,8 @@
 		56FCBC51220DBF430012143A = {
 			isa = PBXGroup;
 			children = (
-				5698AE2B2217EA6400C30724 /* Tests */,
 				5698AE282217E65A00C30724 /* Sources */,
+				5698AE2B2217EA6400C30724 /* Tests */,
 				56FCBC5C220DBF440012143A /* Demo */,
 				5698AE292217E7E300C30724 /* Supporting Files */,
 				5698AE2E2217F13800C30724 /* Metadata */,
@@ -355,7 +363,6 @@
 			children = (
 				56FCBC5D220DBF440012143A /* AppDelegate.swift */,
 				56C2C2B722132D2800C521A9 /* TableViewConfiguration.swift */,
-				56FCBC6F220DBF740012143A /* MainViewController.swift */,
 				56C2C2A22212F6F100C521A9 /* Counter */,
 				56C2C2A32212F72300C521A9 /* IsolatedCounter */,
 				56C2C2A42212F7C200C521A9 /* Table */,
@@ -444,7 +451,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				562786C822149E260069C6D4 /* PBXTargetDependency */,
 				5698AE532217F8C100C30724 /* PBXTargetDependency */,
 			);
 			name = HelloContainerTests;
@@ -642,10 +648,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5698AE5E221852B500C30724 /* CellDependencyConfiguratorTests.swift in Sources */,
 				56B58D9422107159003E61DF /* IOSDependencyContainerTests.swift in Sources */,
-				5642F2FF2215E74B007FE6D4 /* TestsWithPublicAccessToHelloDependency.swift in Sources */,
-				566A8FF1221589AA00F3ACBF /* CellDependencyConfiguratorTests.swift in Sources */,
-				5642F3002215E74D007FE6D4 /* TestsWithInternalAccessToHelloDependency.swift in Sources */,
 				566A8FF52215D24400F3ACBF /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -664,7 +668,6 @@
 				569D85072210459F00043BC2 /* CounterParentViewController.swift in Sources */,
 				56C2C2B42213040B00C521A9 /* CellViewEventHandler.swift in Sources */,
 				569D850322101C1B00043BC2 /* CounterViewController.swift in Sources */,
-				56FCBC70220DBF740012143A /* MainViewController.swift in Sources */,
 				56FCBC5E220DBF440012143A /* AppDelegate.swift in Sources */,
 				56C2C2B02213007000C521A9 /* TableViewController.swift in Sources */,
 				569D850522101CF800043BC2 /* CounterViewEventHandler.swift in Sources */,
@@ -686,22 +689,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56FCBC9C220ED0C30012143A /* TestsWithPublicAccessToHelloDependency.swift in Sources */,
-				566DD6CE220EE88E00C0E41B /* HelloDependency+SingleTests.swift in Sources */,
+				566DD6CE220EE88E00C0E41B /* HelloDependencySingleDependencyRegistrationTests.swift in Sources */,
+				5698AE5C22181AE200C30724 /* DependencyTests.swift in Sources */,
 				56FCBC90220DC1250012143A /* HelloDependencyTests.swift in Sources */,
-				566DD6D4220F3B3E00C0E41B /* HelloDependency+WeakTests.swift in Sources */,
-				56FCBC9A220EC8C00012143A /* TestsWithInternalAccessToHelloDependency.swift in Sources */,
+				566DD6D4220F3B3E00C0E41B /* HelloDependencyWeakRegistrationTests.swift in Sources */,
+				5698AE572218147B00C30724 /* XCTestCase+HelloDependency.swift in Sources */,
+				5698AE5A2218192E00C30724 /* XCTestCase+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		562786C822149E260069C6D4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 56FCBC59220DBF440012143A /* Demo */;
-			targetProxy = 562786C722149E260069C6D4 /* PBXContainerItemProxy */;
-		};
 		5698AE532217F8C100C30724 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5698AE3B2217F52200C30724 /* Host */;

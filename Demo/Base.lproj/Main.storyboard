@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mx1-m7-tgB">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,39 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="HelloDependency" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j6a-1r-0Lv">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <connections>
-                                    <segue destination="mx1-m7-tgB" kind="embed" id="EwT-9o-VYE"/>
-                                </connections>
-                            </containerView>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="j6a-1r-0Lv" secondAttribute="bottom" id="2Rs-mi-XwM"/>
-                            <constraint firstItem="j6a-1r-0Lv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ano-7i-BuB"/>
-                            <constraint firstItem="j6a-1r-0Lv" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="kbi-pF-bC6"/>
-                            <constraint firstAttribute="trailing" secondItem="j6a-1r-0Lv" secondAttribute="trailing" id="oGt-ci-ooQ"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="128.80000000000001" y="132.68365817091455"/>
-        </scene>
         <!--Isolated Counter View Controller-->
         <scene sceneID="IMl-Cs-5TI">
             <objects>
-                <viewController storyboardIdentifier="IsolatedCounterViewController" id="w6l-Ol-T3H" customClass="IsolatedCounterViewController" customModule="HelloDependency" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IsolatedCounterViewController" id="w6l-Ol-T3H" customClass="IsolatedCounterViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="L31-SF-YVw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -90,7 +61,7 @@
         <!--Parent View Controller-->
         <scene sceneID="yuF-ci-tFZ">
             <objects>
-                <viewController id="QmB-vG-56P" customClass="TableViewController" customModule="HelloDependency" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="QmB-vG-56P" customClass="TableViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Swc-xQ-u39">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -116,7 +87,7 @@
                     <navigationItem key="navigationItem" title="Table" id="K4Q-SJ-6Wh"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gXO-d2-Z1A" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="fvX-MF-eTX" customClass="TableDataSource" customModule="HelloDependency" customModuleProvider="target">
+                <customObject id="fvX-MF-eTX" customClass="TableDataSource" customModule="Demo" customModuleProvider="target">
                     <connections>
                         <outlet property="parentViewController" destination="QmB-vG-56P" id="G0P-9u-dV5"/>
                         <outlet property="tableView" destination="CTo-Hh-L1G" id="0rE-RD-WbK"/>
@@ -128,7 +99,7 @@
         <!--Cell View Controller-->
         <scene sceneID="m0D-17-uIh">
             <objects>
-                <viewController storyboardIdentifier="CellViewController" id="Eci-t8-wt3" customClass="CellViewController" customModule="HelloDependency" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CellViewController" id="Eci-t8-wt3" customClass="CellViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RVG-14-IJk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -168,7 +139,7 @@
         <!--Cells Embedded Child View Controller-->
         <scene sceneID="Nne-nF-ifw">
             <objects>
-                <viewController id="ld2-OU-mMB" customClass="CellsEmbeddedChildViewController" customModule="HelloDependency" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ld2-OU-mMB" customClass="CellsEmbeddedChildViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OWn-xB-gR1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -229,7 +200,7 @@
             </objects>
             <point key="canvasLocation" x="959" y="132"/>
         </scene>
-        <!--First screen-->
+        <!--Main screen-->
         <scene sceneID="Gny-4Y-U87">
             <objects>
                 <viewController id="f9y-SU-TAp" sceneMemberID="viewController">
@@ -283,7 +254,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wgG-cz-yg7"/>
                     </view>
-                    <navigationItem key="navigationItem" title="First screen" id="cHN-VE-jIP"/>
+                    <navigationItem key="navigationItem" title="Main screen" id="cHN-VE-jIP"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1TX-Kn-Fgc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -292,7 +263,7 @@
         <!--Counter-->
         <scene sceneID="cyf-9n-oPP">
             <objects>
-                <viewController id="Nrx-bQ-TnT" customClass="CounterParentViewController" customModule="HelloDependency" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Nrx-bQ-TnT" customClass="CounterParentViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8OK-Y3-1bm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -335,7 +306,7 @@
         <!--Counter View Controller-->
         <scene sceneID="eZD-4f-xGa">
             <objects>
-                <viewController id="4QA-vr-j09" customClass="CounterViewController" customModule="HelloDependency" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="4QA-vr-j09" customClass="CounterViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="G4t-ic-2QV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="197"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

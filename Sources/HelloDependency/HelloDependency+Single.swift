@@ -15,7 +15,7 @@ extension HelloDependency {
             let key = HelloDependency.key(for: type, identifier: identifier)
             setSingle(dependency: StrongDependency(factory), key: key)
         }
-        public enum AndWeakly {
+        public enum Weak {
             public static func register<T>(_ type: T.Type,
                                            _ factory: @escaping ()->(T)) {
                 let key = HelloDependency.key(for: type)

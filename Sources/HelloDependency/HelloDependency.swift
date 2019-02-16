@@ -93,9 +93,7 @@ extension HelloDependency {
     }
 }
 extension HelloDependency {
-    internal static func changeResolveFatalError
-        (_ resolveValue: Any,
-         _ fakeFatalError: @escaping (String)->()) {
+    internal static func changeFatalErrorFunc(_ resolveValue: Any, _ fakeFatalError: @escaping (String)->()) {
         valueOnFatalError = resolveValue
         fatalErrorFunc = fakeFatalError
     }

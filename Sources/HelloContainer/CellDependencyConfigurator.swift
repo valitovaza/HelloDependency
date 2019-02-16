@@ -1,6 +1,5 @@
 import UIKit
 import Foundation
-import HelloDependency
 
 public protocol CellEventHandlerFactory {
     associatedtype Dependency
@@ -14,14 +13,10 @@ public enum HelloDependencyError: Error {
     case error(String)
 }
 public final class CellDependencyConfigurator {
-    private let clearOnDeinit: Bool
-    private var releaseBlocks = [()->()]()
     private var cachedViews = [IndexPath: [String: Any]]()
-    private var registeredIdentifiers = [String]()
+    private var registeredEventHandlers = [String: Any]()
     
-    public init(_ clearOnDeinit: Bool = true) {
-        self.clearOnDeinit = clearOnDeinit
-    }
+    public init() {}
     
     public func set<View: AnyObject, Dependency>(weakView: WeakBox<View>, asDependencyOfType type: Dependency.Type, at indexPath: IndexPath) throws {
         if let weakDependency = weakView as? Dependency, let view = weakView.unbox {
@@ -35,18 +30,13 @@ public final class CellDependencyConfigurator {
         if let weakBox: WeakBox<View> = getRegisteredWeakView(at: indexPath, type) {
             weakBox.unbox = view
         }else{
-            let dependencyId = dependencyIdentifier(for: indexPath)
-            HelloDependency.register(type, forIdentifier: dependencyId, weakDependency)
-            releaseBlocks.append {
-                HelloDependency.release(type, forIdentifier: dependencyId)
-            }
             cache(weakDependency, type, indexPath)
         }
     }
     private func nillifyAll<View: AnyObject, Dependency>(equalTo view: View, _ type: Dependency.Type) {
         for (indexPath, dict) in cachedViews {
             guard let weakView = dict[identifier(for: type, indexPath: indexPath)] as? WeakBox<View> else { continue }
-            guard weakView.unbox === view else { return }
+            guard weakView.unbox === view else { continue }
             weakView.unbox = nil
         }
     }
@@ -76,42 +66,25 @@ public final class CellDependencyConfigurator {
         }
     }
     
-    public func register<Factory: CellEventHandlerFactory, Dependency>(_ factory: Factory, toCreateType: Dependency.Type, at indexPath: IndexPath) where Factory.Dependency == Dependency {
-        guard canRegister(for: indexPath, toCreateType) else { return }
-        markFactoryRegistered(for: indexPath, toCreateType)
-        
-        let dependency = factory.create()
-        let dependencyId = dependencyIdentifier(for: indexPath)
-        HelloDependency.register(toCreateType, forIdentifier: dependencyId, {
-            dependency
-        })
-        releaseBlocks.append {
-            HelloDependency.release(toCreateType, forIdentifier: dependencyId)
-        }
+    public func register<Factory: CellEventHandlerFactory, Dependency>(_ factory: Factory, toCreateType type: Dependency.Type, at indexPath: IndexPath) where Factory.Dependency == Dependency {
+        guard canRegister(for: indexPath, type) else { return }
+        cacheRegisteredEventHandler(eventHandler: factory.create(), for: indexPath, type)
     }
     private func canRegister<Dependency>(for indexPath: IndexPath, _ type: Dependency.Type) -> Bool {
-        let id = identifier(for: type, indexPath: indexPath)
-        return !registeredIdentifiers.contains(id)
+        let identifier = self.identifier(for: type, indexPath: indexPath)
+        return registeredEventHandlers[identifier] == nil
     }
-    private func markFactoryRegistered<Dependency>(for indexPath: IndexPath, _ type: Dependency.Type) {
-        let id = identifier(for: type, indexPath: indexPath)
-        registeredIdentifiers.append(id)
-    }
-    
-    public func configure<EventHandlerHolder: CellEventHandlerHolder, Dependency>(dependencyHolder: EventHandlerHolder, dependencyType: Dependency.Type, at indexPath: IndexPath) where EventHandlerHolder.EventHandler == Dependency {
-        dependencyHolder.set(eventHandler: HelloDependency.resolve(dependencyType, forIdentifier: dependencyIdentifier(for: indexPath)))
+    private func cacheRegisteredEventHandler<Dependency>(eventHandler: Any, for indexPath: IndexPath, _ type: Dependency.Type) {
+        let identifier = self.identifier(for: type, indexPath: indexPath)
+        registeredEventHandlers[identifier] = eventHandler
     }
     
-    public func clear() {
-        releaseBlocks.forEach({$0()})
-        releaseBlocks.removeAll()
-        cachedViews.removeAll()
-        registeredIdentifiers.removeAll()
-    }
-    
-    deinit {
-        if clearOnDeinit {
-            clear()
+    public func configure<EventHandlerHolder: CellEventHandlerHolder, Dependency>(dependencyHolder: EventHandlerHolder, dependencyType: Dependency.Type, at indexPath: IndexPath) throws where EventHandlerHolder.EventHandler == Dependency {
+        let identifier = self.identifier(for: dependencyType, indexPath: indexPath)
+        if let eventHandler = registeredEventHandlers[identifier] as? Dependency {
+            dependencyHolder.set(eventHandler: eventHandler)
+        }else{
+            throw HelloDependencyError.error("\(dependencyType) dependency is not registered at row: \(indexPath.row) section: \(indexPath.section)")
         }
     }
 }

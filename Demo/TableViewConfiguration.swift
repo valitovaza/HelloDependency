@@ -40,7 +40,7 @@ final class TableConfiguratorImpl: TableConfigurator {
         
         configurator.register(eventHandlerFactory, toCreateType: CellViewEventHandler.self, at: indexPath)
         
-        configurator.configure(dependencyHolder: cellViewController, dependencyType: CellViewEventHandler.self, at: indexPath)
+        try! configurator.configure(dependencyHolder: cellViewController, dependencyType: CellViewEventHandler.self, at: indexPath)
     }
     private func configure(embeddedChildViewController: CellsEmbeddedChildViewController, _ indexPath: IndexPath) {
         let counterView = WeakBox(embeddedChildViewController)
@@ -53,7 +53,7 @@ final class TableConfiguratorImpl: TableConfigurator {
         
         configurator.register(eventHandlerFactory, toCreateType: CounterViewEventHandler.self, at: indexPath)
         
-        configurator.configure(dependencyHolder: embeddedChildViewController, dependencyType: CounterViewEventHandler.self, at: indexPath)
+        try! configurator.configure(dependencyHolder: embeddedChildViewController, dependencyType: CounterViewEventHandler.self, at: indexPath)
     }
 }
 class CellViewEventHandlerFactory: CellEventHandlerFactory {
