@@ -25,10 +25,10 @@
 		569D850322101C1B00043BC2 /* CounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569D850222101C1B00043BC2 /* CounterViewController.swift */; };
 		569D850522101CF800043BC2 /* CounterViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569D850422101CF800043BC2 /* CounterViewEventHandler.swift */; };
 		569D85072210459F00043BC2 /* CounterParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569D85062210459F00043BC2 /* CounterParentViewController.swift */; };
-		56B58D8D22107159003E61DF /* IOSDependencyContainer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56B58D8422107159003E61DF /* IOSDependencyContainer.framework */; };
+		56B58D8D22107159003E61DF /* HelloContainer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56B58D8422107159003E61DF /* HelloContainer.framework */; };
 		56B58D9422107159003E61DF /* IOSDependencyContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B58D9322107159003E61DF /* IOSDependencyContainerTests.swift */; };
-		56B58D9922107159003E61DF /* IOSDependencyContainer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56B58D8422107159003E61DF /* IOSDependencyContainer.framework */; };
-		56B58D9A22107159003E61DF /* IOSDependencyContainer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 56B58D8422107159003E61DF /* IOSDependencyContainer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		56B58D9922107159003E61DF /* HelloContainer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56B58D8422107159003E61DF /* HelloContainer.framework */; };
+		56B58D9A22107159003E61DF /* HelloContainer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 56B58D8422107159003E61DF /* HelloContainer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		56C2C2A62212F86100C521A9 /* TableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2C2A52212F86100C521A9 /* TableDataSource.swift */; };
 		56C2C2AD2212FC4200C521A9 /* CounterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2C2AB2212FC4200C521A9 /* CounterTableViewCell.swift */; };
 		56C2C2AE2212FC4200C521A9 /* CounterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56C2C2AC2212FC4200C521A9 /* CounterTableViewCell.xib */; };
@@ -83,7 +83,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				56B58D9A22107159003E61DF /* IOSDependencyContainer.framework in Embed Frameworks */,
+				56B58D9A22107159003E61DF /* HelloContainer.framework in Embed Frameworks */,
 				56FCBC7E220DBFDB0012143A /* HelloDependency.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -107,9 +107,9 @@
 		569D850222101C1B00043BC2 /* CounterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewController.swift; sourceTree = "<group>"; };
 		569D850422101CF800043BC2 /* CounterViewEventHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewEventHandler.swift; sourceTree = "<group>"; };
 		569D85062210459F00043BC2 /* CounterParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterParentViewController.swift; sourceTree = "<group>"; };
-		56B58D8422107159003E61DF /* IOSDependencyContainer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IOSDependencyContainer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		56B58D8422107159003E61DF /* HelloContainer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HelloContainer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		56B58D8722107159003E61DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		56B58D8C22107159003E61DF /* IOSDependencyContainerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IOSDependencyContainerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		56B58D8C22107159003E61DF /* HelloContainerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelloContainerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		56B58D9322107159003E61DF /* IOSDependencyContainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSDependencyContainerTests.swift; sourceTree = "<group>"; };
 		56B58D9522107159003E61DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		56C2C2A52212F86100C521A9 /* TableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataSource.swift; sourceTree = "<group>"; };
@@ -151,7 +151,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56B58D8D22107159003E61DF /* IOSDependencyContainer.framework in Frameworks */,
+				56B58D8D22107159003E61DF /* HelloContainer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,7 +159,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56B58D9922107159003E61DF /* IOSDependencyContainer.framework in Frameworks */,
+				56B58D9922107159003E61DF /* HelloContainer.framework in Frameworks */,
 				56FCBC7D220DBFDB0012143A /* HelloDependency.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -257,8 +257,8 @@
 				56FCBC5A220DBF440012143A /* Demo.app */,
 				56FCBC76220DBFDB0012143A /* HelloDependency.framework */,
 				56FCBC87220DC0D10012143A /* HelloDependencyTests.xctest */,
-				56B58D8422107159003E61DF /* IOSDependencyContainer.framework */,
-				56B58D8C22107159003E61DF /* IOSDependencyContainerTests.xctest */,
+				56B58D8422107159003E61DF /* HelloContainer.framework */,
+				56B58D8C22107159003E61DF /* HelloContainerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -332,9 +332,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		56B58D8322107159003E61DF /* IOSDependencyContainer */ = {
+		56B58D8322107159003E61DF /* HelloContainer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 56B58D9F22107159003E61DF /* Build configuration list for PBXNativeTarget "IOSDependencyContainer" */;
+			buildConfigurationList = 56B58D9F22107159003E61DF /* Build configuration list for PBXNativeTarget "HelloContainer" */;
 			buildPhases = (
 				56B58D7F22107159003E61DF /* Headers */,
 				56B58D8022107159003E61DF /* Sources */,
@@ -345,14 +345,14 @@
 			);
 			dependencies = (
 			);
-			name = IOSDependencyContainer;
+			name = HelloContainer;
 			productName = IOSDependencyContainer;
-			productReference = 56B58D8422107159003E61DF /* IOSDependencyContainer.framework */;
+			productReference = 56B58D8422107159003E61DF /* HelloContainer.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		56B58D8B22107159003E61DF /* IOSDependencyContainerTests */ = {
+		56B58D8B22107159003E61DF /* HelloContainerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 56B58DA022107159003E61DF /* Build configuration list for PBXNativeTarget "IOSDependencyContainerTests" */;
+			buildConfigurationList = 56B58DA022107159003E61DF /* Build configuration list for PBXNativeTarget "HelloContainerTests" */;
 			buildPhases = (
 				56B58D8822107159003E61DF /* Sources */,
 				56B58D8922107159003E61DF /* Frameworks */,
@@ -363,9 +363,9 @@
 			dependencies = (
 				562786C822149E260069C6D4 /* PBXTargetDependency */,
 			);
-			name = IOSDependencyContainerTests;
+			name = HelloContainerTests;
 			productName = IOSDependencyContainerTests;
-			productReference = 56B58D8C22107159003E61DF /* IOSDependencyContainerTests.xctest */;
+			productReference = 56B58D8C22107159003E61DF /* HelloContainerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		56FCBC59220DBF440012143A /* Demo */ = {
@@ -470,8 +470,8 @@
 				56FCBC59220DBF440012143A /* Demo */,
 				56FCBC75220DBFDB0012143A /* HelloDependency */,
 				56FCBC86220DC0D10012143A /* HelloDependencyTests */,
-				56B58D8322107159003E61DF /* IOSDependencyContainer */,
-				56B58D8B22107159003E61DF /* IOSDependencyContainerTests */,
+				56B58D8322107159003E61DF /* HelloContainer */,
+				56B58D8B22107159003E61DF /* HelloContainerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -596,7 +596,7 @@
 		};
 		56B58D9822107159003E61DF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 56B58D8322107159003E61DF /* IOSDependencyContainer */;
+			target = 56B58D8322107159003E61DF /* HelloContainer */;
 			targetProxy = 56B58D9722107159003E61DF /* PBXContainerItemProxy */;
 		};
 		56FCBC7C220DBFDB0012143A /* PBXTargetDependency */ = {
@@ -998,7 +998,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		56B58D9F22107159003E61DF /* Build configuration list for PBXNativeTarget "IOSDependencyContainer" */ = {
+		56B58D9F22107159003E61DF /* Build configuration list for PBXNativeTarget "HelloContainer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				56B58D9B22107159003E61DF /* Debug */,
@@ -1007,7 +1007,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		56B58DA022107159003E61DF /* Build configuration list for PBXNativeTarget "IOSDependencyContainerTests" */ = {
+		56B58DA022107159003E61DF /* Build configuration list for PBXNativeTarget "HelloContainerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				56B58D9D22107159003E61DF /* Debug */,

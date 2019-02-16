@@ -1,5 +1,5 @@
 import XCTest
-import IOSDependencyContainer
+import HelloContainer
 
 class CellDependencyConfiguratorTests: TestsWithPublicAccessToHelloDependency {
     

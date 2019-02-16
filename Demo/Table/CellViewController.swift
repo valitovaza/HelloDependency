@@ -1,5 +1,5 @@
 import UIKit
-import IOSDependencyContainer
+import HelloContainer
 
 class CellViewController: UIViewController {
     

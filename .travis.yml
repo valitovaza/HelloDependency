@@ -4,7 +4,7 @@ language: swift
 
 jobs:
     include:
-        - script: xcodebuild clean build test -project HelloDependency.xcodeproj -scheme "IOSDependencyContainer" -sdk iphonesimulator12.1 CODE_SIGN_IDENTITY="" CODE_SIGN_REQUIRED=NO -destination 'platform=iOS Simulator,name=iPhone XS,OS=12.1'
+        - script: xcodebuild clean build test -project HelloDependency.xcodeproj -scheme "HelloContainer" -sdk iphonesimulator12.1 CODE_SIGN_IDENTITY="" CODE_SIGN_REQUIRED=NO -destination 'platform=iOS Simulator,name=iPhone XS,OS=12.1'
         - script: xcodebuild clean build test -project HelloDependency.xcodeproj -scheme "HelloDependency" CODE_SIGN_IDENTITY="" CODE_SIGN_REQUIRED=NO
 
 notifications:

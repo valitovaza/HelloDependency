@@ -1,6 +1,6 @@
 import UIKit
 import HelloDependency
-import IOSDependencyContainer
+import HelloContainer
 
 final class TableConfiguratorImpl: TableConfigurator {
     private let configurator = CellDependencyConfigurator()

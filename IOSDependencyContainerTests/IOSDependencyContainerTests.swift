@@ -1,5 +1,5 @@
 import XCTest
-@testable import IOSDependencyContainer
+@testable import HelloContainer
 
 class IOSDependencyContainerTests: XCTestCase {
     override func setUp() {
