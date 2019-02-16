@@ -84,7 +84,7 @@ class CellDependencyConfiguratorTests: XCTestCase {
     
     func test_set_onDifferentIndexRemovesSameViewFromOtherDependencies() {
         let indexPath0 = IndexPath(row: 0, section: 0)
-        let indexPath1 = IndexPath(row: 2, section: 1)
+        let indexPath1 = IndexPath(row: 1, section: 0)
         let (sut,cell,_, weakBox0) = configureCell(indexPath0)
         
         let differentCell = Cell()
@@ -109,7 +109,7 @@ class CellDependencyConfiguratorTests: XCTestCase {
         
         let cell1 = Cell()
         let weakBox1 = WeakBox(cell1)
-        XCTAssertNoThrow(try sut.set(weakView: weakBox1, asDependencyOfType: View.self, at: IndexPath(row: 1, section: 1)))
+        XCTAssertNoThrow(try sut.set(weakView: weakBox1, asDependencyOfType: View.self, at: IndexPath(row: 0, section: 1)))
         
         XCTAssertNotNil(weakBox0.unbox)
     }
