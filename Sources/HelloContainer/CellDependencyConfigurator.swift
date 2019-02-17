@@ -20,12 +20,19 @@ public final class CellDependencyConfigurator {
     
     public func set<View: AnyObject, Dependency>(weakView: WeakBox<View>, asDependencyOfType type: Dependency.Type, at indexPath: IndexPath) throws {
         if let weakDependency = weakView as? Dependency, let view = weakView.unbox {
-            registerOrChange(view, weakDependency, type, indexPath)
+            try setOptionally(view, weakDependency, type, indexPath)
         }else{
             throw HelloDependencyError.error("Can not register \(View.self) as \(type)")
         }
     }
-    private func registerOrChange<View: AnyObject, Dependency>(_ view: View, _ weakDependency: Dependency, _ type: Dependency.Type, _ indexPath: IndexPath) {
+    private func setOptionally<View: AnyObject, Dependency>(_ view: View, _ weakDependency: Dependency, _ type: Dependency.Type, _ indexPath: IndexPath) throws {
+        if cachedViews.values.flatMap({$0.values}).filter({$0 as AnyObject === weakDependency as AnyObject}).isEmpty {
+            set(view, weakDependency, type, indexPath)
+        }else{
+            throw HelloDependencyError.error("Can not use same Weakview multiple times")
+        }
+    }
+    private func set<View: AnyObject, Dependency>(_ view: View, _ weakDependency: Dependency, _ type: Dependency.Type, _ indexPath: IndexPath) {
         nillifyAll(equalTo: view, type)
         if let weakBox: WeakBox<View> = getRegisteredWeakView(at: indexPath, type) {
             weakBox.unbox = view

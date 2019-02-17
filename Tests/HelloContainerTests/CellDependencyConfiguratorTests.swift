@@ -114,7 +114,7 @@ class CellDependencyConfiguratorTests: XCTestCase {
         XCTAssertNotNil(weakBox0.unbox)
     }
     
-    func test_set_doesNotRemoveSameObjectInOtherDependencyIfProtoIsNotSame() {
+    func test_set_doesNotRemoveSameObjectInOtherDependencyIfProtocolIsNotSame() {
         let (sut,cell,_, weakBox0) = configureCell(IndexPath(row: 0, section: 0))
         
         XCTAssertNoThrow(try sut.set(weakView: WeakBox(cell), asDependencyOfType: CellView.self, at: IndexPath(row: 2, section: 1)))
@@ -178,6 +178,37 @@ class CellDependencyConfiguratorTests: XCTestCase {
         XCTAssertThrowsError(try sut.configure(dependencyHolder: cell, dependencyType: EventHandler.self, at: IndexPath(row: 4, section: 7))) { (error) in
             if case HelloDependencyError.error(let errorString) = error {
                 XCTAssertEqual(errorString, "EventHandler dependency is not registered at row: 4 section: 7")
+            }else{
+                XCTFail("wrong error")
+            }
+        }
+    }
+    
+    func test_set_throwsErrorOnSendSameWeakViewMultipleTime() {
+        let sut = makeSUT()
+        let (cell,_) = makeCellAndFactory()
+        let weakView = WeakBox(cell)
+        let indexPath0 = IndexPath(row: 0, section: 0)
+        let indexPath1 = IndexPath(row: 1, section: 1)
+        let errorText = "Can not use same Weakview multiple times"
+        XCTAssertNoThrow(try sut.set(weakView: weakView, asDependencyOfType: View.self, at: indexPath0))
+        XCTAssertThrowsError(try sut.set(weakView: weakView, asDependencyOfType: View.self, at: indexPath)) { (error) in
+            if case HelloDependencyError.error(let errorString) = error {
+                XCTAssertEqual(errorString, errorText)
+            }else{
+                XCTFail("wrong error")
+            }
+        }
+        XCTAssertThrowsError(try sut.set(weakView: weakView, asDependencyOfType: CellView.self, at: indexPath0)) { (error) in
+            if case HelloDependencyError.error(let errorString) = error {
+                XCTAssertEqual(errorString, errorText)
+            }else{
+                XCTFail("wrong error")
+            }
+        }
+        XCTAssertThrowsError(try sut.set(weakView: weakView, asDependencyOfType: View.self, at: indexPath1)) { (error) in
+            if case HelloDependencyError.error(let errorString) = error {
+                XCTAssertEqual(errorString, errorText)
             }else{
                 XCTFail("wrong error")
             }
