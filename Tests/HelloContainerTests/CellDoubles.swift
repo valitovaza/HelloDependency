@@ -13,9 +13,9 @@ class Cell {
     var secondViewMethodCallCount = 0
     var eventHandler: EventHandler?
 }
-extension Cell: CellEventHandlerHolder {
-    func set(eventHandler: EventHandler) {
-        self.eventHandler = eventHandler
+extension Cell: CellDependencyHolder {
+    func set(cellDependency: EventHandler) {
+        self.eventHandler = cellDependency
     }
 }
 extension Cell: FirstViewProtocol {
@@ -78,7 +78,7 @@ class EventHandlerDependency: FirstEventHandlerDependency, SecondEventHandlerDep
 }
 
 extension EventHandler: CellDependency {
-    static func build(_ container: ArgsContainer) -> EventHandler? {
+    static func build(_ container: ArgumentsContainer) -> EventHandler? {
         guard let view = container.getArgument(ofType: FirstViewProtocol.self) else { return nil}
         guard let secondView = container.getArgument(ofType: SecondViewProtocol.self) else { return nil}
         guard let firstEventHandlerDependency = container.getArgument(ofType: FirstEventHandlerDependency.self) else { return nil}
@@ -90,14 +90,14 @@ extension EventHandler: CellDependency {
 class SecondCell {
     var secondEventHandler: SecondEventHandler!
 }
-extension SecondCell: CellEventHandlerHolder {
-    func set(eventHandler: SecondEventHandler) {
-        secondEventHandler = eventHandler
+extension SecondCell: CellDependencyHolder {
+    func set(cellDependency: SecondEventHandler) {
+        secondEventHandler = cellDependency
     }
 }
 class SecondEventHandler {}
 extension SecondEventHandler: CellDependency {
-    static func build(_ container: ArgsContainer) -> SecondEventHandler? {
+    static func build(_ container: ArgumentsContainer) -> SecondEventHandler? {
         return SecondEventHandler()
     }
 }

@@ -1,5 +1,5 @@
-public protocol ArgsContainerBuildable {
+public protocol CanBeBuiltWithArgumentsContainer {
     associatedtype BuildType
-    static func build(_ container: ArgsContainer) -> BuildType?
+    static func build(_ container: ArgumentsContainer) -> BuildType?
 }
-public protocol CellDependency: ArgsContainerBuildable where BuildType == Self {}
+public protocol CellDependency: CanBeBuiltWithArgumentsContainer where BuildType == Self {}

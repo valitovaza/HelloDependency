@@ -1,53 +1,48 @@
 import UIKit
 import Foundation
 
-public protocol CellEventHandlerFactory {
-    associatedtype Dependency
-    func create() -> Dependency
-}
-
-public enum HelloDependencyError: Error {
+public enum CellDependencyConfiguratorError: Error {
     case error(String)
 }
 public final class CellDependencyConfigurator {
-    private var cachedDependencies = [IndexPath: [String: Any]]()
-    private var eventHandlers = [String: Any]()
+    private var cachedArguments = [IndexPath: [String: Any]]()
+    private var cachedDependencies = [String: Any]()
     
     public init() {}
     
-    public func set<Dependency: AnyObject, TypeToConform>(weakView: WeakBox<Dependency>, asDependencyOfType type: TypeToConform.Type, at indexPath: IndexPath) throws {
-        if let weakDependency = weakView as? TypeToConform, let view = weakView.unbox {
-            try setOptionally(view, weakDependency, type, indexPath)
+    public func set<Argument: AnyObject, TypeToConform>(weakArgument: WeakBox<Argument>, asType type: TypeToConform.Type, at indexPath: IndexPath) throws {
+        if let weakArg = weakArgument as? TypeToConform, let argument = weakArgument.unbox {
+            try setOptionally(argument, weakArg, type, indexPath)
         }else{
-            throw HelloDependencyError.error("Can not register \(Dependency.self) as \(type)")
+            throw CellDependencyConfiguratorError.error(errorText(for: weakArgument, typeToConform: type))
         }
     }
-    private func setOptionally<View: AnyObject, Dependency>(_ view: View, _ weakDependency: Dependency, _ type: Dependency.Type, _ indexPath: IndexPath) throws {
-        if cachedDependencies.values.flatMap({$0.values}).filter({$0 as AnyObject === weakDependency as AnyObject}).isEmpty {
-            set(view, weakDependency, type, indexPath)
+    private func setOptionally<Argument: AnyObject, TypeToConform>(_ argument: Argument, _ weakArgument: TypeToConform, _ type: TypeToConform.Type, _ indexPath: IndexPath) throws {
+        if cachedArguments.values.flatMap({$0.values}).filter({$0 as AnyObject === weakArgument as AnyObject}).isEmpty {
+            set(argument, weakArgument, type, indexPath)
         }else{
-            throw HelloDependencyError.error("Can not use same Weakview multiple times")
+            throw CellDependencyConfiguratorError.error("Can not use same WeakArgument multiple times")
         }
     }
-    private func set<View: AnyObject, Dependency>(_ view: View, _ weakDependency: Dependency, _ type: Dependency.Type, _ indexPath: IndexPath) {
-        nillifyAll(equalTo: view, type)
-        if let weakBox: WeakBox<View> = getRegisteredWeakView(at: indexPath, type) {
-            weakBox.unbox = view
+    private func set<Argument: AnyObject, TypeToConform>(_ argument: Argument, _ weakArgument: TypeToConform, _ type: TypeToConform.Type, _ indexPath: IndexPath) {
+        removeAllReferences(equalTo: argument, type)
+        if let weakBox: WeakBox<Argument> = getRegisteredWeakArgument(at: indexPath, type) {
+            weakBox.unbox = argument
         }else{
-            cache(weakDependency, type, indexPath)
+            cache(weakArgument, type, indexPath)
         }
     }
-    private func nillifyAll<View: AnyObject, Dependency>(equalTo view: View, _ type: Dependency.Type) {
-        for (indexPath, dict) in cachedDependencies {
-            guard let weakView = dict[identifier(for: type, indexPath: indexPath)] as? WeakBox<View> else { continue }
-            guard weakView.unbox === view else { continue }
-            weakView.unbox = nil
+    private func removeAllReferences<Argument: AnyObject, TypeToConform>(equalTo argument: Argument, _ type: TypeToConform.Type) {
+        for (indexPath, dict) in cachedArguments {
+            guard let weakArg = dict[identifier(for: type, indexPath: indexPath)] as? WeakBox<Argument> else { continue }
+            guard weakArg.unbox === argument else { continue }
+            weakArg.unbox = nil
         }
     }
-    private func getRegisteredWeakView<View: AnyObject, Dependency>(at indexPath: IndexPath, _ type: Dependency.Type) -> WeakBox<View>? {
-        guard let dict = cachedDependencies[indexPath] else { return nil }
-        guard let weakView = dict[identifier(for: type, indexPath: indexPath)] as? WeakBox<View> else { return nil }
-        return weakView
+    private func getRegisteredWeakArgument<Argument: AnyObject, TypeToConform>(at indexPath: IndexPath, _ type: TypeToConform.Type) -> WeakBox<Argument>? {
+        guard let dict = cachedArguments[indexPath] else { return nil }
+        guard let weakArg = dict[identifier(for: type, indexPath: indexPath)] as? WeakBox<Argument> else { return nil }
+        return weakArg
     }
     private func identifier<T>(for type: T.Type, indexPath: IndexPath) -> String {
         return String.identifier(for: type) + dependencyIdentifier(for: indexPath)
@@ -55,43 +50,46 @@ public final class CellDependencyConfigurator {
     private func dependencyIdentifier(for indexPath: IndexPath) -> String {
         return "\(indexPath.row)_\(indexPath.section)"
     }
-    private func cache<Dependency>(_ dependency: Dependency, _ type: Dependency.Type, _ indexPath: IndexPath) {
+    private func cache<Argument>(_ argument: Argument, _ type: Argument.Type, _ indexPath: IndexPath) {
         var dict = self.dict(for: indexPath)
-        dict[identifier(for: type, indexPath: indexPath)] = dependency
-        cachedDependencies[indexPath] = dict
+        dict[identifier(for: type, indexPath: indexPath)] = argument
+        cachedArguments[indexPath] = dict
     }
     private func dict(for indexPath: IndexPath) -> [String: Any] {
-        if let dict = cachedDependencies[indexPath] {
+        if let dict = cachedArguments[indexPath] {
             return dict
         }else{
             let dict = [String: AnyObject]()
-            cachedDependencies[indexPath] = dict
+            cachedArguments[indexPath] = dict
             return dict
         }
     }
+    private func errorText<Argument, TypeToConform>(for argument: Argument, typeToConform: TypeToConform.Type) -> String {
+        return "Can not register \(Argument.self) as \(typeToConform)"
+    }
     
-    public func setOnce<Dependency, TypeToConform>(dependency: Dependency, asDependencyOfType type: TypeToConform.Type, at indexPath: IndexPath) throws {
-        if let dependency = dependency as? TypeToConform {
+    public func setOnceOptionally<Argument, TypeToConform>(argument: Argument, asDependencyOfType type: TypeToConform.Type, at indexPath: IndexPath) throws {
+        if let dependency = argument as? TypeToConform {
             cache(dependency, type, indexPath)
         }else{
-            throw HelloDependencyError.error("Can not register \(Dependency.self) as \(type)")
+            throw CellDependencyConfiguratorError.error(errorText(for: argument, typeToConform: type))
         }
     }
     
-    public func configure<EventHandlerHolder: CellEventHandlerHolder, Dependency: CellDependency>(dependencyHolder: EventHandlerHolder, dependencyType: Dependency.Type, at indexPath: IndexPath) throws where EventHandlerHolder.EventHandler == Dependency {
-        let eventHandlerKey = identifier(for: dependencyType, indexPath: indexPath)
-        if let cachedEventHandler = eventHandlers[eventHandlerKey] as? Dependency {
-            dependencyHolder.set(eventHandler: cachedEventHandler)
+    public func buildDependency<DependencyHolder: CellDependencyHolder, Dependency: CellDependency>(for dependencyHolder: DependencyHolder, dependencyType: Dependency.Type, at indexPath: IndexPath) throws where DependencyHolder.CellDependency == Dependency {
+        let dependencyKey = identifier(for: dependencyType, indexPath: indexPath)
+        if let cachedEventHandler = cachedDependencies[dependencyKey] as? Dependency {
+            dependencyHolder.set(cellDependency: cachedEventHandler)
         }else{
-            if let eventHandler = Dependency.build(argContainer(for: indexPath)) {
-                eventHandlers[eventHandlerKey] = eventHandler
-                dependencyHolder.set(eventHandler: eventHandler)
+            if let eventHandler = Dependency.build(argumentsContainer(for: indexPath)) {
+                cachedDependencies[dependencyKey] = eventHandler
+                dependencyHolder.set(cellDependency: eventHandler)
             }else{
-                throw HelloDependencyError.error("Can not build \(dependencyType) at row: \(indexPath.row) section: \(indexPath.section)")
+                throw CellDependencyConfiguratorError.error("Can not build \(dependencyType) at row: \(indexPath.row) section: \(indexPath.section)")
             }
         }
     }
-    private func argContainer(for indexPath: IndexPath) -> ArgsContainer {
-        return ArgsContainer(cachedDependencies[indexPath] ?? [:], dependencyIdentifier(for: indexPath))
+    private func argumentsContainer(for indexPath: IndexPath) -> ArgumentsContainer {
+        return ArgumentsContainer(cachedArguments[indexPath] ?? [:], dependencyIdentifier(for: indexPath))
     }
 }

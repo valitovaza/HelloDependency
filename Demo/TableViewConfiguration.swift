@@ -32,18 +32,18 @@ final class TableConfiguratorImpl: TableConfigurator {
     private func configureCellViewController(_ cell: CounterTableViewCell, _ indexPath: IndexPath) {
         let cellViewController = cell.cellViewController!
         
-        try! configurator.set(weakView: WeakBox(cellViewController), asDependencyOfType: CellView.self, at: indexPath)
+        try! configurator.set(weakArgument: WeakBox(cellViewController), asType: CellView.self, at: indexPath)
         
         let data = repository.getData(for: indexPath.row)
-        try! configurator.setOnce(dependency: data, asDependencyOfType: TableData.self, at: indexPath)
+        try! configurator.setOnceOptionally(argument: data, asDependencyOfType: TableData.self, at: indexPath)
         
-        try! configurator.configure(dependencyHolder: cellViewController, dependencyType: CellViewEventHandlerImpl.self, at: indexPath)
+        try! configurator.buildDependency(for: cellViewController, dependencyType: CellViewEventHandlerImpl.self, at: indexPath)
     }
     private func configure(embeddedChildViewController: CellsEmbeddedChildViewController, _ indexPath: IndexPath) {
-        try! configurator.set(weakView: WeakBox(embeddedChildViewController), asDependencyOfType: CounterView.self, at: indexPath)
-        try! configurator.set(weakView: WeakBox(embeddedChildViewController), asDependencyOfType: IncrementCountLabelView.self, at: indexPath)
+        try! configurator.set(weakArgument: WeakBox(embeddedChildViewController), asType: CounterView.self, at: indexPath)
+        try! configurator.set(weakArgument: WeakBox(embeddedChildViewController), asType: IncrementCountLabelView.self, at: indexPath)
         
-        try! configurator.configure(dependencyHolder: embeddedChildViewController, dependencyType: CounterViewEventHandlerImpl.self, at: indexPath)
+        try! configurator.buildDependency(for: embeddedChildViewController, dependencyType: CounterViewEventHandlerImpl.self, at: indexPath)
     }
 }
 extension CounterTableViewCell {
@@ -53,29 +53,29 @@ extension CounterTableViewCell {
 }
 
 extension CellViewEventHandlerImpl: CellDependency {
-    static func build(_ container: ArgsContainer) -> CellViewEventHandlerImpl? {
+    static func build(_ container: ArgumentsContainer) -> CellViewEventHandlerImpl? {
         guard let data = container.getArgument(ofType: TableData.self) else { return nil }
         guard let view = container.getArgument(ofType: CellView.self) else { return nil }
         return CellViewEventHandlerImpl(data, view)
     }
 }
-extension CellViewController: CellEventHandlerHolder {
-    func set(eventHandler: CellViewEventHandlerImpl) {
-        self.eventHandler = eventHandler
+extension CellViewController: CellDependencyHolder {
+    func set(cellDependency: CellViewEventHandlerImpl) {
+        self.eventHandler = cellDependency
         eventHandler.didConfigure()
     }
 }
 
 extension CounterViewEventHandlerImpl: CellDependency {
-    static func build(_ container: ArgsContainer) -> CounterViewEventHandlerImpl? {
+    static func build(_ container: ArgumentsContainer) -> CounterViewEventHandlerImpl? {
         guard let counterView = container.getArgument(ofType: CounterView.self) else { return nil }
         guard let incrementCountLabelView = container.getArgument(ofType: IncrementCountLabelView.self) else { return nil }
         return CounterViewEventHandlerImpl(counterView, incrementCountLabelView)
     }
 }
-extension CellsEmbeddedChildViewController: CellEventHandlerHolder {
-    func set(eventHandler: CounterViewEventHandlerImpl) {
-        self.eventHandler = eventHandler
+extension CellsEmbeddedChildViewController: CellDependencyHolder {
+    func set(cellDependency: CounterViewEventHandlerImpl) {
+        self.eventHandler = cellDependency
         eventHandler.onDidLoad()
     }
 }
