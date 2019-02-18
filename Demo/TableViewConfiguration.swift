@@ -32,16 +32,16 @@ final class TableConfiguratorImpl: TableConfigurator {
     private func configureCellViewController(_ cell: CounterTableViewCell, _ indexPath: IndexPath) {
         let cellViewController = cell.cellViewController!
         
-        try! configurator.set(weakArgument: WeakBox(cellViewController), asType: CellView.self, at: indexPath)
+        try! configurator.set(configurable: WeakBox(cellViewController), forType: CellView.self, at: indexPath)
         
         let data = repository.getData(for: indexPath.row)
-        try! configurator.setOnceOptionally(argument: data, asDependencyOfType: TableData.self, at: indexPath)
+        try! configurator.setToBuildOnce(data, forType: TableData.self, at: indexPath)
         
         try! configurator.buildDependency(for: cellViewController, dependencyType: CellViewEventHandlerImpl.self, at: indexPath)
     }
     private func configure(embeddedChildViewController: CellsEmbeddedChildViewController, _ indexPath: IndexPath) {
-        try! configurator.set(weakArgument: WeakBox(embeddedChildViewController), asType: CounterView.self, at: indexPath)
-        try! configurator.set(weakArgument: WeakBox(embeddedChildViewController), asType: IncrementCountLabelView.self, at: indexPath)
+        try! configurator.set(configurable: WeakBox(embeddedChildViewController), forType: CounterView.self, at: indexPath)
+        try! configurator.set(configurable: WeakBox(embeddedChildViewController), forType: IncrementCountLabelView.self, at: indexPath)
         
         try! configurator.buildDependency(for: embeddedChildViewController, dependencyType: CounterViewEventHandlerImpl.self, at: indexPath)
     }

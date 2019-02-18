@@ -8,7 +8,7 @@ class CellDependencyConfiguratorTests: XCTestCase {
         let sut = makeSUT()
         let cell = makeCell()
         
-        XCTAssertThrowsError(try sut.set(weakArgument: WeakBox(cell), asType: DifferentProtocol.self, at: indexPath()))
+        XCTAssertThrowsError(try sut.set(configurable: WeakBox(cell), forType: DifferentProtocol.self, at: indexPath()))
         { (error) in
             checkDependencyError(error, expectedMessage: "Can not register WeakBox<Cell> as DifferentProtocol")
         }
@@ -38,7 +38,7 @@ class CellDependencyConfiguratorTests: XCTestCase {
         let sut = makeSUT()
         let cell = makeCell()
         
-        XCTAssertNoThrow(try sut.set(weakArgument: WeakBox(cell), asType: FirstViewProtocol.self, at: indexPath()))
+        XCTAssertNoThrow(try sut.set(configurable: WeakBox(cell), forType: FirstViewProtocol.self, at: indexPath()))
     }
     
     func test_configure_throwsErrorIfRequiredViewsIsNotSet() {
@@ -74,7 +74,7 @@ class CellDependencyConfiguratorTests: XCTestCase {
         set(view: weakBox1, on: sut, asType: SecondViewProtocol.self, at: indexPath)
     }
     private func set<T, D>(view: WeakBox<T>, on sut: CellDependencyConfigurator, asType type: D.Type, at indexPath: IndexPath, _ file: StaticString = #file, _ line: UInt = #line) {
-        XCTAssertNoThrow(try sut.set(weakArgument: view, asType: type, at: indexPath), file: file, line: line)
+        XCTAssertNoThrow(try sut.set(configurable: view, forType: type, at: indexPath), file: file, line: line)
     }
     
     func test_configure_throwsErrorOnSetViewAtDifferentIndexPath() {
@@ -97,7 +97,7 @@ class CellDependencyConfiguratorTests: XCTestCase {
     }
     private func setOnce<T, D>(dependency: T, on sut: CellDependencyConfigurator, asType type: D.Type, at indexPath: IndexPath, _ file: StaticString = #file, _ line: UInt = #line) {
         trackForMemoryLeaks(dependency as AnyObject, file: file, line: line)
-        XCTAssertNoThrow(try sut.setOnceOptionally(argument: dependency, asDependencyOfType: type, at: indexPath), file: file, line: line)
+        XCTAssertNoThrow(try sut.setToBuildOnce(dependency, forType: type, at: indexPath), file: file, line: line)
     }
     
     func test_configure_setsCellsEventHandlerWithDependenciesRelatedToCell() {
@@ -130,7 +130,7 @@ class CellDependencyConfiguratorTests: XCTestCase {
         let sut = makeSUT()
         let cell = makeCell()
         let weakBox = WeakBox(cell)
-        XCTAssertNoThrow(try sut.set(weakArgument: weakBox, asType: FirstViewProtocol.self, at: indexPath(1,1)))
+        XCTAssertNoThrow(try sut.set(configurable: weakBox, forType: FirstViewProtocol.self, at: indexPath(1,1)))
         setOnceRequiredDependencies(sut, at: indexPath(1,1))
         
         XCTAssertThrowsError(try sut.buildDependency(for: cell, dependencyType: EventHandler.self, at: indexPath(1,1)))
@@ -143,7 +143,7 @@ class CellDependencyConfiguratorTests: XCTestCase {
         let sut = makeSUT()
         let cell = makeCell()
         
-        XCTAssertThrowsError(try sut.setOnceOptionally(argument: cell, asDependencyOfType: DifferentProtocol.self, at: indexPath()))
+        XCTAssertThrowsError(try sut.setToBuildOnce(cell, forType: DifferentProtocol.self, at: indexPath()))
         { (error) in
             checkDependencyError(error, expectedMessage: "Can not register Cell as DifferentProtocol")
         }
@@ -305,21 +305,21 @@ class CellDependencyConfiguratorTests: XCTestCase {
         
         set(view: weakView, on: sut, asType: FirstViewProtocol.self, at: indexPath0)
         
-        XCTAssertThrowsError(try sut.set(weakArgument: weakView, asType: FirstViewProtocol.self, at: indexPath0)) { (error) in
+        XCTAssertThrowsError(try sut.set(configurable: weakView, forType: FirstViewProtocol.self, at: indexPath0)) { (error) in
             if case CellDependencyConfiguratorError.error(let errorString) = error {
                 XCTAssertEqual(errorString, errorText)
             }else{
                 XCTFail("wrong error")
             }
         }
-        XCTAssertThrowsError(try sut.set(weakArgument: weakView, asType: SecondViewProtocol.self, at: indexPath0)) { (error) in
+        XCTAssertThrowsError(try sut.set(configurable: weakView, forType: SecondViewProtocol.self, at: indexPath0)) { (error) in
             if case CellDependencyConfiguratorError.error(let errorString) = error {
                 XCTAssertEqual(errorString, errorText)
             }else{
                 XCTFail("wrong error")
             }
         }
-        XCTAssertThrowsError(try sut.set(weakArgument: weakView, asType: FirstViewProtocol.self, at: indexPath1)) { (error) in
+        XCTAssertThrowsError(try sut.set(configurable: weakView, forType: FirstViewProtocol.self, at: indexPath1)) { (error) in
             if case CellDependencyConfiguratorError.error(let errorString) = error {
                 XCTAssertEqual(errorString, errorText)
             }else{

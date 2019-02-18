@@ -10,11 +10,11 @@ public final class CellDependencyConfigurator {
     
     public init() {}
     
-    public func set<Argument: AnyObject, TypeToConform>(weakArgument: WeakBox<Argument>, asType type: TypeToConform.Type, at indexPath: IndexPath) throws {
-        if let weakArg = weakArgument as? TypeToConform, let argument = weakArgument.unbox {
+    public func set<Argument: AnyObject, TypeToConform>(configurable: WeakBox<Argument>, forType type: TypeToConform.Type, at indexPath: IndexPath) throws {
+        if let weakArg = configurable as? TypeToConform, let argument = configurable.unbox {
             try setOptionally(argument, weakArg, type, indexPath)
         }else{
-            throw CellDependencyConfiguratorError.error(errorText(for: weakArgument, typeToConform: type))
+            throw CellDependencyConfiguratorError.error(errorText(for: configurable, typeToConform: type))
         }
     }
     private func setOptionally<Argument: AnyObject, TypeToConform>(_ argument: Argument, _ weakArgument: TypeToConform, _ type: TypeToConform.Type, _ indexPath: IndexPath) throws {
@@ -68,7 +68,7 @@ public final class CellDependencyConfigurator {
         return "Can not register \(Argument.self) as \(typeToConform)"
     }
     
-    public func setOnceOptionally<Argument, TypeToConform>(argument: Argument, asDependencyOfType type: TypeToConform.Type, at indexPath: IndexPath) throws {
+    public func setToBuildOnce<Argument, TypeToConform>(_ argument: Argument, forType type: TypeToConform.Type, at indexPath: IndexPath) throws {
         if let dependency = argument as? TypeToConform {
             cache(dependency, type, indexPath)
         }else{
