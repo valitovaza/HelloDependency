@@ -31,60 +31,57 @@ final class TableConfiguratorImpl: TableConfigurator {
     }
     private func configureCellViewController(_ cell: CounterTableViewCell, _ indexPath: IndexPath) {
         let cellViewController = cell.cellViewController!
-        let weakView = WeakBox(cellViewController)
         
-        try! configurator.set(weakView: weakView, asDependencyOfType: CellView.self, at: indexPath)
+        try! configurator.set(weakView: WeakBox(cellViewController), asDependencyOfType: CellView.self, at: indexPath)
         
         let data = repository.getData(for: indexPath.row)
-        let eventHandlerFactory = CellViewEventHandlerFactory(data, weakView)
+        try! configurator.setOnce(dependency: data, asDependencyOfType: TableData.self, at: indexPath)
         
-        configurator.register(eventHandlerFactory, toCreateType: CellViewEventHandler.self, at: indexPath)
-        
-        try! configurator.configure(dependencyHolder: cellViewController, dependencyType: CellViewEventHandler.self, at: indexPath)
+        try! configurator.configure(dependencyHolder: cellViewController, dependencyType: CellViewEventHandlerImpl.self, at: indexPath)
     }
     private func configure(embeddedChildViewController: CellsEmbeddedChildViewController, _ indexPath: IndexPath) {
-        let counterView = WeakBox(embeddedChildViewController)
-        let incrementCountLabelView = WeakBox(embeddedChildViewController)
+        try! configurator.set(weakView: WeakBox(embeddedChildViewController), asDependencyOfType: CounterView.self, at: indexPath)
+        try! configurator.set(weakView: WeakBox(embeddedChildViewController), asDependencyOfType: IncrementCountLabelView.self, at: indexPath)
         
-        try! configurator.set(weakView: counterView, asDependencyOfType: CounterView.self, at: indexPath)
-        try! configurator.set(weakView: incrementCountLabelView, asDependencyOfType: IncrementCountLabelView.self, at: indexPath)
-        
-        let eventHandlerFactory = CounterViewEventHandlerFactory(counterView, incrementCountLabelView)
-        
-        configurator.register(eventHandlerFactory, toCreateType: CounterViewEventHandler.self, at: indexPath)
-        
-        try! configurator.configure(dependencyHolder: embeddedChildViewController, dependencyType: CounterViewEventHandler.self, at: indexPath)
-    }
-}
-class CellViewEventHandlerFactory: CellEventHandlerFactory {
-    private let data: TableData
-    private let view: CellView
-    init(_ data: TableData, _ view: CellView) {
-        self.data = data
-        self.view = view
-    }
-    func create() -> CellViewEventHandler {
-        return CellViewEventHandlerImpl(data, view)
-    }
-}
-class CounterViewEventHandlerFactory: CellEventHandlerFactory {
-    private let counterView: CounterView
-    private let incrementCountLabelView: IncrementCountLabelView
-    init(_ counterView: CounterView, _ incrementCountLabelView: IncrementCountLabelView) {
-        self.counterView = counterView
-        self.incrementCountLabelView = incrementCountLabelView
-    }
-    func create() -> CounterViewEventHandler {
-        return CounterViewEventHandlerImpl(counterView, incrementCountLabelView)
-    }
-}
-extension WeakBox: CellView where A: CellView {
-    func show(title: String) {
-        unbox?.show(title: title)
+        try! configurator.configure(dependencyHolder: embeddedChildViewController, dependencyType: CounterViewEventHandlerImpl.self, at: indexPath)
     }
 }
 extension CounterTableViewCell {
     var embeddedChildViewController: CellsEmbeddedChildViewController? {
         return cellViewController?.children.first as? CellsEmbeddedChildViewController
+    }
+}
+
+extension CellViewEventHandlerImpl: CellDependency {
+    static func build(_ container: ArgsContainer) -> CellViewEventHandlerImpl? {
+        guard let data = container.getArgument(ofType: TableData.self) else { return nil }
+        guard let view = container.getArgument(ofType: CellView.self) else { return nil }
+        return CellViewEventHandlerImpl(data, view)
+    }
+}
+extension CellViewController: CellEventHandlerHolder {
+    func set(eventHandler: CellViewEventHandlerImpl) {
+        self.eventHandler = eventHandler
+        eventHandler.didConfigure()
+    }
+}
+
+extension CounterViewEventHandlerImpl: CellDependency {
+    static func build(_ container: ArgsContainer) -> CounterViewEventHandlerImpl? {
+        guard let counterView = container.getArgument(ofType: CounterView.self) else { return nil }
+        guard let incrementCountLabelView = container.getArgument(ofType: IncrementCountLabelView.self) else { return nil }
+        return CounterViewEventHandlerImpl(counterView, incrementCountLabelView)
+    }
+}
+extension CellsEmbeddedChildViewController: CellEventHandlerHolder {
+    func set(eventHandler: CounterViewEventHandlerImpl) {
+        self.eventHandler = eventHandler
+        eventHandler.onDidLoad()
+    }
+}
+
+extension WeakBox: CellView where A: CellView {
+    func show(title: String) {
+        unbox?.show(title: title)
     }
 }

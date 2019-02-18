@@ -12,12 +12,6 @@ class CellsEmbeddedChildViewController: UIViewController {
         eventHandler.increment()
     }
 }
-extension CellsEmbeddedChildViewController: CellEventHandlerHolder {
-    func set(eventHandler: CounterViewEventHandler) {
-        self.eventHandler = eventHandler
-        eventHandler.onDidLoad()
-    }
-}
 extension CellsEmbeddedChildViewController: CounterView {
     func setCountLabel(text: String) {
         countLabel.text = text

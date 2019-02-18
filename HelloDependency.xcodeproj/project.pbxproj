@@ -29,6 +29,10 @@
 		5698AE5A2218192E00C30724 /* XCTestCase+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5698AE592218192E00C30724 /* XCTestCase+.swift */; };
 		5698AE5C22181AE200C30724 /* DependencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5698AE5B22181AE200C30724 /* DependencyTests.swift */; };
 		5698AE5E221852B500C30724 /* CellDependencyConfiguratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566A8FF0221589AA00F3ACBF /* CellDependencyConfiguratorTests.swift */; };
+		5698AE6422193EBC00C30724 /* CellEventHandlerHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5698AE6222193EB800C30724 /* CellEventHandlerHolder.swift */; };
+		5698AE662219429200C30724 /* ArgsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5698AE652219429200C30724 /* ArgsContainer.swift */; };
+		5698AE682219432700C30724 /* CellDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5698AE672219432700C30724 /* CellDependency.swift */; };
+		5698AE6B22194AEB00C30724 /* CellDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5698AE69221949FD00C30724 /* CellDoubles.swift */; };
 		569D850322101C1B00043BC2 /* CounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569D850222101C1B00043BC2 /* CounterViewController.swift */; };
 		569D850522101CF800043BC2 /* CounterViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569D850422101CF800043BC2 /* CounterViewEventHandler.swift */; };
 		569D85072210459F00043BC2 /* CounterParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569D85062210459F00043BC2 /* CounterParentViewController.swift */; };
@@ -119,6 +123,10 @@
 		5698AE552218147800C30724 /* XCTestCase+HelloDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+HelloDependency.swift"; sourceTree = "<group>"; };
 		5698AE592218192E00C30724 /* XCTestCase+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+.swift"; sourceTree = "<group>"; };
 		5698AE5B22181AE200C30724 /* DependencyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyTests.swift; sourceTree = "<group>"; };
+		5698AE6222193EB800C30724 /* CellEventHandlerHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellEventHandlerHolder.swift; sourceTree = "<group>"; };
+		5698AE652219429200C30724 /* ArgsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArgsContainer.swift; sourceTree = "<group>"; };
+		5698AE672219432700C30724 /* CellDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellDependency.swift; sourceTree = "<group>"; };
+		5698AE69221949FD00C30724 /* CellDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellDoubles.swift; sourceTree = "<group>"; };
 		569D850222101C1B00043BC2 /* CounterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewController.swift; sourceTree = "<group>"; };
 		569D850422101CF800043BC2 /* CounterViewEventHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewEventHandler.swift; sourceTree = "<group>"; };
 		569D85062210459F00043BC2 /* CounterParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterParentViewController.swift; sourceTree = "<group>"; };
@@ -226,6 +234,9 @@
 				5667805B221089EC006E4F21 /* ViewControllerProxy.swift */,
 				5667805922107220006E4F21 /* IOSDependencyContainer.swift */,
 				566A8FF22215D0C500F3ACBF /* CellDependencyConfigurator.swift */,
+				5698AE672219432700C30724 /* CellDependency.swift */,
+				5698AE652219429200C30724 /* ArgsContainer.swift */,
+				5698AE6222193EB800C30724 /* CellEventHandlerHolder.swift */,
 			);
 			path = HelloContainer;
 			sourceTree = "<group>";
@@ -258,6 +269,7 @@
 			children = (
 				56B58D9322107159003E61DF /* IOSDependencyContainerTests.swift */,
 				566A8FF0221589AA00F3ACBF /* CellDependencyConfiguratorTests.swift */,
+				5698AE69221949FD00C30724 /* CellDoubles.swift */,
 			);
 			path = HelloContainerTests;
 			sourceTree = "<group>";
@@ -637,10 +649,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5698AE662219429200C30724 /* ArgsContainer.swift in Sources */,
 				5667805A22107220006E4F21 /* IOSDependencyContainer.swift in Sources */,
 				5667805C221089EC006E4F21 /* ViewControllerProxy.swift in Sources */,
+				5698AE6422193EBC00C30724 /* CellEventHandlerHolder.swift in Sources */,
 				566A8FF32215D0C500F3ACBF /* CellDependencyConfigurator.swift in Sources */,
 				5667806422108EA4006E4F21 /* WeakBox.swift in Sources */,
+				5698AE682219432700C30724 /* CellDependency.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -650,6 +665,7 @@
 			files = (
 				5698AE5E221852B500C30724 /* CellDependencyConfiguratorTests.swift in Sources */,
 				56B58D9422107159003E61DF /* IOSDependencyContainerTests.swift in Sources */,
+				5698AE6B22194AEB00C30724 /* CellDoubles.swift in Sources */,
 				566A8FF52215D24400F3ACBF /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
