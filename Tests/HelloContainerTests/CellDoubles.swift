@@ -11,11 +11,11 @@ protocol DifferentProtocol {}
 class Cell {
     var firstViewMethodCallCount = 0
     var secondViewMethodCallCount = 0
-    var eventHandler: EventHandler?
+    var dependency: FirstCellDependency?
 }
 extension Cell: CellDependencyHolder {
-    func set(cellDependency: EventHandler) {
-        self.eventHandler = cellDependency
+    func set(cellDependency: FirstCellDependency) {
+        self.dependency = cellDependency
     }
 }
 extension Cell: FirstViewProtocol {
@@ -28,23 +28,23 @@ extension Cell: SecondViewProtocol {
         secondViewMethodCallCount += 1
     }
 }
-class EventHandler {
-    let firstEventHandlerDependency: FirstEventHandlerDependency
-    let secondEventHandlerDependency: SecondEventHandlerDependency
-    let view: FirstViewProtocol
+class FirstCellDependency {
+    let firstArgument: FirstArgument
+    let secondArgument: SecondArgument
+    let firstView: FirstViewProtocol
     let secondView: SecondViewProtocol
-    init(_ firstEventHandlerDependency: FirstEventHandlerDependency,
-         _ secondEventHandlerDependency: SecondEventHandlerDependency,
-         _ view: FirstViewProtocol,
+    init(_ firstArgument: FirstArgument,
+         _ secondArgument: SecondArgument,
+         _ firstView: FirstViewProtocol,
          _ secondView: SecondViewProtocol) {
-        self.firstEventHandlerDependency = firstEventHandlerDependency
-        self.secondEventHandlerDependency = secondEventHandlerDependency
-        self.view = view
+        self.firstArgument = firstArgument
+        self.secondArgument = secondArgument
+        self.firstView = firstView
         self.secondView = secondView
     }
     
     func triggerFirstViewMethod() {
-        view.firstViewMethod()
+        firstView.firstViewMethod()
     }
     
     func triggerSecondViewMethod() {
@@ -52,53 +52,53 @@ class EventHandler {
     }
     
     func triggerFirstTestMethod() {
-        firstEventHandlerDependency.firstTestMethod()
+        firstArgument.firstArgumentMethod()
     }
     
     func triggerSecondTestMethod() {
-        secondEventHandlerDependency.secondTestMethod()
+        secondArgument.secondArgumentMethod()
     }
 }
-protocol FirstEventHandlerDependency {
-    func firstTestMethod()
+protocol FirstArgument {
+    func firstArgumentMethod()
 }
-protocol SecondEventHandlerDependency {
-    func secondTestMethod()
+protocol SecondArgument {
+    func secondArgumentMethod()
 }
-class EventHandlerDependency: FirstEventHandlerDependency, SecondEventHandlerDependency {
-    var firstTestMethodCallCount = 0
-    var secondTestMethodCallCount = 0
+class DependencyArgument: FirstArgument, SecondArgument {
+    var firstArgumentMethodCallCount = 0
+    var secondArgumentMethodCallCount = 0
     
-    func firstTestMethod() {
-        firstTestMethodCallCount += 1
+    func firstArgumentMethod() {
+        firstArgumentMethodCallCount += 1
     }
-    func secondTestMethod() {
-        secondTestMethodCallCount += 1
+    func secondArgumentMethod() {
+        secondArgumentMethodCallCount += 1
     }
 }
 
-extension EventHandler: CellDependency {
-    static func build(_ container: ArgumentsContainer) -> EventHandler? {
+extension FirstCellDependency: CellDependency {
+    static func build(_ container: ArgumentsContainer) -> FirstCellDependency? {
         guard let view = container.getArgument(ofType: FirstViewProtocol.self) else { return nil}
         guard let secondView = container.getArgument(ofType: SecondViewProtocol.self) else { return nil}
-        guard let firstEventHandlerDependency = container.getArgument(ofType: FirstEventHandlerDependency.self) else { return nil}
-        guard let secondEventHandlerDependency = container.getArgument(ofType: SecondEventHandlerDependency.self) else { return nil}
-        return EventHandler(firstEventHandlerDependency, secondEventHandlerDependency, view, secondView)
+        guard let firstEventHandlerDependency = container.getArgument(ofType: FirstArgument.self) else { return nil}
+        guard let secondEventHandlerDependency = container.getArgument(ofType: SecondArgument.self) else { return nil}
+        return FirstCellDependency(firstEventHandlerDependency, secondEventHandlerDependency, view, secondView)
     }
 }
 
 class SecondCell {
-    var secondEventHandler: SecondEventHandler!
+    var dependency: SecondCellDependency!
 }
 extension SecondCell: CellDependencyHolder {
-    func set(cellDependency: SecondEventHandler) {
-        secondEventHandler = cellDependency
+    func set(cellDependency: SecondCellDependency) {
+        dependency = cellDependency
     }
 }
-class SecondEventHandler {}
-extension SecondEventHandler: CellDependency {
-    static func build(_ container: ArgumentsContainer) -> SecondEventHandler? {
-        return SecondEventHandler()
+class SecondCellDependency {}
+extension SecondCellDependency: CellDependency {
+    static func build(_ container: ArgumentsContainer) -> SecondCellDependency? {
+        return SecondCellDependency()
     }
 }
 

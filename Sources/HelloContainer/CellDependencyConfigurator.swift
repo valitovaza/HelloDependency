@@ -21,7 +21,7 @@ public final class CellDependencyConfigurator {
         if cachedArguments.values.flatMap({$0.values}).filter({$0 as AnyObject === weakArgument as AnyObject}).isEmpty {
             set(argument, weakArgument, type, indexPath)
         }else{
-            throw CellDependencyConfiguratorError.error("Can not use same WeakArgument multiple times")
+            throw CellDependencyConfiguratorError.error("Can not use same argument multiple times")
         }
     }
     private func set<Argument: AnyObject, TypeToConform>(_ argument: Argument, _ weakArgument: TypeToConform, _ type: TypeToConform.Type, _ indexPath: IndexPath) {
