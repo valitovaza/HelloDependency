@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		564BBF80221C41B800B73294 /* DependencyProxyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564BBF7F221C41B800B73294 /* DependencyProxyManager.swift */; };
+		564BBF82221C496D00B73294 /* CounterChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564BBF81221C496D00B73294 /* CounterChildViewController.swift */; };
 		5667805C221089EC006E4F21 /* DependencyProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5667805B221089EC006E4F21 /* DependencyProxy.swift */; };
 		5667805E22108B80006E4F21 /* IsolatedCounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5667805D22108B80006E4F21 /* IsolatedCounterViewController.swift */; };
 		5667806422108EA4006E4F21 /* WeakBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5667806322108EA4006E4F21 /* WeakBox.swift */; };
@@ -101,6 +102,7 @@
 
 /* Begin PBXFileReference section */
 		564BBF7F221C41B800B73294 /* DependencyProxyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyProxyManager.swift; sourceTree = "<group>"; };
+		564BBF81221C496D00B73294 /* CounterChildViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterChildViewController.swift; sourceTree = "<group>"; };
 		5667805B221089EC006E4F21 /* DependencyProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyProxy.swift; sourceTree = "<group>"; };
 		5667805D22108B80006E4F21 /* IsolatedCounterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsolatedCounterViewController.swift; sourceTree = "<group>"; };
 		5667806322108EA4006E4F21 /* WeakBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakBox.swift; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 				569D85062210459F00043BC2 /* CounterParentViewController.swift */,
 				569D850222101C1B00043BC2 /* CounterViewController.swift */,
 				569D850422101CF800043BC2 /* CounterViewEventHandler.swift */,
+				564BBF81221C496D00B73294 /* CounterChildViewController.swift */,
 			);
 			path = Counter;
 			sourceTree = "<group>";
@@ -684,6 +687,7 @@
 				569D85072210459F00043BC2 /* CounterParentViewController.swift in Sources */,
 				56C2C2B42213040B00C521A9 /* CellViewEventHandler.swift in Sources */,
 				569D850322101C1B00043BC2 /* CounterViewController.swift in Sources */,
+				564BBF82221C496D00B73294 /* CounterChildViewController.swift in Sources */,
 				56FCBC5E220DBF440012143A /* AppDelegate.swift in Sources */,
 				56C2C2B02213007000C521A9 /* TableViewController.swift in Sources */,
 				569D850522101CF800043BC2 /* CounterViewEventHandler.swift in Sources */,

@@ -48,6 +48,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let counterProxy = DependencyProxyManager.createProxy(for: CounterViewController.self)
         HelloDependency.register(CounterView.self, { counterProxy })
         
+        let identifier = String(describing: CounterChildViewController.self)
+        HelloDependency.register(CounterViewEventHandler.self, forIdentifier: identifier, {
+            CounterViewEventHandlerImpl(HelloDependency.resolve(CounterView.self, forIdentifier: identifier),
+                           HelloDependency.resolve(IncrementCountLabelView.self, forIdentifier: identifier))
+        })
+        
+        let counterChildProxy = DependencyProxyManager.createProxy(for: CounterChildViewController.self)
+        HelloDependency.register(IncrementCountLabelView.self, forIdentifier: identifier,
+                                 { counterChildProxy })
+        HelloDependency.register(CounterView.self, forIdentifier: identifier, { counterChildProxy })
+        
         HelloDependency.Single.Weak.register(TableConfigurator.self, {
             return TableConfiguratorImpl(HelloDependency.resolve(TableRepository.self))
         })
