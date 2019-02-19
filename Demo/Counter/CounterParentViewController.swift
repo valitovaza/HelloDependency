@@ -7,7 +7,7 @@ class CounterParentViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        IOSDependencyContainer.viewControllerReady(self)
+        DependencyProxyManager.dependencyReady(self)
     }
 }
 extension CounterParentViewController: IncrementCountLabelView {

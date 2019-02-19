@@ -1,6 +1,4 @@
-import UIKit
-
-public final class ViewControllerProxy {
+public final class DependencyProxy {
     public typealias Command = ()->()
     private var commands: [Command] = []
     
@@ -9,13 +7,13 @@ public final class ViewControllerProxy {
         self.postponeCommands = postponeCommands
     }
     
-    public weak var viewController: UIViewController? {
+    public weak var dependency: AnyObject? {
         didSet {
             processCommands()
         }
     }
     private func processCommands() {
-        if let _ = viewController {
+        if let _ = dependency {
             applyCommands()
         }else{
             clearCommands()
@@ -30,14 +28,14 @@ public final class ViewControllerProxy {
     }
     
     public func executeOrPostpone(command: @escaping Command) {
-        if let _ = viewController {
+        if let _ = dependency {
             command()
         }else{
             postponeOptionally(command: command)
         }
     }
     private func postponeOptionally(command: @escaping Command) {
-        guard postponeCommands && viewController == nil else { return }
+        guard postponeCommands && dependency == nil else { return }
         commands.append(command)
     }
 }

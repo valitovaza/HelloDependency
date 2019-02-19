@@ -13,8 +13,8 @@ class CounterViewController: UIViewController {
         eventHandler = HelloDependency.resolve(CounterViewEventHandler.self)
         eventHandler.onDidLoad()
         
-        //configuration even after resolving should work
-        IOSDependencyContainer.viewControllerReady(self)
+        //configuration should work even after resolving
+        DependencyProxyManager.dependencyReady(self)
     }
     
     @IBAction func incrementAction(_ sender: Any) {

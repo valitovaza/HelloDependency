@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5667805A22107220006E4F21 /* IOSDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5667805922107220006E4F21 /* IOSDependencyContainer.swift */; };
-		5667805C221089EC006E4F21 /* ViewControllerProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5667805B221089EC006E4F21 /* ViewControllerProxy.swift */; };
+		564BBF80221C41B800B73294 /* DependencyProxyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564BBF7F221C41B800B73294 /* DependencyProxyManager.swift */; };
+		5667805C221089EC006E4F21 /* DependencyProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5667805B221089EC006E4F21 /* DependencyProxy.swift */; };
 		5667805E22108B80006E4F21 /* IsolatedCounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5667805D22108B80006E4F21 /* IsolatedCounterViewController.swift */; };
 		5667806422108EA4006E4F21 /* WeakBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5667806322108EA4006E4F21 /* WeakBox.swift */; };
 		566A8FF32215D0C500F3ACBF /* CellDependencyConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566A8FF22215D0C500F3ACBF /* CellDependencyConfigurator.swift */; };
@@ -37,7 +37,7 @@
 		569D850522101CF800043BC2 /* CounterViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569D850422101CF800043BC2 /* CounterViewEventHandler.swift */; };
 		569D85072210459F00043BC2 /* CounterParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569D85062210459F00043BC2 /* CounterParentViewController.swift */; };
 		56B58D8D22107159003E61DF /* HelloContainer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56B58D8422107159003E61DF /* HelloContainer.framework */; };
-		56B58D9422107159003E61DF /* IOSDependencyContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B58D9322107159003E61DF /* IOSDependencyContainerTests.swift */; };
+		56B58D9422107159003E61DF /* DependencyProxyManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B58D9322107159003E61DF /* DependencyProxyManagerTests.swift */; };
 		56B58D9922107159003E61DF /* HelloContainer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56B58D8422107159003E61DF /* HelloContainer.framework */; };
 		56B58D9A22107159003E61DF /* HelloContainer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 56B58D8422107159003E61DF /* HelloContainer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		56C2C2A62212F86100C521A9 /* TableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2C2A52212F86100C521A9 /* TableDataSource.swift */; };
@@ -100,8 +100,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5667805922107220006E4F21 /* IOSDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSDependencyContainer.swift; sourceTree = "<group>"; };
-		5667805B221089EC006E4F21 /* ViewControllerProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerProxy.swift; sourceTree = "<group>"; };
+		564BBF7F221C41B800B73294 /* DependencyProxyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyProxyManager.swift; sourceTree = "<group>"; };
+		5667805B221089EC006E4F21 /* DependencyProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyProxy.swift; sourceTree = "<group>"; };
 		5667805D22108B80006E4F21 /* IsolatedCounterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsolatedCounterViewController.swift; sourceTree = "<group>"; };
 		5667806322108EA4006E4F21 /* WeakBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakBox.swift; sourceTree = "<group>"; };
 		566A8FF0221589AA00F3ACBF /* CellDependencyConfiguratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellDependencyConfiguratorTests.swift; sourceTree = "<group>"; };
@@ -132,7 +132,7 @@
 		569D85062210459F00043BC2 /* CounterParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterParentViewController.swift; sourceTree = "<group>"; };
 		56B58D8422107159003E61DF /* HelloContainer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HelloContainer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		56B58D8C22107159003E61DF /* HelloContainerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelloContainerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		56B58D9322107159003E61DF /* IOSDependencyContainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSDependencyContainerTests.swift; sourceTree = "<group>"; };
+		56B58D9322107159003E61DF /* DependencyProxyManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyProxyManagerTests.swift; sourceTree = "<group>"; };
 		56B58D9522107159003E61DF /* HelloContainerTestsInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = HelloContainerTestsInfo.plist; sourceTree = "<group>"; };
 		56C2C2A52212F86100C521A9 /* TableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataSource.swift; sourceTree = "<group>"; };
 		56C2C2AB2212FC4200C521A9 /* CounterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterTableViewCell.swift; sourceTree = "<group>"; };
@@ -231,8 +231,8 @@
 			isa = PBXGroup;
 			children = (
 				5667806322108EA4006E4F21 /* WeakBox.swift */,
-				5667805B221089EC006E4F21 /* ViewControllerProxy.swift */,
-				5667805922107220006E4F21 /* IOSDependencyContainer.swift */,
+				5667805B221089EC006E4F21 /* DependencyProxy.swift */,
+				564BBF7F221C41B800B73294 /* DependencyProxyManager.swift */,
 				566A8FF22215D0C500F3ACBF /* CellDependencyConfigurator.swift */,
 				5698AE672219432700C30724 /* CellDependency.swift */,
 				5698AE652219429200C30724 /* ArgumentsContainer.swift */,
@@ -267,7 +267,7 @@
 		5698AE2D2217EFCF00C30724 /* HelloContainerTests */ = {
 			isa = PBXGroup;
 			children = (
-				56B58D9322107159003E61DF /* IOSDependencyContainerTests.swift */,
+				56B58D9322107159003E61DF /* DependencyProxyManagerTests.swift */,
 				566A8FF0221589AA00F3ACBF /* CellDependencyConfiguratorTests.swift */,
 				5698AE69221949FD00C30724 /* CellDoubles.swift */,
 			);
@@ -650,8 +650,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5698AE662219429200C30724 /* ArgumentsContainer.swift in Sources */,
-				5667805A22107220006E4F21 /* IOSDependencyContainer.swift in Sources */,
-				5667805C221089EC006E4F21 /* ViewControllerProxy.swift in Sources */,
+				5667805C221089EC006E4F21 /* DependencyProxy.swift in Sources */,
+				564BBF80221C41B800B73294 /* DependencyProxyManager.swift in Sources */,
 				5698AE6422193EBC00C30724 /* CellDependencyHolder.swift in Sources */,
 				566A8FF32215D0C500F3ACBF /* CellDependencyConfigurator.swift in Sources */,
 				5667806422108EA4006E4F21 /* WeakBox.swift in Sources */,
@@ -664,7 +664,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5698AE5E221852B500C30724 /* CellDependencyConfiguratorTests.swift in Sources */,
-				56B58D9422107159003E61DF /* IOSDependencyContainerTests.swift in Sources */,
+				56B58D9422107159003E61DF /* DependencyProxyManagerTests.swift in Sources */,
 				5698AE6B22194AEB00C30724 /* CellDoubles.swift in Sources */,
 				566A8FF52215D24400F3ACBF /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);

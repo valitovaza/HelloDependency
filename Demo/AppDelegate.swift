@@ -37,48 +37,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return UINavigationController(rootViewController: rootViewController)
     }
     private func registerDependensies() {
-        addDependencyRegistrationBlocks()
-        IOSDependencyContainer.register()
-    }
-    private func addDependencyRegistrationBlocks() {
-        IOSDependencyContainer.addRegisterationBlock {
-            HelloDependency.register(CounterViewEventHandler.self, {
-                CounterViewEventHandlerImpl(HelloDependency.resolve(CounterView.self),
-                                            HelloDependency.resolve(IncrementCountLabelView.self))
-            })
-        }
-        IOSDependencyContainer.addRegisterationBlock {
-            let counterParentProxy = IOSDependencyContainer.createProxy(for: CounterParentViewController.self)
-            HelloDependency.register(IncrementCountLabelView.self, { counterParentProxy })
-        }
-        IOSDependencyContainer.addRegisterationBlock {
-            let counterProxy = IOSDependencyContainer.createProxy(for: CounterViewController.self)
-            HelloDependency.register(CounterView.self, { counterProxy })
-        }
-        IOSDependencyContainer.addRegisterationBlock {
-            HelloDependency.Single.Weak.register(TableConfigurator.self, {
-                return TableConfiguratorImpl(HelloDependency.resolve(TableRepository.self))
-            })
-            HelloDependency.Single.Weak.register(TableRepository.self, {
-                TableRepositoryImpl()
-            })
-        }
+        HelloDependency.register(CounterViewEventHandler.self, {
+            CounterViewEventHandlerImpl(HelloDependency.resolve(CounterView.self),
+                                        HelloDependency.resolve(IncrementCountLabelView.self))
+        })
+        
+        let counterParentProxy = DependencyProxyManager.createProxy(for: CounterParentViewController.self)
+        HelloDependency.register(IncrementCountLabelView.self, { counterParentProxy })
+        
+        let counterProxy = DependencyProxyManager.createProxy(for: CounterViewController.self)
+        HelloDependency.register(CounterView.self, { counterProxy })
+        
+        HelloDependency.Single.Weak.register(TableConfigurator.self, {
+            return TableConfiguratorImpl(HelloDependency.resolve(TableRepository.self))
+        })
+        HelloDependency.Single.Weak.register(TableRepository.self, {
+            TableRepositoryImpl()
+        })
     }
 }
-extension ViewControllerProxy: IncrementCountLabelView {
+extension DependencyProxy: IncrementCountLabelView {
     func setIncrementCount(text: String) {
         executeOrPostpone {self.incrementCountLabelView?.setIncrementCount(text: text)}
     }
     private var incrementCountLabelView: IncrementCountLabelView? {
-        return viewController as? IncrementCountLabelView
+        return dependency as? IncrementCountLabelView
     }
 }
-extension ViewControllerProxy: CounterView {
+extension DependencyProxy: CounterView {
     func setCountLabel(text: String) {
         executeOrPostpone {self.counterView?.setCountLabel(text: text)}
     }
     private var counterView: CounterView? {
-        return viewController as? CounterView
+        return dependency as? CounterView
     }
 }
 
