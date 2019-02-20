@@ -6,10 +6,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    private var configureManually = false //<----!!! Change to run isolated example
+    private var configureInAppDelegate = false //<----!!! Change to configure in AppDelegate
     
     func applicationDidFinishLaunching(_ application: UIApplication) {
-        if configureManually {
+        if configureInAppDelegate {
             let counterViewController = instantiateCounterViewController()
             
             let eventHandler = CounterViewEventHandlerImpl(WeakBox(counterViewController),
