@@ -56,7 +56,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VhE-1a-DqV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1756" y="860"/>
+            <point key="canvasLocation" x="3489" y="132"/>
         </scene>
         <!--Parent View Controller-->
         <scene sceneID="yuF-ci-tFZ">
@@ -94,7 +94,7 @@
                     </connections>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="2597.5999999999999" y="859.52023988005999"/>
+            <point key="canvasLocation" x="2686" y="132"/>
         </scene>
         <!--Cell View Controller-->
         <scene sceneID="m0D-17-uIh">
@@ -134,7 +134,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CoT-nw-OWc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3405.5999999999999" y="859.52023988005999"/>
+            <point key="canvasLocation" x="4316" y="133"/>
         </scene>
         <!--Cells Embedded Child View Controller-->
         <scene sceneID="Nne-nF-ifw">
@@ -182,7 +182,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5bW-qU-lix" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4252" y="859"/>
+            <point key="canvasLocation" x="5162" y="130"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="m2b-Kl-YGd">
@@ -209,13 +209,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lqx-Fa-2KQ">
-                                <rect key="frame" x="16" y="252" width="343" height="44"/>
+                                <rect key="frame" x="16" y="232" width="343" height="44"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="CoY-Et-zbF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                <state key="normal" title="Open Counter">
+                                <state key="normal" title="Counter">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <state key="highlighted">
@@ -226,13 +226,13 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NlC-HO-jwr">
-                                <rect key="frame" x="16" y="336" width="343" height="44"/>
+                                <rect key="frame" x="16" y="296" width="343" height="44"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="5L0-X3-vsz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                <state key="normal" title="Open Table">
+                                <state key="normal" title="Table">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <state key="highlighted">
@@ -242,13 +242,33 @@
                                     <segue destination="QmB-vG-56P" kind="show" id="nj9-pm-opN"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NPb-Nq-IwE">
+                                <rect key="frame" x="16" y="360" width="343" height="44"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="FsL-g0-nLF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <state key="normal" title="Storyboard Configuration">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="yQP-dc-dmo" kind="show" id="W5i-Xs-7NZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="wgG-cz-yg7" firstAttribute="trailing" secondItem="NPb-Nq-IwE" secondAttribute="trailing" constant="16" id="B5L-12-6Ph"/>
+                            <constraint firstItem="NPb-Nq-IwE" firstAttribute="top" secondItem="NlC-HO-jwr" secondAttribute="bottom" constant="20" id="Egh-E2-Laf"/>
                             <constraint firstItem="NlC-HO-jwr" firstAttribute="leading" secondItem="wgG-cz-yg7" secondAttribute="leading" constant="16" id="Kdg-k9-K2c"/>
                             <constraint firstItem="Lqx-Fa-2KQ" firstAttribute="leading" secondItem="wgG-cz-yg7" secondAttribute="leading" constant="16" id="NBg-l4-RBZ"/>
-                            <constraint firstItem="NlC-HO-jwr" firstAttribute="top" secondItem="Lqx-Fa-2KQ" secondAttribute="bottom" constant="40" id="Nwx-cx-YXw"/>
-                            <constraint firstItem="Lqx-Fa-2KQ" firstAttribute="centerY" secondItem="wgG-cz-yg7" secondAttribute="centerY" multiplier="3/4" id="UnV-pG-QIt"/>
+                            <constraint firstItem="NlC-HO-jwr" firstAttribute="top" secondItem="Lqx-Fa-2KQ" secondAttribute="bottom" constant="20" id="Nwx-cx-YXw"/>
+                            <constraint firstItem="Lqx-Fa-2KQ" firstAttribute="centerY" secondItem="wgG-cz-yg7" secondAttribute="centerY" multiplier="3/4" constant="-20" id="UnV-pG-QIt"/>
+                            <constraint firstItem="NPb-Nq-IwE" firstAttribute="leading" secondItem="wgG-cz-yg7" secondAttribute="leading" constant="16" id="dYF-bX-Bf2"/>
                             <constraint firstItem="wgG-cz-yg7" firstAttribute="trailing" secondItem="Lqx-Fa-2KQ" secondAttribute="trailing" constant="16" id="gi9-gf-qmf"/>
                             <constraint firstItem="wgG-cz-yg7" firstAttribute="trailing" secondItem="NlC-HO-jwr" secondAttribute="trailing" constant="16" id="jfW-cI-hcU"/>
                         </constraints>
@@ -259,6 +279,98 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1TX-Kn-Fgc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1756" y="132.68365817091455"/>
+        </scene>
+        <!--StoryboardCounterParent-->
+        <scene sceneID="hiy-on-7HR">
+            <objects>
+                <viewController id="yQP-dc-dmo" userLabel="StoryboardCounterParent" customClass="StoryboardCounterParentViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eQj-9r-QO0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xfe-tw-UT4">
+                                <rect key="frame" x="166.5" y="301" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lE3-za-2Mk">
+                                <rect key="frame" x="0.0" y="64" width="375" height="197"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="197" id="mXm-uz-7yO"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="uRi-gQ-WGj" kind="embed" id="cao-kQ-0OB"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="lE3-za-2Mk" firstAttribute="trailing" secondItem="j39-H6-zfi" secondAttribute="trailing" id="Iem-pp-P9R"/>
+                            <constraint firstItem="Xfe-tw-UT4" firstAttribute="top" secondItem="lE3-za-2Mk" secondAttribute="bottom" constant="40" id="VPd-lu-apb"/>
+                            <constraint firstItem="lE3-za-2Mk" firstAttribute="leading" secondItem="j39-H6-zfi" secondAttribute="leading" id="Vhb-yt-8uL"/>
+                            <constraint firstItem="lE3-za-2Mk" firstAttribute="top" secondItem="j39-H6-zfi" secondAttribute="top" id="Y0M-54-5US"/>
+                            <constraint firstItem="Xfe-tw-UT4" firstAttribute="centerX" secondItem="j39-H6-zfi" secondAttribute="centerX" id="xMj-Tt-lHj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="j39-H6-zfi"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Counter" id="zzg-VD-SYd"/>
+                    <connections>
+                        <outlet property="incrementCountLabel" destination="Xfe-tw-UT4" id="H5q-TH-Evk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ijF-cA-Ipl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="Mp7-dO-i8U" customClass="StoryboardCounterParentConfigurator" customModule="Demo" customModuleProvider="target">
+                    <connections>
+                        <outlet property="vc" destination="yQP-dc-dmo" id="cI2-8c-gK4"/>
+                    </connections>
+                </customObject>
+            </objects>
+            <point key="canvasLocation" x="2686" y="1090"/>
+        </scene>
+        <!--StoryboardCounter-->
+        <scene sceneID="DH8-ZZ-SNo">
+            <objects>
+                <viewController id="uRi-gQ-WGj" userLabel="StoryboardCounter" customClass="StoryboardCounterViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hut-rn-ZKL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="197"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OqZ-dZ-zRy">
+                                <rect key="frame" x="182.5" y="68.5" width="10.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s8w-kI-DK0">
+                                <rect key="frame" x="153" y="129" width="69" height="30"/>
+                                <state key="normal" title="Increment"/>
+                                <connections>
+                                    <action selector="incrementAction:" destination="uRi-gQ-WGj" eventType="touchUpInside" id="XbY-fW-TxP"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="s8w-kI-DK0" firstAttribute="centerX" secondItem="7xP-NE-gZR" secondAttribute="centerX" id="9eK-o0-cMB"/>
+                            <constraint firstItem="s8w-kI-DK0" firstAttribute="top" secondItem="OqZ-dZ-zRy" secondAttribute="bottom" constant="40" id="O49-ml-z7J"/>
+                            <constraint firstItem="OqZ-dZ-zRy" firstAttribute="centerY" secondItem="7xP-NE-gZR" secondAttribute="centerY" constant="-20" id="SbU-CH-sXA"/>
+                            <constraint firstItem="OqZ-dZ-zRy" firstAttribute="centerX" secondItem="7xP-NE-gZR" secondAttribute="centerX" id="igV-AA-RuP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7xP-NE-gZR"/>
+                    </view>
+                    <connections>
+                        <outlet property="countLabel" destination="OqZ-dZ-zRy" id="97s-mQ-BLx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aws-0G-zrG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="ain-0l-APH" customClass="StoryboardCounterConfigurator" customModule="Demo" customModuleProvider="target">
+                    <connections>
+                        <outlet property="vc" destination="uRi-gQ-WGj" id="LeN-Pc-iNR"/>
+                    </connections>
+                </customObject>
+            </objects>
+            <point key="canvasLocation" x="3489" y="878"/>
         </scene>
         <!--Counter-->
         <scene sceneID="cyf-9n-oPP">
@@ -313,7 +425,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mx8-Qe-mfD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2597.5999999999999" y="131.78410794602701"/>
+            <point key="canvasLocation" x="2686" y="-850"/>
         </scene>
         <!--Counter View Controller-->
         <scene sceneID="eZD-4f-xGa">
@@ -352,7 +464,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NKL-N3-XEa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3406" y="-80"/>
+            <point key="canvasLocation" x="3490" y="-1061"/>
         </scene>
         <!--Counter Child View Controller-->
         <scene sceneID="js8-pz-4Te">
@@ -393,6 +505,7 @@
                             <constraint firstAttribute="trailing" secondItem="bbS-P0-6Ei" secondAttribute="trailing" constant="16" id="ti4-dB-Mfx"/>
                             <constraint firstItem="bbS-P0-6Ei" firstAttribute="leading" secondItem="kCH-BF-qr8" secondAttribute="leadingMargin" id="xrd-pB-rbM"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="adn-5c-cbA"/>
                     </view>
                     <connections>
                         <outlet property="countLabel" destination="bbS-P0-6Ei" id="fqZ-8P-vwe"/>
@@ -401,7 +514,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="doE-Wy-1Qs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3406" y="131"/>
+            <point key="canvasLocation" x="3490" y="-851"/>
         </scene>
     </scenes>
 </document>

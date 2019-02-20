@@ -10,6 +10,10 @@
 		564BBF82221C496D00B73294 /* CounterChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564BBF81221C496D00B73294 /* CounterChildViewController.swift */; };
 		564BBF87221C5A6900B73294 /* HelloDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564BBF86221C5A6900B73294 /* HelloDependency.swift */; };
 		564BBF89221C5AA300B73294 /* HelloDependencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564BBF88221C5AA300B73294 /* HelloDependencyTests.swift */; };
+		565EA39D221D928800A8FBCD /* StoryboardCounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565EA39C221D928800A8FBCD /* StoryboardCounterViewController.swift */; };
+		565EA39F221D92A600A8FBCD /* StoryboardCounterParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565EA39E221D92A600A8FBCD /* StoryboardCounterParentViewController.swift */; };
+		565EA3A1221D946100A8FBCD /* StoryboardCounterParentConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565EA3A0221D946100A8FBCD /* StoryboardCounterParentConfigurator.swift */; };
+		565EA3A3221D94C100A8FBCD /* StoryboardCounterConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565EA3A2221D94C100A8FBCD /* StoryboardCounterConfigurator.swift */; };
 		5667805E22108B80006E4F21 /* IsolatedCounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5667805D22108B80006E4F21 /* IsolatedCounterViewController.swift */; };
 		566A8FF32215D0C500F3ACBF /* CellDependencyConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566A8FF22215D0C500F3ACBF /* CellDependencyConfigurator.swift */; };
 		566A8FF52215D24400F3ACBF /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566A8FF42215D24400F3ACBF /* XCTestCase+MemoryLeakTracking.swift */; };
@@ -106,6 +110,10 @@
 		564BBF81221C496D00B73294 /* CounterChildViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterChildViewController.swift; sourceTree = "<group>"; };
 		564BBF86221C5A6900B73294 /* HelloDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloDependency.swift; sourceTree = "<group>"; };
 		564BBF88221C5AA300B73294 /* HelloDependencyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloDependencyTests.swift; sourceTree = "<group>"; };
+		565EA39C221D928800A8FBCD /* StoryboardCounterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardCounterViewController.swift; sourceTree = "<group>"; };
+		565EA39E221D92A600A8FBCD /* StoryboardCounterParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardCounterParentViewController.swift; sourceTree = "<group>"; };
+		565EA3A0221D946100A8FBCD /* StoryboardCounterParentConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardCounterParentConfigurator.swift; sourceTree = "<group>"; };
+		565EA3A2221D94C100A8FBCD /* StoryboardCounterConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardCounterConfigurator.swift; sourceTree = "<group>"; };
 		5667805B221089EC006E4F21 /* DependencyProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyProxy.swift; sourceTree = "<group>"; };
 		5667805D22108B80006E4F21 /* IsolatedCounterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsolatedCounterViewController.swift; sourceTree = "<group>"; };
 		5667806322108EA4006E4F21 /* WeakBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakBox.swift; sourceTree = "<group>"; };
@@ -212,6 +220,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		565EA399221D919400A8FBCD /* StoryboardCounter */ = {
+			isa = PBXGroup;
+			children = (
+				565EA39E221D92A600A8FBCD /* StoryboardCounterParentViewController.swift */,
+				565EA3A0221D946100A8FBCD /* StoryboardCounterParentConfigurator.swift */,
+				565EA39C221D928800A8FBCD /* StoryboardCounterViewController.swift */,
+				565EA3A2221D94C100A8FBCD /* StoryboardCounterConfigurator.swift */,
+			);
+			path = StoryboardCounter;
+			sourceTree = "<group>";
+		};
 		5698AE282217E65A00C30724 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -381,6 +400,7 @@
 				56C2C2A22212F6F100C521A9 /* Counter */,
 				56C2C2A32212F72300C521A9 /* IsolatedCounter */,
 				56C2C2A42212F7C200C521A9 /* Table */,
+				565EA399221D919400A8FBCD /* StoryboardCounter */,
 				56FCBC61220DBF440012143A /* Main.storyboard */,
 				56FCBC64220DBF450012143A /* Assets.xcassets */,
 				56FCBC66220DBF450012143A /* LaunchScreen.storyboard */,
@@ -678,13 +698,17 @@
 			files = (
 				56C2C2B822132D2800C521A9 /* TableViewConfiguration.swift in Sources */,
 				56C2C2BA221330A200C521A9 /* CellContentEmbeddedChildViewController.swift in Sources */,
+				565EA3A3221D94C100A8FBCD /* StoryboardCounterConfigurator.swift in Sources */,
 				56C2C2B22213022B00C521A9 /* CellViewController.swift in Sources */,
 				56C2C2AD2212FC4200C521A9 /* CounterTableViewCell.swift in Sources */,
 				56C2C2A62212F86100C521A9 /* TableDataSource.swift in Sources */,
 				5667805E22108B80006E4F21 /* IsolatedCounterViewController.swift in Sources */,
+				565EA3A1221D946100A8FBCD /* StoryboardCounterParentConfigurator.swift in Sources */,
 				56C2C2B62213056700C521A9 /* TableRepository.swift in Sources */,
 				569D85072210459F00043BC2 /* CounterParentViewController.swift in Sources */,
+				565EA39F221D92A600A8FBCD /* StoryboardCounterParentViewController.swift in Sources */,
 				56C2C2B42213040B00C521A9 /* CellViewEventHandler.swift in Sources */,
+				565EA39D221D928800A8FBCD /* StoryboardCounterViewController.swift in Sources */,
 				569D850322101C1B00043BC2 /* CounterViewController.swift in Sources */,
 				564BBF82221C496D00B73294 /* CounterChildViewController.swift in Sources */,
 				56FCBC5E220DBF440012143A /* AppDelegate.swift in Sources */,
