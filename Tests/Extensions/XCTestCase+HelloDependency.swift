@@ -9,7 +9,7 @@ extension XCTestCase {
     struct TestStruct: Equatable {}
     
     func reset() {
-        HelloDependency.reset()
+        HelloDependencyContainer.reset()
     }
     
     func assertFatalErrorOnResolve<T>(_ type: T.Type,
@@ -19,7 +19,7 @@ extension XCTestCase {
         assertFatalErrorOnResolve(type,
                                   expectedMessage: expectedMessage,
                                   file: file, line: line) {
-            HelloDependency.resolve(type)
+            HelloDependencyContainer.resolve(type)
         }
     }
     private func assertFatalErrorOnResolve<T>(_ type: T.Type,
@@ -28,7 +28,7 @@ extension XCTestCase {
                                               line: UInt = #line,
                                               _ factory: ()->(T)) {
         let exp = expectation(description: "Wait fatal error")
-        HelloDependency.changeFatalErrorFunc(defaultValue(for: type)) { (msg) in
+        HelloDependencyContainer.changeFatalErrorFunc(defaultValue(for: type)) { (msg) in
             XCTAssertEqual(msg, expectedMessage, file: file, line: line)
             exp.fulfill()
         }
@@ -47,7 +47,7 @@ extension XCTestCase {
         assertFatalErrorOnResolve(type,
                                   expectedMessage: expectedMessage,
                                   file: file, line: line) {
-            HelloDependency.resolve(type, forIdentifier: identifier)
+            HelloDependencyContainer.resolve(type, forIdentifier: identifier)
         }
     }
     
@@ -56,7 +56,7 @@ extension XCTestCase {
                         line: UInt = #line,
                         _ factory: ()->(T)) -> T? {
         var fatalErrorOccured = false
-        HelloDependency.changeFatalErrorFunc(defaultValue(for: type)) { (_) in
+        HelloDependencyContainer.changeFatalErrorFunc(defaultValue(for: type)) { (_) in
             fatalErrorOccured = true
         }
         let dependency = factory()
@@ -86,28 +86,28 @@ extension XCTestCase {
     }
     
     func register<T>(_ type: T.Type, _ dependency: T) {
-        HelloDependency.register(type, dependency)
+        HelloDependencyContainer.register(type, dependency)
     }
     
     func register<T>(_ type: T.Type,
                      forIdentifier identifier: String,
                      _ dependency: T) {
-        HelloDependency.register(type, forIdentifier: identifier, dependency)
+        HelloDependencyContainer.register(type, forIdentifier: identifier, dependency)
     }
     
     func register<T>(_ type: T.Type, _ factory: @escaping ()->(T)) {
-        HelloDependency.register(type, factory)
+        HelloDependencyContainer.register(type, factory)
     }
     
     func register<T>(_ type: T.Type, forIdentifier identifier: String,
                      _ factory: @escaping ()->(T)) {
-        HelloDependency.register(type, forIdentifier: identifier, factory)
+        HelloDependencyContainer.register(type, forIdentifier: identifier, factory)
     }
     
     func resolve<T>(_ type: T.Type,
                     file: StaticString = #file, line: UInt = #line) -> T? {
         return safeResolve(type, file: file, line: line) {
-            HelloDependency.resolve(type)
+            HelloDependencyContainer.resolve(type)
         }
     }
     
@@ -116,39 +116,39 @@ extension XCTestCase {
                     file: StaticString = #file,
                     line: UInt = #line) -> T? {
         return safeResolve(type, file: file, line: line) {
-            HelloDependency.resolve(type, forIdentifier: identifier)
+            HelloDependencyContainer.resolve(type, forIdentifier: identifier)
         }
     }
     
     func release<T>(_ type: T.Type) {
-        HelloDependency.release(type)
+        HelloDependencyContainer.release(type)
     }
     
     func release<T>(_ type: T.Type, forIdentifier identifier: String) {
-        HelloDependency.release(type, forIdentifier: identifier)
+        HelloDependencyContainer.release(type, forIdentifier: identifier)
     }
     
     func clear() {
-        HelloDependency.clear()
+        HelloDependencyContainer.clear()
     }
     
     enum Single {
         static func register<T>(_ type: T.Type, _ factory: @escaping ()->(T)) {
-            HelloDependency.Single.register(type, factory)
+            HelloDependencyContainer.Single.register(type, factory)
         }
         static func register<T>(_ type: T.Type, forIdentifier identifier: String,
                                 _ factory: @escaping ()->(T)) {
-            HelloDependency.Single.register(type, forIdentifier: identifier, factory)
+            HelloDependencyContainer.Single.register(type, forIdentifier: identifier, factory)
         }
         
         enum Weak {
             static func register<T>(_ type: T.Type, _ factory: @escaping ()->(T)) {
-                HelloDependency.Single.Weak.register(type, factory)
+                HelloDependencyContainer.Single.Weak.register(type, factory)
             }
             static func register<T>(_ type: T.Type,
                                     forIdentifier identifier: String,
                                     _ factory: @escaping ()->(T)) {
-                HelloDependency.Single.Weak.register(type, forIdentifier: identifier, factory)
+                HelloDependencyContainer.Single.Weak.register(type, forIdentifier: identifier, factory)
             }
         }
     }

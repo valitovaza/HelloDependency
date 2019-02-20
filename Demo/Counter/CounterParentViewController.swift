@@ -1,5 +1,5 @@
 import UIKit
-import HelloContainer
+import HelloDependency
 
 class CounterParentViewController: UIViewController {
 
@@ -7,7 +7,7 @@ class CounterParentViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        DependencyProxyManager.dependencyReady(self)
+        HelloDependency.dependencyReady(self)
     }
 }
 extension CounterParentViewController: IncrementCountLabelView {

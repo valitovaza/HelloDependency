@@ -1,5 +1,5 @@
 import XCTest
-@testable import HelloContainer
+@testable import HelloDependency
 
 class DependencyProxyManagerTests: XCTestCase {
     
@@ -20,8 +20,8 @@ class DependencyProxyManagerTests: XCTestCase {
     }
     
     func test_dependencyReady_doesNotRetainObjectAfterCreateProxy() {
-        _ = DependencyProxyManager.createProxy(for: UIViewController.self)
-        _ = DependencyProxyManager.createProxy(for: UIViewController.self,
+        _ = DependencyProxyManager.createProxy(for: ClassToProxy.self)
+        _ = DependencyProxyManager.createProxy(for: ClassToProxy.self,
                                                identifier: "test")
         var obj: ClassToProxy! = ClassToProxy()
         weak var weakObj = obj

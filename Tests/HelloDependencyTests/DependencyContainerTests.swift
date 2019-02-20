@@ -1,6 +1,6 @@
 import XCTest
 
-class DependencyTests: XCTestCase {
+class DependencyContainerTests: XCTestCase {
     override func setUp() {
         reset()
     }

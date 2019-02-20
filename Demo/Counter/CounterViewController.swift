@@ -1,6 +1,5 @@
 import UIKit
 import HelloDependency
-import HelloContainer
 
 class CounterViewController: UIViewController {
     
@@ -14,7 +13,7 @@ class CounterViewController: UIViewController {
         eventHandler.onDidLoad()
         
         //configuration should work even after resolving
-        DependencyProxyManager.dependencyReady(self)
+        HelloDependency.dependencyReady(self)
     }
     
     @IBAction func incrementAction(_ sender: Any) {

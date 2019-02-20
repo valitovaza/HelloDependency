@@ -7,18 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		564BBF80221C41B800B73294 /* DependencyProxyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564BBF7F221C41B800B73294 /* DependencyProxyManager.swift */; };
 		564BBF82221C496D00B73294 /* CounterChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564BBF81221C496D00B73294 /* CounterChildViewController.swift */; };
-		5667805C221089EC006E4F21 /* DependencyProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5667805B221089EC006E4F21 /* DependencyProxy.swift */; };
+		564BBF87221C5A6900B73294 /* HelloDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564BBF86221C5A6900B73294 /* HelloDependency.swift */; };
+		564BBF89221C5AA300B73294 /* HelloDependencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564BBF88221C5AA300B73294 /* HelloDependencyTests.swift */; };
 		5667805E22108B80006E4F21 /* IsolatedCounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5667805D22108B80006E4F21 /* IsolatedCounterViewController.swift */; };
 		5667806422108EA4006E4F21 /* WeakBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5667806322108EA4006E4F21 /* WeakBox.swift */; };
 		566A8FF32215D0C500F3ACBF /* CellDependencyConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566A8FF22215D0C500F3ACBF /* CellDependencyConfigurator.swift */; };
 		566A8FF52215D24400F3ACBF /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566A8FF42215D24400F3ACBF /* XCTestCase+MemoryLeakTracking.swift */; };
 		566DD6C8220EE18E00C0E41B /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566DD6C7220EE18E00C0E41B /* Dependency.swift */; };
-		566DD6CA220EE79C00C0E41B /* HelloDependency+Single.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566DD6C9220EE79C00C0E41B /* HelloDependency+Single.swift */; };
-		566DD6CE220EE88E00C0E41B /* HelloDependencySingleDependencyRegistrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566DD6CD220EE88E00C0E41B /* HelloDependencySingleDependencyRegistrationTests.swift */; };
+		566DD6CE220EE88E00C0E41B /* HelloDependencyContainerSingleDependencyRegistrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566DD6CD220EE88E00C0E41B /* HelloDependencyContainerSingleDependencyRegistrationTests.swift */; };
 		566DD6D0220EF7C800C0E41B /* SingleDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566DD6CF220EF7C800C0E41B /* SingleDependency.swift */; };
-		566DD6D4220F3B3E00C0E41B /* HelloDependencyWeakRegistrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566DD6D3220F3B3E00C0E41B /* HelloDependencyWeakRegistrationTests.swift */; };
+		566DD6D4220F3B3E00C0E41B /* HelloDependencyContainerWeakRegistrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566DD6D3220F3B3E00C0E41B /* HelloDependencyContainerWeakRegistrationTests.swift */; };
 		56806AC2221756AB00AD24C9 /* HelloDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56FCBC76220DBFDB0012143A /* HelloDependency.framework */; };
 		5698AE312217F14E00C30724 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 5698AE2F2217F14E00C30724 /* LICENSE */; };
 		5698AE322217F14E00C30724 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5698AE302217F14E00C30724 /* README.md */; };
@@ -28,7 +27,7 @@
 		5698AE512217F70E00C30724 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5698AE502217F70E00C30724 /* Default-568h@2x.png */; };
 		5698AE572218147B00C30724 /* XCTestCase+HelloDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5698AE552218147800C30724 /* XCTestCase+HelloDependency.swift */; };
 		5698AE5A2218192E00C30724 /* XCTestCase+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5698AE592218192E00C30724 /* XCTestCase+.swift */; };
-		5698AE5C22181AE200C30724 /* DependencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5698AE5B22181AE200C30724 /* DependencyTests.swift */; };
+		5698AE5C22181AE200C30724 /* DependencyContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5698AE5B22181AE200C30724 /* DependencyContainerTests.swift */; };
 		5698AE5E221852B500C30724 /* CellDependencyConfiguratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566A8FF0221589AA00F3ACBF /* CellDependencyConfiguratorTests.swift */; };
 		5698AE6422193EBC00C30724 /* CellDependencyHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5698AE6222193EB800C30724 /* CellDependencyHolder.swift */; };
 		5698AE662219429200C30724 /* ArgumentsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5698AE652219429200C30724 /* ArgumentsContainer.swift */; };
@@ -38,7 +37,6 @@
 		569D850522101CF800043BC2 /* CounterViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569D850422101CF800043BC2 /* CounterViewEventHandler.swift */; };
 		569D85072210459F00043BC2 /* CounterParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569D85062210459F00043BC2 /* CounterParentViewController.swift */; };
 		56B58D8D22107159003E61DF /* HelloContainer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56B58D8422107159003E61DF /* HelloContainer.framework */; };
-		56B58D9422107159003E61DF /* DependencyProxyManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B58D9322107159003E61DF /* DependencyProxyManagerTests.swift */; };
 		56B58D9922107159003E61DF /* HelloContainer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56B58D8422107159003E61DF /* HelloContainer.framework */; };
 		56B58D9A22107159003E61DF /* HelloContainer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 56B58D8422107159003E61DF /* HelloContainer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		56C2C2A62212F86100C521A9 /* TableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2C2A52212F86100C521A9 /* TableDataSource.swift */; };
@@ -50,14 +48,17 @@
 		56C2C2B62213056700C521A9 /* TableRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2C2B52213056700C521A9 /* TableRepository.swift */; };
 		56C2C2B822132D2800C521A9 /* TableViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2C2B722132D2800C521A9 /* TableViewConfiguration.swift */; };
 		56C2C2BA221330A200C521A9 /* CellContentEmbeddedChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2C2B9221330A200C521A9 /* CellContentEmbeddedChildViewController.swift */; };
+		56DC865F221D791B006CE23B /* DependencyProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5667805B221089EC006E4F21 /* DependencyProxy.swift */; };
+		56DC8660221D791D006CE23B /* DependencyProxyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564BBF7F221C41B800B73294 /* DependencyProxyManager.swift */; };
+		56DC8661221D7930006CE23B /* DependencyProxyManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B58D9322107159003E61DF /* DependencyProxyManagerTests.swift */; };
 		56FCBC5E220DBF440012143A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FCBC5D220DBF440012143A /* AppDelegate.swift */; };
 		56FCBC63220DBF440012143A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56FCBC61220DBF440012143A /* Main.storyboard */; };
 		56FCBC65220DBF450012143A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56FCBC64220DBF450012143A /* Assets.xcassets */; };
 		56FCBC68220DBF450012143A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56FCBC66220DBF450012143A /* LaunchScreen.storyboard */; };
 		56FCBC7D220DBFDB0012143A /* HelloDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56FCBC76220DBFDB0012143A /* HelloDependency.framework */; };
 		56FCBC7E220DBFDB0012143A /* HelloDependency.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 56FCBC76220DBFDB0012143A /* HelloDependency.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		56FCBC90220DC1250012143A /* HelloDependencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FCBC8F220DC1250012143A /* HelloDependencyTests.swift */; };
-		56FCBC92220DC1E10012143A /* HelloDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FCBC91220DC1E10012143A /* HelloDependency.swift */; };
+		56FCBC90220DC1250012143A /* HelloDependencyContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FCBC8F220DC1250012143A /* HelloDependencyContainerTests.swift */; };
+		56FCBC92220DC1E10012143A /* HelloDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FCBC91220DC1E10012143A /* HelloDependencyContainer.swift */; };
 		56FCBC94220DC25A0012143A /* HelloDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56FCBC76220DBFDB0012143A /* HelloDependency.framework */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +104,8 @@
 /* Begin PBXFileReference section */
 		564BBF7F221C41B800B73294 /* DependencyProxyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyProxyManager.swift; sourceTree = "<group>"; };
 		564BBF81221C496D00B73294 /* CounterChildViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterChildViewController.swift; sourceTree = "<group>"; };
+		564BBF86221C5A6900B73294 /* HelloDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloDependency.swift; sourceTree = "<group>"; };
+		564BBF88221C5AA300B73294 /* HelloDependencyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloDependencyTests.swift; sourceTree = "<group>"; };
 		5667805B221089EC006E4F21 /* DependencyProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyProxy.swift; sourceTree = "<group>"; };
 		5667805D22108B80006E4F21 /* IsolatedCounterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsolatedCounterViewController.swift; sourceTree = "<group>"; };
 		5667806322108EA4006E4F21 /* WeakBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakBox.swift; sourceTree = "<group>"; };
@@ -110,10 +113,9 @@
 		566A8FF22215D0C500F3ACBF /* CellDependencyConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellDependencyConfigurator.swift; sourceTree = "<group>"; };
 		566A8FF42215D24400F3ACBF /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 		566DD6C7220EE18E00C0E41B /* Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependency.swift; sourceTree = "<group>"; };
-		566DD6C9220EE79C00C0E41B /* HelloDependency+Single.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HelloDependency+Single.swift"; sourceTree = "<group>"; };
-		566DD6CD220EE88E00C0E41B /* HelloDependencySingleDependencyRegistrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloDependencySingleDependencyRegistrationTests.swift; sourceTree = "<group>"; };
+		566DD6CD220EE88E00C0E41B /* HelloDependencyContainerSingleDependencyRegistrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloDependencyContainerSingleDependencyRegistrationTests.swift; sourceTree = "<group>"; };
 		566DD6CF220EF7C800C0E41B /* SingleDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleDependency.swift; sourceTree = "<group>"; };
-		566DD6D3220F3B3E00C0E41B /* HelloDependencyWeakRegistrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloDependencyWeakRegistrationTests.swift; sourceTree = "<group>"; };
+		566DD6D3220F3B3E00C0E41B /* HelloDependencyContainerWeakRegistrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloDependencyContainerWeakRegistrationTests.swift; sourceTree = "<group>"; };
 		5698AE2F2217F14E00C30724 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		5698AE302217F14E00C30724 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5698AE332217F15F00C30724 /* HelloDependency.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HelloDependency.podspec; sourceTree = "<group>"; };
@@ -124,7 +126,7 @@
 		5698AE502217F70E00C30724 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		5698AE552218147800C30724 /* XCTestCase+HelloDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+HelloDependency.swift"; sourceTree = "<group>"; };
 		5698AE592218192E00C30724 /* XCTestCase+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+.swift"; sourceTree = "<group>"; };
-		5698AE5B22181AE200C30724 /* DependencyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyTests.swift; sourceTree = "<group>"; };
+		5698AE5B22181AE200C30724 /* DependencyContainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainerTests.swift; sourceTree = "<group>"; };
 		5698AE6222193EB800C30724 /* CellDependencyHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellDependencyHolder.swift; sourceTree = "<group>"; };
 		5698AE652219429200C30724 /* ArgumentsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArgumentsContainer.swift; sourceTree = "<group>"; };
 		5698AE672219432700C30724 /* CellDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellDependency.swift; sourceTree = "<group>"; };
@@ -155,8 +157,8 @@
 		56FCBC79220DBFDB0012143A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		56FCBC87220DC0D10012143A /* HelloDependencyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelloDependencyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		56FCBC8B220DC0D10012143A /* HelloDependencyTestsInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = HelloDependencyTestsInfo.plist; sourceTree = "<group>"; };
-		56FCBC8F220DC1250012143A /* HelloDependencyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloDependencyTests.swift; sourceTree = "<group>"; };
-		56FCBC91220DC1E10012143A /* HelloDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloDependency.swift; sourceTree = "<group>"; };
+		56FCBC8F220DC1250012143A /* HelloDependencyContainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloDependencyContainerTests.swift; sourceTree = "<group>"; };
+		56FCBC91220DC1E10012143A /* HelloDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloDependencyContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,8 +235,6 @@
 			isa = PBXGroup;
 			children = (
 				5667806322108EA4006E4F21 /* WeakBox.swift */,
-				5667805B221089EC006E4F21 /* DependencyProxy.swift */,
-				564BBF7F221C41B800B73294 /* DependencyProxyManager.swift */,
 				566A8FF22215D0C500F3ACBF /* CellDependencyConfigurator.swift */,
 				5698AE672219432700C30724 /* CellDependency.swift */,
 				5698AE652219429200C30724 /* ArgumentsContainer.swift */,
@@ -258,10 +258,12 @@
 		5698AE2C2217EA7C00C30724 /* HelloDependencyTests */ = {
 			isa = PBXGroup;
 			children = (
-				56FCBC8F220DC1250012143A /* HelloDependencyTests.swift */,
-				566DD6CD220EE88E00C0E41B /* HelloDependencySingleDependencyRegistrationTests.swift */,
-				566DD6D3220F3B3E00C0E41B /* HelloDependencyWeakRegistrationTests.swift */,
-				5698AE5B22181AE200C30724 /* DependencyTests.swift */,
+				564BBF88221C5AA300B73294 /* HelloDependencyTests.swift */,
+				56FCBC8F220DC1250012143A /* HelloDependencyContainerTests.swift */,
+				566DD6CD220EE88E00C0E41B /* HelloDependencyContainerSingleDependencyRegistrationTests.swift */,
+				566DD6D3220F3B3E00C0E41B /* HelloDependencyContainerWeakRegistrationTests.swift */,
+				5698AE5B22181AE200C30724 /* DependencyContainerTests.swift */,
+				56B58D9322107159003E61DF /* DependencyProxyManagerTests.swift */,
 			);
 			path = HelloDependencyTests;
 			sourceTree = "<group>";
@@ -269,7 +271,6 @@
 		5698AE2D2217EFCF00C30724 /* HelloContainerTests */ = {
 			isa = PBXGroup;
 			children = (
-				56B58D9322107159003E61DF /* DependencyProxyManagerTests.swift */,
 				566A8FF0221589AA00F3ACBF /* CellDependencyConfiguratorTests.swift */,
 				5698AE69221949FD00C30724 /* CellDoubles.swift */,
 			);
@@ -392,10 +393,12 @@
 		56FCBC77220DBFDB0012143A /* HelloDependency */ = {
 			isa = PBXGroup;
 			children = (
+				564BBF86221C5A6900B73294 /* HelloDependency.swift */,
 				566DD6C7220EE18E00C0E41B /* Dependency.swift */,
 				566DD6CF220EF7C800C0E41B /* SingleDependency.swift */,
-				56FCBC91220DC1E10012143A /* HelloDependency.swift */,
-				566DD6C9220EE79C00C0E41B /* HelloDependency+Single.swift */,
+				56FCBC91220DC1E10012143A /* HelloDependencyContainer.swift */,
+				5667805B221089EC006E4F21 /* DependencyProxy.swift */,
+				564BBF7F221C41B800B73294 /* DependencyProxyManager.swift */,
 			);
 			path = HelloDependency;
 			sourceTree = "<group>";
@@ -653,8 +656,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5698AE662219429200C30724 /* ArgumentsContainer.swift in Sources */,
-				5667805C221089EC006E4F21 /* DependencyProxy.swift in Sources */,
-				564BBF80221C41B800B73294 /* DependencyProxyManager.swift in Sources */,
 				5698AE6422193EBC00C30724 /* CellDependencyHolder.swift in Sources */,
 				566A8FF32215D0C500F3ACBF /* CellDependencyConfigurator.swift in Sources */,
 				5667806422108EA4006E4F21 /* WeakBox.swift in Sources */,
@@ -667,7 +668,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5698AE5E221852B500C30724 /* CellDependencyConfiguratorTests.swift in Sources */,
-				56B58D9422107159003E61DF /* DependencyProxyManagerTests.swift in Sources */,
 				5698AE6B22194AEB00C30724 /* CellDoubles.swift in Sources */,
 				566A8FF52215D24400F3ACBF /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);
@@ -698,10 +698,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				564BBF87221C5A6900B73294 /* HelloDependency.swift in Sources */,
+				56DC8660221D791D006CE23B /* DependencyProxyManager.swift in Sources */,
 				566DD6C8220EE18E00C0E41B /* Dependency.swift in Sources */,
-				56FCBC92220DC1E10012143A /* HelloDependency.swift in Sources */,
-				566DD6CA220EE79C00C0E41B /* HelloDependency+Single.swift in Sources */,
+				56FCBC92220DC1E10012143A /* HelloDependencyContainer.swift in Sources */,
 				566DD6D0220EF7C800C0E41B /* SingleDependency.swift in Sources */,
+				56DC865F221D791B006CE23B /* DependencyProxy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -709,10 +711,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				566DD6CE220EE88E00C0E41B /* HelloDependencySingleDependencyRegistrationTests.swift in Sources */,
-				5698AE5C22181AE200C30724 /* DependencyTests.swift in Sources */,
-				56FCBC90220DC1250012143A /* HelloDependencyTests.swift in Sources */,
-				566DD6D4220F3B3E00C0E41B /* HelloDependencyWeakRegistrationTests.swift in Sources */,
+				566DD6CE220EE88E00C0E41B /* HelloDependencyContainerSingleDependencyRegistrationTests.swift in Sources */,
+				56DC8661221D7930006CE23B /* DependencyProxyManagerTests.swift in Sources */,
+				5698AE5C22181AE200C30724 /* DependencyContainerTests.swift in Sources */,
+				564BBF89221C5AA300B73294 /* HelloDependencyTests.swift in Sources */,
+				56FCBC90220DC1250012143A /* HelloDependencyContainerTests.swift in Sources */,
+				566DD6D4220F3B3E00C0E41B /* HelloDependencyContainerWeakRegistrationTests.swift in Sources */,
 				5698AE572218147B00C30724 /* XCTestCase+HelloDependency.swift in Sources */,
 				5698AE5A2218192E00C30724 /* XCTestCase+.swift in Sources */,
 			);
@@ -870,7 +874,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = valitovaza.IOSDependencyContainerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = valitovaza.HelloContainerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -891,7 +895,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = valitovaza.IOSDependencyContainerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = valitovaza.HelloContainerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -1,6 +1,5 @@
 import UIKit
 import HelloDependency
-import HelloContainer
 
 class CounterChildViewController: UIViewController {
     
@@ -17,7 +16,7 @@ class CounterChildViewController: UIViewController {
         super.viewDidLoad()
         eventHandler = HelloDependency.resolve(CounterViewEventHandler.self, forIdentifier: String(describing: CounterChildViewController.self))
         eventHandler.onDidLoad()
-        DependencyProxyManager.dependencyReady(self)
+        HelloDependency.dependencyReady(self)
     }
 }
 extension CounterChildViewController: CounterView {

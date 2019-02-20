@@ -1,6 +1,6 @@
 import XCTest
 
-class HelloDependencyWeakRegistrationTests: DependencyTests {
+class HelloDependencyContainerWeakRegistrationTests: DependencyContainerTests {
     
     func test_register_doesNotRetainReference() {
         assertWeakDependency(register: {

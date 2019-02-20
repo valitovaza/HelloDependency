@@ -1,6 +1,6 @@
 import XCTest
 
-class HelloDependencySingleDependencyRegistrationTests: DependencyTests {
+class HelloDependencyContainerSingleDependencyRegistrationTests: DependencyContainerTests {
     
     func test_resolve_returnsSameDependencyMultipleTimes() {
         assertThatResolveReturnsSameDependency2Times(registerBlock: {

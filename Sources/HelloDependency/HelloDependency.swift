@@ -1,106 +1,100 @@
+public typealias Indentifier = String
+
+internal protocol HelloDependencyContainerProtocol {
+    static func register<T>(_ type: T.Type, _ dependency: T)
+    static func resolve<T>(_ type: T.Type) -> T
+    static func release<T>(_ type: T.Type)
+    static func clear()
+    
+    static func register<T>(_ type: T.Type, forIdentifier identifier: Indentifier, _ dependency: T)
+    static func resolve<T>(_ type: T.Type, forIdentifier identifier: Indentifier) -> T
+    static func release<T>(_ type: T.Type, forIdentifier identifier: Indentifier)
+    
+    static func register<T>(_ type: T.Type, _ factory: @escaping ()->(T))
+    static func register<T>(_ type: T.Type, forIdentifier identifier: Indentifier, _ factory: @escaping ()->(T))
+}
+extension HelloDependencyContainer: HelloDependencyContainerProtocol {}
+
+internal protocol HelloDependencySingleContainerProtocol {
+    static func register<T>(_ type: T.Type, _ factory: @escaping ()->(T))
+    static func register<T>(_ type: T.Type, forIdentifier identifier: Indentifier, _ factory: @escaping ()->(T))
+}
+extension HelloDependencyContainer.Single: HelloDependencySingleContainerProtocol {}
+
+internal protocol HelloDependencyWeakContainerProtocol {
+    static func register<T>(_ type: T.Type, _ factory: @escaping ()->(T))
+    static func register<T>(_ type: T.Type, forIdentifier identifier: Indentifier, _ factory: @escaping ()->(T))
+}
+extension HelloDependencyContainer.Single.Weak: HelloDependencyWeakContainerProtocol {}
+
 public enum HelloDependency {
-    public typealias Key = String
-    public typealias Indentifier = String
-    
-    internal static var savedDependencies: [Key: Dependency] = [:]
-    internal static var savedSingleDependencies: [Key: SingleDependency] = [:]
-    
-    internal static var fatalErrorFunc = internalFatalError
-    internal static var valueOnFatalError: Any?
+    internal static var container: HelloDependencyContainerProtocol.Type = HelloDependencyContainer.self
+    internal static var singleContainer: HelloDependencySingleContainerProtocol.Type = HelloDependencyContainer.Single.self
+    internal static var weakContainer: HelloDependencyWeakContainerProtocol.Type = HelloDependencyContainer.Single.Weak.self
+    internal static var dependencyManager: DependencyProxyManagerProtocol.Type = DependencyProxyManager.self
 }
-extension HelloDependency {
-    internal static func reset() {
-        valueOnFatalError = nil
-        resetFatalErrorFunc()
-        savedDependencies = [:]
-        savedSingleDependencies = [:]
-    }
-}
-extension HelloDependency {
+extension HelloDependency: HelloDependencyContainerProtocol {
     public static func register<T>(_ type: T.Type, _ dependency: T) {
-        let key = self.key(for: type)
-        savedSingleDependencies[key] = nil
-        savedDependencies[key] = Dependency.value(dependency)
+        container.register(type, dependency)
     }
-    internal static func key<T>(for type: T.Type) -> Key {
-        return String(describing: type)
+    public static func resolve<T>(_ type: T.Type) -> T {
+        return container.resolve(type)
+    }
+    public static func release<T>(_ type: T.Type) {
+        container.release(type)
+    }
+    public static func clear() {
+        container.clear()
     }
     
-    public static func resolve<T>(_ type: T.Type) -> T {
-        let key = self.key(for: type)
-        return resolve(type, key: key, fatalErrorText: "Can not resolve \(key)")
+    public static func register<T>(_ type: T.Type, forIdentifier identifier: Indentifier, _ dependency: T) {
+        container.register(type, forIdentifier: identifier, dependency)
     }
-    private static func resolve<T>(_ type: T.Type,
-                                   key: Key,
-                                   fatalErrorText: String) -> T {
-        if let singleDependency = savedSingleDependencies[key],
-            let dependency = singleDependency.value as? T {
-            return dependency
-        }else if let dependency = savedDependencies[key]?.extractedObject as? T {
-            return dependency
-        }else{
-            fatalErrorFunc(fatalErrorText)
-            return valueOnFatalError as! T
+    public static func resolve<T>(_ type: T.Type, forIdentifier identifier: Indentifier) -> T {
+        return container.resolve(type, forIdentifier: identifier)
+    }
+    public static func release<T>(_ type: T.Type, forIdentifier identifier: Indentifier) {
+        container.release(type, forIdentifier: identifier)
+    }
+    
+    public static func register<T>(_ type: T.Type, _ factory: @escaping ()->(T)) {
+        container.register(type, factory)
+    }
+    public static func register<T>(_ type: T.Type, forIdentifier identifier: Indentifier, _ factory: @escaping ()->(T)) {
+        container.register(type, forIdentifier: identifier, factory)
+    }
+}
+extension HelloDependency {
+    public enum Single: HelloDependencySingleContainerProtocol {
+        public static func register<T>(_ type: T.Type, _ factory: @escaping ()->(T)) {
+            HelloDependency.singleContainer.register(type, factory)
+        }
+        public static func register<T>(_ type: T.Type, forIdentifier identifier: Indentifier, _ factory: @escaping ()->(T)) {
+            HelloDependency.singleContainer.register(type, forIdentifier: identifier, factory)
+        }
+        
+        public enum Weak: HelloDependencyWeakContainerProtocol {
+            public static func register<T>(_ type: T.Type, _ factory: @escaping ()->(T)) {
+                HelloDependency.weakContainer.register(type, factory)
+            }
+            public static func register<T>(_ type: T.Type, forIdentifier identifier: Indentifier, _ factory: @escaping ()->(T)) {
+                HelloDependency.weakContainer.register(type, forIdentifier: identifier, factory)
+            }
         }
     }
-    
-    public static func release<T>(_ type: T.Type) {
-        let key = self.key(for: type)
-        savedDependencies[key] = nil
-        savedSingleDependencies[key] = nil
-    }
-    
-    public static func clear() {
-        savedSingleDependencies.removeAll()
-        savedDependencies.removeAll()
-    }
 }
-extension HelloDependency {
-    public static func register<T>(_ type: T.Type,
-                                   forIdentifier identifier: Indentifier,
-                                   _ dependency: T) {
-        let key = self.key(for: type, identifier: identifier)
-        savedSingleDependencies[key] = nil
-        savedDependencies[key] = Dependency.value(dependency)
-    }
-    internal static func key<T>(for type: T.Type, identifier: Indentifier) -> String {
-        return String(describing: type) + identifier
-    }
-    
-    public static func resolve<T>(_ type: T.Type, forIdentifier identifier: Indentifier) -> T {
-        return resolve(type, key: self.key(for: type, identifier: identifier),
-                       fatalErrorText: "Can not resolve \(self.key(for: type)) for identifier: \(identifier)")
-    }
-    
-    public static func release<T>(_ type: T.Type, forIdentifier identifier: Indentifier) {
-        let key = self.key(for: type, identifier: identifier)
-        savedDependencies[key] = nil
-        savedSingleDependencies[key] = nil
-    }
+
+protocol DependencyProxyManagerProtocol {
+    static func createProxy<T>(for type: T.Type, identifier: Identifier, postponeCommands: Bool) -> DependencyProxy
+    static func dependencyReady<T: AnyObject>(_ dependency: T, identifier: Identifier)
 }
-extension HelloDependency {
-    public static func register<T>(_ type: T.Type, _ factory: @escaping ()->(T)) {
-        let key = self.key(for: type)
-        savedSingleDependencies[key] = nil
-        savedDependencies[key] = Dependency.factory(factory)
+extension DependencyProxyManager: DependencyProxyManagerProtocol {}
+
+extension HelloDependency: DependencyProxyManagerProtocol {
+    public static func createProxy<T>(for type: T.Type, identifier: Identifier = "", postponeCommands: Bool = true) -> DependencyProxy {
+        return dependencyManager.createProxy(for: type, identifier: identifier, postponeCommands: postponeCommands)
     }
-    public static func register<T>(_ type: T.Type,
-                                   forIdentifier identifier: Indentifier,
-                                   _ factory: @escaping ()->(T)) {
-        let key = self.key(for: type, identifier: identifier)
-        savedSingleDependencies[key] = nil
-        savedDependencies[key] = Dependency.factory(factory)
-    }
-}
-extension HelloDependency {
-    internal static func changeFatalErrorFunc(_ resolveValue: Any, _ fakeFatalError: @escaping (String)->()) {
-        valueOnFatalError = resolveValue
-        fatalErrorFunc = fakeFatalError
-    }
-    internal static func resetFatalErrorFunc() {
-        fatalErrorFunc = internalFatalError
-    }
-    private static func internalFatalError(_ msg: String) {
-        fatalError(msg)
+    public static func dependencyReady<T: AnyObject>(_ dependency: T, identifier: Identifier = "") {
+        dependencyManager.dependencyReady(dependency, identifier: identifier)
     }
 }

@@ -1,279 +1,360 @@
 import XCTest
+@testable import HelloDependency
 
-class HelloDependencyTests: DependencyTests {
+class HelloDependencyTests: XCTestCase {
     
-    func test_resolve_fatalErrorOnNotRegisteredDependency() {
-        assertFatalErrorOnResolve(Int.self)
-        assertFatalErrorOnResolve(TestClass.self)
+    private static var actions: [Action] = []
+    
+    override static func setUp() {
+        assertContainerIsEqualToHelloDependencyContainer()
+        assertSingleContainerIsEqualToHelloDependencyContainerSingle()
+        assertWeakContainerIsEqualToDependencyContainerSingleWeak()
+        assertDependencyManagerIsEqualToDependencyProxyManager()
+        
+        HelloDependency.container = HelloDependencyContainerProtocolSpy.self
+        HelloDependency.singleContainer = HelloDependencySingleContainerProtocolSpy.self
+        HelloDependency.weakContainer = HelloDependencyWeakContainerProtocolSpy.self
+        HelloDependency.dependencyManager = DependencyProxyManagerProtocolSpy.self
+    }
+    private static func assertContainerIsEqualToHelloDependencyContainer(file: StaticString = #file, line: UInt = #line) {
+        XCTAssertTrue(HelloDependency.container == HelloDependencyContainer.self, file: file, line: line)
+    }
+    private static func assertSingleContainerIsEqualToHelloDependencyContainerSingle(file: StaticString = #file, line: UInt = #line) {
+        XCTAssertTrue(HelloDependency.singleContainer == HelloDependencyContainer.Single.self, file: file, line: line)
+    }
+    private static func assertWeakContainerIsEqualToDependencyContainerSingleWeak() {
+        XCTAssertTrue(HelloDependency.weakContainer == HelloDependencyContainer.Single.Weak.self)
+    }
+    private static func assertDependencyManagerIsEqualToDependencyProxyManager() {
+        XCTAssertTrue(HelloDependency.dependencyManager == DependencyProxyManager.self)
     }
     
-    func test_resolve_returnsRegisteredDependency() {
-        register(Int.self, 4)
-        register(Float.self, Float(-34.56))
-        let testObject = TestClass()
-        register(TestClass.self, testObject)
-        
-        XCTAssertEqual(resolve(Int.self), 4)
-        XCTAssertEqual(resolve(Float.self), Float(-34.56))
-        XCTAssertTrue(resolve(TestClass.self) === testObject)
+    override func setUp() {
+        HelloDependencyTests.actions = []
     }
     
-    func test_resolve_returnsLastRegisteredDependency() {
-        register(Int.self, 4)
+    private let sut = HelloDependency.self
+    
+    func test_register_invokesContainersRegister() {
+        sut.register(Int.self, 45)
         
-        register(Int.self, -8)
-        
-        XCTAssertEqual(resolve(Int.self), -8)
+        XCTAssertEqual(actionTypes, [.register])
+        XCTAssertEqual(dependencies(), [45])
+        XCTAssertEqual(typeDesciptions, ["Int"])
+    }
+    private var actionTypes: [ActionType] {
+        return actions.map({$0.type})
+    }
+    private var actions: [Action] {
+        return HelloDependencyTests.actions
+    }
+    private func dependencies<T>() -> [T] {
+        return actions.compactMap({$0.dependency as? T})
+    }
+    private var typeDesciptions: [String] {
+        return actions.compactMap({$0.typeDesciption})
     }
     
-    func test_resolve_fatalErrorForAllRegisteredAfterClear() {
-        register(Int.self, 234)
-        register(String.self, "testDependency")
+    func test_resolve_invokesContainersResolve() {
+        setValueForResolve(33)
+        let dependency = HelloDependency.resolve(Int.self)
         
-        clear()
-        
-        assertFatalErrorOnResolve(Int.self)
-        assertFatalErrorOnResolve(String.self)
+        XCTAssertEqual(actionTypes, [.resolve])
+        XCTAssertEqual(dependency, 33)
+        XCTAssertEqual(typeDesciptions, ["Int"])
+    }
+    private func setValueForResolve(_ value: Any) {
+        HelloDependencyContainerProtocolSpy.testValue = value
     }
     
-    func test_resolve_returnsRegisteredDependencyAfterReleasingDifferentType() {
-        register(Int.self, 234)
+    func test_release_invokesContainersRelease() {
+        sut.release(Double.self)
         
-        release(String.self)
-
-        XCTAssertEqual(resolve(Int.self), 234)
+        XCTAssertEqual(actionTypes, [.release])
+        XCTAssertEqual(typeDesciptions, ["Double"])
     }
     
-    func test_resolve_fatalErrorAfterRelease() {
-        register(String.self, "testDependency")
+    func test_clear_invokesContainersClear() {
+        sut.clear()
         
-        release(String.self)
-        
-        assertFatalErrorOnResolve(String.self)
+        XCTAssertEqual(actionTypes, [.clear])
     }
     
-    func test_register_retainsReference() {
-        var testObj: TestClass? = TestClass()
-        register(TestClass.self, testObj!)
+    func test_registerForIdentifier_invokesContainersRegisterForIdentifier() {
+        sut.register(String.self, forIdentifier: "testId", "testValue")
         
-        testObj = nil
-        
-        XCTAssertNotNil(resolve(TestClass.self))
+        XCTAssertEqual(actionTypes, [.registerForIdentifier])
+        XCTAssertEqual(dependencies(), ["testValue"])
+        XCTAssertEqual(identifiers, ["testId"])
+        XCTAssertEqual(typeDesciptions, ["String"])
+    }
+    private var identifiers: [String] {
+        return actions.compactMap({$0.identifier})
     }
     
-    func test_clearedDependencyMustBeDeallocated() {
-        assertWeakRef(firstAction: { (obj) in
-            register(TestClass.self, obj)
-        }) {
-            clear()
+    func test_resolveForIdentifier_invokesContainersResolveForIdentifier() {
+        setValueForResolve("testValue")
+        let dependency = sut.resolve(String.self, forIdentifier: "testId")
+        
+        XCTAssertEqual(actionTypes, [.resolveForIdentifier])
+        XCTAssertEqual(typeDesciptions, ["String"])
+        XCTAssertEqual(identifiers, ["testId"])
+        XCTAssertEqual(dependency, "testValue")
+    }
+    
+    func test_releaseForIdentifier_invokesContainersReleaseForIdentifier() {
+        sut.release(Float.self, forIdentifier: "testId")
+        
+        XCTAssertEqual(actionTypes, [.releaseForIdentifier])
+        XCTAssertEqual(identifiers, ["testId"])
+        XCTAssertEqual(typeDesciptions, ["Float"])
+    }
+    
+    func test_registerFactory_invokesContainersRegisterFactry() {
+        var factoryCallCount = 0
+        sut.register(Int.self, {
+            factoryCallCount += 1
+            return 45
+        })
+        
+        XCTAssertEqual(actionTypes, [.registerFactory])
+        XCTAssertEqual(typeDesciptions, ["Int"])
+        XCTAssertEqual(invokeFactory(),  45)
+        XCTAssertEqual(factoryCallCount, 1)
+    }
+    private func invokeFactory<T>(file: StaticString = #file, line: UInt = #line) -> T? {
+        let factories = actions.compactMap({$0.factory})
+        if factories.count == 1 {
+            return factories.first?() as? T
+        }else if factories.isEmpty{
+            XCTFail("No registered factory", file: file, line: line)
+        }else {
+            XCTFail("More than one factory registered", file: file, line: line)
+        }
+        return nil
+    }
+    
+    func test_registerFactoryForIdentifier_invokesContainersRegisterFactoryForIdentifier() {
+        var factoryCallCount = 0
+        sut.register(Double.self, forIdentifier: "testId", {
+            factoryCallCount += 1
+            return 4.67
+        })
+        
+        XCTAssertEqual(actionTypes, [.registerFactoryForIdentifier])
+        XCTAssertEqual(typeDesciptions, ["Double"])
+        XCTAssertEqual(invokeFactory(),  4.67)
+        XCTAssertEqual(identifiers, ["testId"])
+        XCTAssertEqual(factoryCallCount, 1)
+    }
+    
+    func test_singleRegister_invokesContainersSingleRegister() {
+        var factoryCallCount = 0
+        sut.Single.register(String.self, {
+            factoryCallCount += 1
+            return "testValue"
+        })
+        
+        XCTAssertEqual(actionTypes, [.singleRegister])
+        XCTAssertEqual(typeDesciptions, ["String"])
+        XCTAssertEqual(invokeFactory(), "testValue")
+        XCTAssertEqual(factoryCallCount, 1)
+    }
+    
+    func test_singleRegisterForIdentifier_invokesContainersSingleRegisterForIdentifier() {
+        var factoryCallCount = 0
+        sut.Single.register(String.self, forIdentifier: "testId", {
+            factoryCallCount += 1
+            return "testValue"
+        })
+        
+        XCTAssertEqual(actionTypes, [.singleRegisterForIdentifier])
+        XCTAssertEqual(typeDesciptions, ["String"])
+        XCTAssertEqual(identifiers, ["testId"])
+        XCTAssertEqual(invokeFactory(), "testValue")
+        XCTAssertEqual(factoryCallCount, 1)
+    }
+    
+    func test_weakRegister_invokesContainersWeakRegister() {
+        var factoryCallCount = 0
+        sut.Single.Weak.register(Int.self, {
+            factoryCallCount += 1
+            return 9
+        })
+        
+        XCTAssertEqual(actionTypes, [.weakRegister])
+        XCTAssertEqual(typeDesciptions, ["Int"])
+        XCTAssertEqual(invokeFactory(), 9)
+        XCTAssertEqual(factoryCallCount, 1)
+    }
+    
+    func test_weakRegisterForIdentifier_invokesContainersWeakRegisterForIdentifier() {
+        var factoryCallCount = 0
+        sut.Single.Weak.register(Double.self, forIdentifier: "testId", {
+            factoryCallCount += 1
+            return 9.45
+        })
+        
+        XCTAssertEqual(actionTypes, [.weakRegisterForIdentifier])
+        XCTAssertEqual(typeDesciptions, ["Double"])
+        XCTAssertEqual(identifiers, ["testId"])
+        XCTAssertEqual(invokeFactory(), 9.45)
+        XCTAssertEqual(factoryCallCount, 1)
+    }
+    
+    func test_createProxy_returnsProxyFromDependencyManager() {
+        let proxy = sut.createProxy(for: Int.self, identifier: "testId", postponeCommands: false)
+        
+        XCTAssertTrue(proxy === dependencyManagerSpy.createdProxy)
+        XCTAssertEqual(actionTypes, [.createProxy])
+        XCTAssertEqual(identifiers, ["testId"])
+        XCTAssertEqual(typeDesciptions, ["Int"])
+        XCTAssertEqual(postponeCommands, [false])
+    }
+    private var dependencyManagerSpy: DependencyProxyManagerProtocolSpy.Type {
+        return DependencyProxyManagerProtocolSpy.self
+    }
+    private var postponeCommands: [Bool] {
+        return actions.compactMap({$0.postponeCommands})
+    }
+    
+    func test_createProxy_sendDefaultEmptyString() {
+        _ = sut.createProxy(for: Int.self, postponeCommands: true)
+        
+        XCTAssertEqual(actionTypes, [.createProxy])
+        XCTAssertEqual(identifiers, [""])
+        XCTAssertEqual(postponeCommands, [true])
+    }
+    
+    func test_createProxy_sendDefaultPostponeCommandsTrue() {
+        _ = sut.createProxy(for: Int.self)
+        
+        XCTAssertEqual(actionTypes, [.createProxy])
+        XCTAssertEqual(postponeCommands, [true])
+    }
+    
+    func test_dependencyReady_invokesDependencyManagersDependencyReady() {
+        let dependency = DependencyClass()
+        sut.dependencyReady(dependency, identifier: "testId")
+        
+        XCTAssertEqual(actionTypes, [.dependencyReady])
+        XCTAssertEqual(dependencies(), [dependency])
+        XCTAssertEqual(identifiers, ["testId"])
+    }
+    class DependencyClass: Equatable {
+        static func == (lhs: HelloDependencyTests.DependencyClass, rhs: HelloDependencyTests.DependencyClass) -> Bool {
+            return lhs === rhs
         }
     }
     
-    func test_releasedDependencyMustBeDeallocated() {
-        assertWeakRef(firstAction: { (obj) in
-            register(TestClass.self, obj)
-        }) {
-            release(TestClass.self)
+    func test_dependencyReady_sendDefaultEmptyIdentifier() {
+        sut.dependencyReady(DependencyClass())
+        
+        XCTAssertEqual(actionTypes, [.dependencyReady])
+        XCTAssertEqual(identifiers, [""])
+    }
+}
+extension HelloDependencyTests {
+    enum ActionType {
+        case register
+        case resolve
+        case release
+        case clear
+        case registerForIdentifier
+        case resolveForIdentifier
+        case releaseForIdentifier
+        case registerFactory
+        case registerFactoryForIdentifier
+        
+        case singleRegister
+        case singleRegisterForIdentifier
+        
+        case weakRegister
+        case weakRegisterForIdentifier
+        
+        case createProxy
+        case dependencyReady
+    }
+    struct Action {
+        let type: ActionType
+        let typeDesciption: String?
+        let dependency: Any?
+        let factory: (()->(Any))?
+        let identifier: String?
+        let postponeCommands: Bool?
+        init(type: ActionType,
+             typeDesciption: String? = nil,
+             dependency: Any? = nil,
+             factory: (()->(Any))? = nil,
+             identifier: String? = nil,
+             postponeCommands: Bool? = nil) {
+            self.type = type
+            self.typeDesciption = typeDesciption
+            self.dependency = dependency
+            self.factory = factory
+            self.identifier = identifier
+            self.postponeCommands = postponeCommands
         }
     }
-    
-    func test_resolveForIdentifier_fatalErrorOnNotRegisteredDependency() {
-        assertFatalErrorOnResolve(Int.self, forIdentifier: "identifier0")
-        assertFatalErrorOnResolve(TestClass.self, forIdentifier: "identifier1")
-    }
-    
-    func test_resolveForIdentifier_returnsRegisteredDependencyForSameIdentifier() {
-        register(String.self, forIdentifier: "identifier", "dependencyForObj0")
+    class HelloDependencyContainerProtocolSpy: HelloDependencyContainerProtocol {
+        static var testValue: Any?
         
-        XCTAssertEqual(resolve(String.self, forIdentifier: "identifier"), "dependencyForObj0")
-    }
-    
-    func test_resolveForIdentifier_fatalErrorAfterRegistrationWithoutIndentifier() {
-        register(Int.self, 56)
+        static func register<T>(_ type: T.Type, _ dependency: T) {
+            actions.append(Action(type: .register, typeDesciption: String(describing: type), dependency: dependency))
+        }
+        static func resolve<T>(_ type: T.Type) -> T {
+            actions.append(Action(type: .resolve, typeDesciption: String(describing: type)))
+            return testValue! as! T
+        }
+        static func release<T>(_ type: T.Type) {
+            actions.append(Action(type: .release, typeDesciption: String(describing: type)))
+        }
+        static func clear() {
+            actions.append(Action(type: .clear))
+        }
         
-        assertFatalErrorOnResolve(Int.self, forIdentifier: "identifier")
-    }
-    
-    func test_resolveForIdentifier_fatalErrorOnWrongIdentifier() {
-        register(Int.self, forIdentifier: "identifier", 22)
+        static func register<T>(_ type: T.Type, forIdentifier identifier: Indentifier, _ dependency: T) {
+            actions.append(Action(type: .registerForIdentifier, typeDesciption: String(describing: type), dependency: dependency, identifier: identifier))
+        }
+        static func resolve<T>(_ type: T.Type, forIdentifier identifier: Indentifier) -> T {
+            actions.append(Action(type: .resolveForIdentifier, typeDesciption: String(describing: type), identifier: identifier))
+            return testValue! as! T
+        }
+        static func release<T>(_ type: T.Type, forIdentifier identifier: Indentifier) {
+            actions.append(Action(type: .releaseForIdentifier, typeDesciption: String(describing: type), identifier: identifier))
+        }
         
-        assertFatalErrorOnResolve(Int.self, forIdentifier: "wrong identifier")
-    }
-    
-    func test_registerForIdentifier_retainsReference() {
-        var testObj: TestClass? = TestClass()
-        register(TestClass.self, forIdentifier: "identifier", testObj!)
-        
-        testObj = nil
-        
-        XCTAssertNotNil(resolve(TestClass.self, forIdentifier: "identifier"))
-    }
-    
-    func test_clear_dependencyMustBeDeallocated() {
-        assertWeakRef(firstAction: { (obj) in
-            register(TestClass.self, forIdentifier: "identifier", obj)
-        }) {
-            clear()
+        static func register<T>(_ type: T.Type, _ factory: @escaping ()->(T)) {
+            actions.append(Action(type: .registerFactory, typeDesciption: String(describing: type), factory: factory))
+        }
+        static func register<T>(_ type: T.Type, forIdentifier identifier: Indentifier, _ factory: @escaping ()->(T)) {
+            actions.append(Action(type: .registerFactoryForIdentifier, typeDesciption: String(describing: type), factory: factory, identifier: identifier))
         }
     }
-    
-    func test_release_dependencyMustBeDeallocated() {
-        assertWeakRef(firstAction: { (obj) in
-            register(TestClass.self, forIdentifier: "identifier", obj)
-        }) {
-            release(TestClass.self, forIdentifier: "identifier")
+    class HelloDependencySingleContainerProtocolSpy: HelloDependencySingleContainerProtocol {
+        static func register<T>(_ type: T.Type, _ factory: @escaping ()->(T)) {
+            actions.append(Action(type: .singleRegister, typeDesciption: String(describing: type), factory: factory))
+        }
+        static func register<T>(_ type: T.Type, forIdentifier identifier: Indentifier, _ factory: @escaping ()->(T)) {
+            actions.append(Action(type: .singleRegisterForIdentifier, typeDesciption: String(describing: type), factory: factory, identifier: identifier))
         }
     }
-    
-    func test_resolveForIdentifier_returnsRegisteredDependencyForSameIdentifierAfterOtherRegistration() {
-        register(Int.self, forIdentifier: "identifier", 99)
-        
-        register(Int.self, 9)
-        
-        XCTAssertEqual(resolve(Int.self), 9)
-        XCTAssertEqual(resolve(Int.self, forIdentifier: "identifier"), 99)
-    }
-    
-    func test_register_returnsDependencyAfterRegistrationForDifferentIdentifier() {
-        register(Int.self, 9)
-        
-        register(Int.self, forIdentifier: "identifier", 99)
-        
-        XCTAssertEqual(resolve(Int.self), 9)
-        XCTAssertEqual(resolve(Int.self, forIdentifier: "identifier"), 99)
-    }
-    
-    func test_resolve_returnsRegisteredDependencyAfterRegistrationForDiferentIdentifier() {
-        register(Int.self, -234)
-        
-        release(Int.self, forIdentifier: "identifier")
-        
-        XCTAssertEqual(resolve(Int.self), -234)
-    }
-    
-    func test_resolveForIdentifier_returnsRegisteredDependencyAfterReleasingWithoutIdentifier() {
-        register(Double.self, forIdentifier: "identifier", Double(4.56))
-        
-        release(Double.self)
-        
-        XCTAssertEqual(resolve(Double.self, forIdentifier: "identifier"), Double(4.56))
-    }
-    
-    func test_resolveForIdentifier_returnsRegisteredAfterReleasingForDifferentIdentifier() {
-        register(Double.self, forIdentifier: "identifier", Double(23))
-        
-        release(Double.self, forIdentifier: "different identifier")
-        
-        XCTAssertEqual(resolve(Double.self, forIdentifier: "identifier"), Double(23))
-    }
-    
-    func test_resolve_returnsFactoryResultAfterFactoryRegistration() {
-        let objFromFactory = TestClass()
-        register(TestClass.self) { () -> (TestClass) in return objFromFactory }
-        
-        XCTAssertTrue(resolve(TestClass.self) === objFromFactory)
-    }
-    
-    func test_resolve_returnsLastRegisteredObjectAfterFactoryRegistration() {
-        register(TestClass.self) {TestClass()}
-        
-        let obj = TestClass()
-        register(TestClass.self, obj)
-        
-        XCTAssertTrue(resolve(TestClass.self) === obj)
-    }
-    
-    func test_resolve_returnsObjectFromLastRegisteredFactory() {
-        register(TestClass.self, TestClass())
-        
-        let objFromFactory = TestClass()
-        register(TestClass.self) { () -> (TestClass) in return objFromFactory }
-        
-        XCTAssertTrue(resolve(TestClass.self) === objFromFactory)
-    }
-    
-    func test_resolve_fatalErrorAfterReleasingRegisteredFactory() {
-        register(TestClass.self) {TestClass()}
-        
-        release(TestClass.self)
-        
-        assertFatalErrorOnResolve(TestClass.self)
-    }
-    
-    func test_resolve_fatalErrorAfterClearRegisteredFactory() {
-        register(TestClass.self) {TestClass()}
-        
-        clear()
-        
-        assertFatalErrorOnResolve(TestClass.self)
-    }
-    
-    func test_resolveForIdentifier_returnsObjectFromRegisteredFactoryForGivenIdentifier() {
-        let objFromFactory = TestClass()
-        
-        register(TestClass.self, forIdentifier: "identifier") {objFromFactory}
-        
-        XCTAssertTrue(resolve(TestClass.self, forIdentifier: "identifier") === objFromFactory)
-    }
-    
-    func test_resolve_fatalErrorAfterRegisteringFactoryForDifferentIdentifier() {
-        let objFromFactory = TestClass()
-        
-        register(TestClass.self, forIdentifier: "differentIdentifier") {objFromFactory}
-        
-        assertFatalErrorOnResolve(Int.self, forIdentifier: "identifier")
-    }
-    
-    func test_resolve_returnsRelatedRegisteredDependenciesAfterRegistrationFactoryThenValue() {
-        let obj_obj0 = TestClass()
-        register(TestClass.self, forIdentifier: "identifier") {obj_obj0}
-        
-        let obj = TestClass()
-        register(TestClass.self) {obj}
-        
-        XCTAssertTrue(resolve(TestClass.self) === obj)
-        XCTAssertTrue(resolve(TestClass.self, forIdentifier: "identifier") === obj_obj0)
-    }
-    
-    func test_resolve_returnsRelatedRegisteredDependenciesAfterRegistrationValueThenFactory() {
-        let obj = TestClass()
-        register(TestClass.self) {obj}
-        
-        let obj_obj0 = TestClass()
-        register(TestClass.self, forIdentifier: "identifier") {obj_obj0}
-        
-        XCTAssertTrue(resolve(TestClass.self) === obj)
-        XCTAssertTrue(resolve(TestClass.self, forIdentifier: "identifier") === obj_obj0)
-    }
-    
-    func test_resolve_invokesFactoryMultipleTimes() {
-        registerThenResolve2Times(register: { (factory) in
-            register(TestClass.self, factory)
-        }) { () -> (TestClass?) in
-            resolve(TestClass.self)
+    class HelloDependencyWeakContainerProtocolSpy: HelloDependencyWeakContainerProtocol {
+        static func register<T>(_ type: T.Type, _ factory: @escaping ()->(T)) {
+            actions.append(Action(type: .weakRegister, typeDesciption: String(describing: type), factory: factory))
         }
-
-        registerThenResolve2Times(register: { (factory) in
-            register(TestClass.self, forIdentifier: "identifier", factory)
-        }) { () -> (TestClass?) in
-            resolve(TestClass.self, forIdentifier: "identifier")
+        static func register<T>(_ type: T.Type, forIdentifier identifier: Indentifier, _ factory: @escaping ()->(T)) {
+            actions.append(Action(type: .weakRegisterForIdentifier, typeDesciption: String(describing: type), factory: factory, identifier: identifier))
         }
     }
-    private func registerThenResolve2Times(_ file: StaticString = #file,
-                                           _ line: UInt = #line,
-                                           register: (@escaping ()->(TestClass))->(),
-                                           resolve: ()->(TestClass?)) {
-        invokeAndReset {
-            var factoryCallCount = 0
-            let factory = { () -> TestClass in
-                factoryCallCount += 1
-                return TestClass()
-            }
-            
-            register(factory)
-            
-            XCTAssertFalse(resolve() === resolve(), file: file, line: line)
-            XCTAssertEqual(factoryCallCount, 2, file: file, line: line)
+    class DependencyProxyManagerProtocolSpy: DependencyProxyManagerProtocol {
+        static var createdProxy = DependencyProxy(false)
+        static func createProxy<T>(for type: T.Type, identifier: Identifier, postponeCommands: Bool) -> DependencyProxy {
+            actions.append(Action(type: .createProxy, typeDesciption: String(describing: type), identifier: identifier, postponeCommands: postponeCommands))
+            return createdProxy
+        }
+        static func dependencyReady<T: AnyObject>(_ dependency: T, identifier: Identifier) {
+            actions.append(Action(type: .dependencyReady, dependency: dependency, identifier: identifier))
         }
     }
 }
