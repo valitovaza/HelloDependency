@@ -16,6 +16,7 @@
 		565EA3A3221D94C100A8FBCD /* StoryboardCounterConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565EA3A2221D94C100A8FBCD /* StoryboardCounterConfigurator.swift */; };
 		565EA3A6221DA5B200A8FBCD /* SecondTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565EA3A5221DA5B200A8FBCD /* SecondTableViewController.swift */; };
 		565EA3A8221DA5E800A8FBCD /* SecondTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565EA3A7221DA5E800A8FBCD /* SecondTableViewCell.swift */; };
+		565EA3AA221DAFA200A8FBCD /* WeakBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5667806322108EA4006E4F21 /* WeakBox.swift */; };
 		5667805E22108B80006E4F21 /* IsolatedCounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5667805D22108B80006E4F21 /* IsolatedCounterViewController.swift */; };
 		566A8FF32215D0C500F3ACBF /* CellDependencyConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566A8FF22215D0C500F3ACBF /* CellDependencyConfigurator.swift */; };
 		566A8FF52215D24400F3ACBF /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566A8FF42215D24400F3ACBF /* XCTestCase+MemoryLeakTracking.swift */; };
@@ -56,7 +57,6 @@
 		56DC865F221D791B006CE23B /* DependencyProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5667805B221089EC006E4F21 /* DependencyProxy.swift */; };
 		56DC8660221D791D006CE23B /* DependencyProxyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564BBF7F221C41B800B73294 /* DependencyProxyManager.swift */; };
 		56DC8661221D7930006CE23B /* DependencyProxyManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B58D9322107159003E61DF /* DependencyProxyManagerTests.swift */; };
-		56ECB974221D898000CBDF1D /* WeakBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5667806322108EA4006E4F21 /* WeakBox.swift */; };
 		56FCBC5E220DBF440012143A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FCBC5D220DBF440012143A /* AppDelegate.swift */; };
 		56FCBC63220DBF440012143A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56FCBC61220DBF440012143A /* Main.storyboard */; };
 		56FCBC65220DBF450012143A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56FCBC64220DBF450012143A /* Assets.xcassets */; };
@@ -69,6 +69,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		565EA3AB221DB2BC00A8FBCD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 56FCBC52220DBF430012143A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 56FCBC75220DBFDB0012143A;
+			remoteInfo = HelloDependency;
+		};
 		5698AE522217F8C100C30724 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 56FCBC52220DBF430012143A /* Project object */;
@@ -486,6 +493,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				565EA3AC221DB2BC00A8FBCD /* PBXTargetDependency */,
 			);
 			name = UIKitDependencyHelper;
 			productName = IOSDependencyContainer;
@@ -743,7 +751,7 @@
 				56FCBC92220DC1E10012143A /* HelloDependencyContainer.swift in Sources */,
 				566DD6D0220EF7C800C0E41B /* SingleDependency.swift in Sources */,
 				56DC865F221D791B006CE23B /* DependencyProxy.swift in Sources */,
-				56ECB974221D898000CBDF1D /* WeakBox.swift in Sources */,
+				565EA3AA221DAFA200A8FBCD /* WeakBox.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -765,6 +773,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		565EA3AC221DB2BC00A8FBCD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 56FCBC75220DBFDB0012143A /* HelloDependency */;
+			targetProxy = 565EA3AB221DB2BC00A8FBCD /* PBXContainerItemProxy */;
+		};
 		5698AE532217F8C100C30724 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5698AE3B2217F52200C30724 /* Host */;

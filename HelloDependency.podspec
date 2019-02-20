@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "HelloDependency"
-  s.version      = "0.0.2"
+  s.version      = "0.0.3"
   s.summary      = "Swift Dependency Injection Framework"
   s.description  = <<-DESC
                    HelloDependency is a dependency injection framework for Swift.
@@ -11,13 +11,13 @@ Pod::Spec.new do |s|
   s.platform     = :ios
   s.ios.deployment_target = "10.0"
   s.source       = { :git => "https://github.com/valitovaza/HelloDependency.git", :tag => s.version }
-  s.source_files  = "HDependency/*.swift"
+  s.source_files  = "Sources/HelloDependency/*.swift"
   s.requires_arc = true
   s.swift_version = "4.2"
 
-# IOSDependencyContainer Extensions
-  s.subspec 'IOSDependencyContainer' do |sp|
-   sp.source_files  = 'IOSDependencyContainer/*.swift'
-end
+  # UIKitDependencyHelper Extensions
+      s.subspec 'UIKitDependencyHelper' do |sp|
+      sp.source_files  = "Sources/UIKitDependencyHelper/*.swift"
+  end
 
 end
