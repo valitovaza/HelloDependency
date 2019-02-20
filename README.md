@@ -33,6 +33,9 @@ HelloDependency.Single.Weak.register(SomeProtocol.self, {
 })
 ```
 
+## Demo App
+[DemoApp](https://github.com/valitovaza/HelloDependency/tree/master/Demo) demonstrates HelloDependency usage.
+
 ## Requirements
 
 - iOS 10.0+
