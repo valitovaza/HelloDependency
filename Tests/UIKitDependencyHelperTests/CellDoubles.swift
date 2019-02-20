@@ -1,4 +1,5 @@
-import HelloContainer
+import UIKitDependencyHelper
+import HelloDependency
 
 protocol FirstViewProtocol {
     func firstViewMethod()

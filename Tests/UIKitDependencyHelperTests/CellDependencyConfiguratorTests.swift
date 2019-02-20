@@ -1,6 +1,6 @@
 import XCTest
 import HelloDependency
-import HelloContainer
+import UIKitDependencyHelper
 
 class CellDependencyConfiguratorTests: XCTestCase {
     

@@ -1,5 +1,6 @@
 import UIKit
 import Foundation
+import HelloDependency
 
 public enum CellDependencyConfiguratorError: Error {
     case error(String)

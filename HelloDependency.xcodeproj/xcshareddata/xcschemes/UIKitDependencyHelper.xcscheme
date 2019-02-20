@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "56B58D8322107159003E61DF"
-               BuildableName = "HelloContainer.framework"
-               BlueprintName = "HelloContainer"
+               BuildableName = "UIKitDependencyHelper.framework"
+               BlueprintName = "UIKitDependencyHelper"
                ReferencedContainer = "container:HelloDependency.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,8 +32,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "56B58D8322107159003E61DF"
-            BuildableName = "HelloContainer.framework"
-            BlueprintName = "HelloContainer"
+            BuildableName = "UIKitDependencyHelper.framework"
+            BlueprintName = "UIKitDependencyHelper"
             ReferencedContainer = "container:HelloDependency.xcodeproj">
          </BuildableReference>
       </CodeCoverageTargets>
@@ -44,8 +44,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "56B58D8B22107159003E61DF"
-               BuildableName = "HelloContainerTests.xctest"
-               BlueprintName = "HelloContainerTests"
+               BuildableName = "UIKitDependencyHelperTests.xctest"
+               BlueprintName = "UIKitDependencyHelperTests"
                ReferencedContainer = "container:HelloDependency.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -54,8 +54,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "56B58D8322107159003E61DF"
-            BuildableName = "HelloContainer.framework"
-            BlueprintName = "HelloContainer"
+            BuildableName = "UIKitDependencyHelper.framework"
+            BlueprintName = "UIKitDependencyHelper"
             ReferencedContainer = "container:HelloDependency.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -76,8 +76,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "56B58D8322107159003E61DF"
-            BuildableName = "HelloContainer.framework"
-            BlueprintName = "HelloContainer"
+            BuildableName = "UIKitDependencyHelper.framework"
+            BlueprintName = "UIKitDependencyHelper"
             ReferencedContainer = "container:HelloDependency.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -94,8 +94,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "56B58D8322107159003E61DF"
-            BuildableName = "HelloContainer.framework"
-            BlueprintName = "HelloContainer"
+            BuildableName = "UIKitDependencyHelper.framework"
+            BlueprintName = "UIKitDependencyHelper"
             ReferencedContainer = "container:HelloDependency.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

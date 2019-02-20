@@ -1,6 +1,5 @@
 import UIKit
 import HelloDependency
-import HelloContainer
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

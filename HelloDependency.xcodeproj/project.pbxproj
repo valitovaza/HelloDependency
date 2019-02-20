@@ -11,7 +11,6 @@
 		564BBF87221C5A6900B73294 /* HelloDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564BBF86221C5A6900B73294 /* HelloDependency.swift */; };
 		564BBF89221C5AA300B73294 /* HelloDependencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564BBF88221C5AA300B73294 /* HelloDependencyTests.swift */; };
 		5667805E22108B80006E4F21 /* IsolatedCounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5667805D22108B80006E4F21 /* IsolatedCounterViewController.swift */; };
-		5667806422108EA4006E4F21 /* WeakBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5667806322108EA4006E4F21 /* WeakBox.swift */; };
 		566A8FF32215D0C500F3ACBF /* CellDependencyConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566A8FF22215D0C500F3ACBF /* CellDependencyConfigurator.swift */; };
 		566A8FF52215D24400F3ACBF /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566A8FF42215D24400F3ACBF /* XCTestCase+MemoryLeakTracking.swift */; };
 		566DD6C8220EE18E00C0E41B /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566DD6C7220EE18E00C0E41B /* Dependency.swift */; };
@@ -36,9 +35,9 @@
 		569D850322101C1B00043BC2 /* CounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569D850222101C1B00043BC2 /* CounterViewController.swift */; };
 		569D850522101CF800043BC2 /* CounterViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569D850422101CF800043BC2 /* CounterViewEventHandler.swift */; };
 		569D85072210459F00043BC2 /* CounterParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569D85062210459F00043BC2 /* CounterParentViewController.swift */; };
-		56B58D8D22107159003E61DF /* HelloContainer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56B58D8422107159003E61DF /* HelloContainer.framework */; };
-		56B58D9922107159003E61DF /* HelloContainer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56B58D8422107159003E61DF /* HelloContainer.framework */; };
-		56B58D9A22107159003E61DF /* HelloContainer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 56B58D8422107159003E61DF /* HelloContainer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		56B58D8D22107159003E61DF /* UIKitDependencyHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56B58D8422107159003E61DF /* UIKitDependencyHelper.framework */; };
+		56B58D9922107159003E61DF /* UIKitDependencyHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56B58D8422107159003E61DF /* UIKitDependencyHelper.framework */; };
+		56B58D9A22107159003E61DF /* UIKitDependencyHelper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 56B58D8422107159003E61DF /* UIKitDependencyHelper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		56C2C2A62212F86100C521A9 /* TableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2C2A52212F86100C521A9 /* TableDataSource.swift */; };
 		56C2C2AD2212FC4200C521A9 /* CounterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2C2AB2212FC4200C521A9 /* CounterTableViewCell.swift */; };
 		56C2C2AE2212FC4200C521A9 /* CounterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56C2C2AC2212FC4200C521A9 /* CounterTableViewCell.xib */; };
@@ -51,6 +50,7 @@
 		56DC865F221D791B006CE23B /* DependencyProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5667805B221089EC006E4F21 /* DependencyProxy.swift */; };
 		56DC8660221D791D006CE23B /* DependencyProxyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564BBF7F221C41B800B73294 /* DependencyProxyManager.swift */; };
 		56DC8661221D7930006CE23B /* DependencyProxyManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B58D9322107159003E61DF /* DependencyProxyManagerTests.swift */; };
+		56ECB974221D898000CBDF1D /* WeakBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5667806322108EA4006E4F21 /* WeakBox.swift */; };
 		56FCBC5E220DBF440012143A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FCBC5D220DBF440012143A /* AppDelegate.swift */; };
 		56FCBC63220DBF440012143A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56FCBC61220DBF440012143A /* Main.storyboard */; };
 		56FCBC65220DBF450012143A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56FCBC64220DBF450012143A /* Assets.xcassets */; };
@@ -93,7 +93,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				56B58D9A22107159003E61DF /* HelloContainer.framework in Embed Frameworks */,
+				56B58D9A22107159003E61DF /* UIKitDependencyHelper.framework in Embed Frameworks */,
 				56FCBC7E220DBFDB0012143A /* HelloDependency.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -134,8 +134,8 @@
 		569D850222101C1B00043BC2 /* CounterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewController.swift; sourceTree = "<group>"; };
 		569D850422101CF800043BC2 /* CounterViewEventHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewEventHandler.swift; sourceTree = "<group>"; };
 		569D85062210459F00043BC2 /* CounterParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterParentViewController.swift; sourceTree = "<group>"; };
-		56B58D8422107159003E61DF /* HelloContainer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HelloContainer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		56B58D8C22107159003E61DF /* HelloContainerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelloContainerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		56B58D8422107159003E61DF /* UIKitDependencyHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIKitDependencyHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		56B58D8C22107159003E61DF /* UIKitDependencyHelperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UIKitDependencyHelperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		56B58D9322107159003E61DF /* DependencyProxyManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyProxyManagerTests.swift; sourceTree = "<group>"; };
 		56B58D9522107159003E61DF /* HelloContainerTestsInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = HelloContainerTestsInfo.plist; sourceTree = "<group>"; };
 		56C2C2A52212F86100C521A9 /* TableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataSource.swift; sourceTree = "<group>"; };
@@ -181,7 +181,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56B58D8D22107159003E61DF /* HelloContainer.framework in Frameworks */,
+				56B58D8D22107159003E61DF /* UIKitDependencyHelper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,7 +189,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56B58D9922107159003E61DF /* HelloContainer.framework in Frameworks */,
+				56B58D9922107159003E61DF /* UIKitDependencyHelper.framework in Frameworks */,
 				56FCBC7D220DBFDB0012143A /* HelloDependency.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -216,7 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				56FCBC77220DBFDB0012143A /* HelloDependency */,
-				5698AE2A2217E86700C30724 /* HelloContainer */,
+				5698AE2A2217E86700C30724 /* UIKitDependencyHelper */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -231,16 +231,15 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		5698AE2A2217E86700C30724 /* HelloContainer */ = {
+		5698AE2A2217E86700C30724 /* UIKitDependencyHelper */ = {
 			isa = PBXGroup;
 			children = (
-				5667806322108EA4006E4F21 /* WeakBox.swift */,
 				566A8FF22215D0C500F3ACBF /* CellDependencyConfigurator.swift */,
 				5698AE672219432700C30724 /* CellDependency.swift */,
 				5698AE652219429200C30724 /* ArgumentsContainer.swift */,
 				5698AE6222193EB800C30724 /* CellDependencyHolder.swift */,
 			);
-			path = HelloContainer;
+			path = UIKitDependencyHelper;
 			sourceTree = "<group>";
 		};
 		5698AE2B2217EA6400C30724 /* Tests */ = {
@@ -249,7 +248,7 @@
 				5698AE5D221851AD00C30724 /* Helpers */,
 				5698AE542218146200C30724 /* Extensions */,
 				5698AE2C2217EA7C00C30724 /* HelloDependencyTests */,
-				5698AE2D2217EFCF00C30724 /* HelloContainerTests */,
+				5698AE2D2217EFCF00C30724 /* UIKitDependencyHelperTests */,
 				5698AE372217F46100C30724 /* Host */,
 			);
 			path = Tests;
@@ -268,13 +267,13 @@
 			path = HelloDependencyTests;
 			sourceTree = "<group>";
 		};
-		5698AE2D2217EFCF00C30724 /* HelloContainerTests */ = {
+		5698AE2D2217EFCF00C30724 /* UIKitDependencyHelperTests */ = {
 			isa = PBXGroup;
 			children = (
 				566A8FF0221589AA00F3ACBF /* CellDependencyConfiguratorTests.swift */,
 				5698AE69221949FD00C30724 /* CellDoubles.swift */,
 			);
-			path = HelloContainerTests;
+			path = UIKitDependencyHelperTests;
 			sourceTree = "<group>";
 		};
 		5698AE2E2217F13800C30724 /* Metadata */ = {
@@ -367,8 +366,8 @@
 				56FCBC5A220DBF440012143A /* Demo.app */,
 				56FCBC76220DBFDB0012143A /* HelloDependency.framework */,
 				56FCBC87220DC0D10012143A /* HelloDependencyTests.xctest */,
-				56B58D8422107159003E61DF /* HelloContainer.framework */,
-				56B58D8C22107159003E61DF /* HelloContainerTests.xctest */,
+				56B58D8422107159003E61DF /* UIKitDependencyHelper.framework */,
+				56B58D8C22107159003E61DF /* UIKitDependencyHelperTests.xctest */,
 				5698AE3C2217F52200C30724 /* Host.app */,
 			);
 			name = Products;
@@ -394,6 +393,7 @@
 			isa = PBXGroup;
 			children = (
 				564BBF86221C5A6900B73294 /* HelloDependency.swift */,
+				5667806322108EA4006E4F21 /* WeakBox.swift */,
 				566DD6C7220EE18E00C0E41B /* Dependency.swift */,
 				566DD6CF220EF7C800C0E41B /* SingleDependency.swift */,
 				56FCBC91220DC1E10012143A /* HelloDependencyContainer.swift */,
@@ -440,9 +440,9 @@
 			productReference = 5698AE3C2217F52200C30724 /* Host.app */;
 			productType = "com.apple.product-type.application";
 		};
-		56B58D8322107159003E61DF /* HelloContainer */ = {
+		56B58D8322107159003E61DF /* UIKitDependencyHelper */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 56B58D9F22107159003E61DF /* Build configuration list for PBXNativeTarget "HelloContainer" */;
+			buildConfigurationList = 56B58D9F22107159003E61DF /* Build configuration list for PBXNativeTarget "UIKitDependencyHelper" */;
 			buildPhases = (
 				56B58D7F22107159003E61DF /* Headers */,
 				56B58D8022107159003E61DF /* Sources */,
@@ -453,14 +453,14 @@
 			);
 			dependencies = (
 			);
-			name = HelloContainer;
+			name = UIKitDependencyHelper;
 			productName = IOSDependencyContainer;
-			productReference = 56B58D8422107159003E61DF /* HelloContainer.framework */;
+			productReference = 56B58D8422107159003E61DF /* UIKitDependencyHelper.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		56B58D8B22107159003E61DF /* HelloContainerTests */ = {
+		56B58D8B22107159003E61DF /* UIKitDependencyHelperTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 56B58DA022107159003E61DF /* Build configuration list for PBXNativeTarget "HelloContainerTests" */;
+			buildConfigurationList = 56B58DA022107159003E61DF /* Build configuration list for PBXNativeTarget "UIKitDependencyHelperTests" */;
 			buildPhases = (
 				56B58D8822107159003E61DF /* Sources */,
 				56B58D8922107159003E61DF /* Frameworks */,
@@ -471,9 +471,9 @@
 			dependencies = (
 				5698AE532217F8C100C30724 /* PBXTargetDependency */,
 			);
-			name = HelloContainerTests;
+			name = UIKitDependencyHelperTests;
 			productName = IOSDependencyContainerTests;
-			productReference = 56B58D8C22107159003E61DF /* HelloContainerTests.xctest */;
+			productReference = 56B58D8C22107159003E61DF /* UIKitDependencyHelperTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		56FCBC59220DBF440012143A /* Demo */ = {
@@ -581,8 +581,8 @@
 				56FCBC59220DBF440012143A /* Demo */,
 				56FCBC75220DBFDB0012143A /* HelloDependency */,
 				56FCBC86220DC0D10012143A /* HelloDependencyTests */,
-				56B58D8322107159003E61DF /* HelloContainer */,
-				56B58D8B22107159003E61DF /* HelloContainerTests */,
+				56B58D8322107159003E61DF /* UIKitDependencyHelper */,
+				56B58D8B22107159003E61DF /* UIKitDependencyHelperTests */,
 				5698AE3B2217F52200C30724 /* Host */,
 			);
 		};
@@ -658,7 +658,6 @@
 				5698AE662219429200C30724 /* ArgumentsContainer.swift in Sources */,
 				5698AE6422193EBC00C30724 /* CellDependencyHolder.swift in Sources */,
 				566A8FF32215D0C500F3ACBF /* CellDependencyConfigurator.swift in Sources */,
-				5667806422108EA4006E4F21 /* WeakBox.swift in Sources */,
 				5698AE682219432700C30724 /* CellDependency.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -704,6 +703,7 @@
 				56FCBC92220DC1E10012143A /* HelloDependencyContainer.swift in Sources */,
 				566DD6D0220EF7C800C0E41B /* SingleDependency.swift in Sources */,
 				56DC865F221D791B006CE23B /* DependencyProxy.swift in Sources */,
+				56ECB974221D898000CBDF1D /* WeakBox.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -732,7 +732,7 @@
 		};
 		56B58D9822107159003E61DF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 56B58D8322107159003E61DF /* HelloContainer */;
+			target = 56B58D8322107159003E61DF /* UIKitDependencyHelper */;
 			targetProxy = 56B58D9722107159003E61DF /* PBXContainerItemProxy */;
 		};
 		56FCBC7C220DBFDB0012143A /* PBXTargetDependency */ = {
@@ -820,7 +820,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = valitovaza.HelloContainer;
+				PRODUCT_BUNDLE_IDENTIFIER = valitovaza.UIKitDependencyHelper;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -851,7 +851,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = valitovaza.HelloContainer;
+				PRODUCT_BUNDLE_IDENTIFIER = valitovaza.UIKitDependencyHelper;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
@@ -874,7 +874,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = valitovaza.HelloContainerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = valitovaza.UIKitDependencyHelperTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -895,7 +895,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = valitovaza.HelloContainerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = valitovaza.UIKitDependencyHelperTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1181,7 +1181,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		56B58D9F22107159003E61DF /* Build configuration list for PBXNativeTarget "HelloContainer" */ = {
+		56B58D9F22107159003E61DF /* Build configuration list for PBXNativeTarget "UIKitDependencyHelper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				56B58D9B22107159003E61DF /* Debug */,
@@ -1190,7 +1190,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		56B58DA022107159003E61DF /* Build configuration list for PBXNativeTarget "HelloContainerTests" */ = {
+		56B58DA022107159003E61DF /* Build configuration list for PBXNativeTarget "UIKitDependencyHelperTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				56B58D9D22107159003E61DF /* Debug */,
