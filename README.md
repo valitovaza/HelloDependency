@@ -12,6 +12,27 @@
 pod 'HelloDependency'
 ```
 
+## Basic Usage
+
+### Registering a dependency
+
+```swift
+import HelloDependency
+
+HelloDependency.register(SomeProtocol.self, {
+    SomeClass()
+})
+```
+### Registering a weak singleton
+
+```swift
+import HelloDependency
+
+HelloDependency.Single.Weak.register(SomeProtocol.self, {
+    SomeClass()
+})
+```
+
 ## Requirements
 
 - iOS 10.0+
