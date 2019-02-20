@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "HelloDependency"
-  s.version      = "0.0.4"
+  s.version      = "0.0.5"
   s.summary      = "Swift Dependency Injection Framework"
   s.description  = <<-DESC
                    HelloDependency is a dependency injection framework for Swift.
