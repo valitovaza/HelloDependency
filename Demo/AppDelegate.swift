@@ -1,5 +1,6 @@
 import UIKit
 import HelloDependency
+import UIKitDependencyHelper
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

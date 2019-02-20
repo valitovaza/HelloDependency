@@ -1,5 +1,6 @@
 import UIKit
 import HelloDependency
+import UIKitDependencyHelper
 
 class SecondTableViewController: UITableViewController {
 

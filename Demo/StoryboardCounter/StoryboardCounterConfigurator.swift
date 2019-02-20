@@ -1,5 +1,6 @@
 import Foundation
 import HelloDependency
+import UIKitDependencyHelper
 
 class StoryboardCounterConfigurator: NSObject {
     @IBOutlet weak var vc: StoryboardCounterViewController? {

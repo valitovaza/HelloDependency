@@ -1,5 +1,4 @@
 import XCTest
-import HelloDependency
 import UIKitDependencyHelper
 
 class CellDependencyConfiguratorTests: XCTestCase {
